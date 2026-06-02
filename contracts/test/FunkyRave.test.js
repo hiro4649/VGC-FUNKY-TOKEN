@@ -43,10 +43,10 @@ describe("FunkyRave", function () {
   }
 
   describe("Deployment", function () {
-    it("keeps the existing FUNKY identity for VGC Model readiness", async function () {
+    it("uses the final pre-deploy FUNKY identity for VGC Model readiness", async function () {
       const { token } = await loadFixture(deployFunkyRaveFixture);
-      expect(await token.name()).to.equal("FUNKY");
-      expect(await token.symbol()).to.equal("FUNKY RAVE");
+      expect(await token.name()).to.equal("FUNKY RAVE");
+      expect(await token.symbol()).to.equal("FUNKY");
     });
 
     it("uses OpenZeppelin ERC20 default decimals and mints constructor supply to admin", async function () {
