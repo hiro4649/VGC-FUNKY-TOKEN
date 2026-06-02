@@ -66,6 +66,7 @@ Required before any testnet deploy:
 
 Required before testnet deploy:
 
+- Record pending owner decisions in `docs/testnet-preflight-owner-decisions.md`.
 - owner confirms target network
 - owner confirms deployer wallet funding separately
 - owner confirms initialAdmin

@@ -2,6 +2,8 @@
 
 This checklist is not deployment or verification approval.
 
+BscScan verification remains pending until owner approval is recorded in `docs/testnet-preflight-owner-decisions.md`.
+
 ## BSC Testnet Verification Steps
 
 - Confirm deployed testnet address.

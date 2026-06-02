@@ -1,0 +1,90 @@
+# Testnet Preflight Owner Decisions
+
+## 1. Scope Boundary
+
+- This document is owner-decision preflight only.
+- This document does not approve deployment.
+- This document does not approve funded transactions.
+- This document does not approve governance transactions.
+- This document does not approve BscScan verification.
+- This document does not prove runtime readiness.
+- This document does not prove staging readiness.
+- This document does not prove testnet readiness.
+- This document does not prove mainnet readiness.
+
+## 2. Current Token Identity
+
+- ERC20 name: `FUNKY RAVE`
+- ERC20 symbol: `FUNKY`
+- Source contract: `contracts/funky/funky.sol`
+- TierUpdater source: `contracts/funky/FunkyTierUpdater.sol`
+
+## 3. Target Network Decision
+
+- Target chain: BNB Smart Chain testnet
+- Chain ID: `97`
+- Network approval: `OWNER_APPROVAL_PENDING`
+- Mainnet action: explicitly not approved
+
+## 4. Constructor Address Decisions
+
+- initialAdmin: `INITIAL_ADMIN_TBD`
+- initialFeeRecipient: `INITIAL_FEE_RECIPIENT_TBD`
+
+Do not include real addresses unless the owner explicitly provided them in this task.
+
+## 5. Deployment Command Decision
+
+- deploy command: `DEPLOY_COMMAND_TBD`
+- deploy script: `contracts/scripts/deploy-funky.js`
+- required env review: pending
+- funded transaction approval: not granted
+
+## 6. BscScan Verification Decision
+
+- BscScan verification: not approved
+- verification command: `VERIFICATION_COMMAND_TBD`
+- constructor args: pending owner confirmation
+- API key handling: must not be committed
+
+## 7. Governance Decision Placeholders
+
+- multisig owner policy: `PENDING`
+- admin rotation policy: `PENDING`
+- feeRecipient policy: `PENDING`
+- TierUpdater deployer policy: `PENDING`
+- TierUpdater owner policy: `PENDING`
+- trusted factory policy: `PENDING`
+- initial pair policy: `PENDING`
+- fee exemption policy: `PENDING`
+
+## 8. Required Preflight Checks Before Any Testnet Deploy
+
+- `npm --prefix contracts test`
+- `npm --prefix contracts run compile`
+- `cd contracts && npx hardhat test test/FunkyRave.test.js`
+- deploy script env var review
+- configure script env var review
+- constructor address review
+- no `.env` committed
+- no private key committed
+- no mnemonic committed
+- no RPC URL committed
+- no API key committed
+- owner explicit written deploy approval
+
+## 9. Explicit Non-Approval
+
+This PR does not approve:
+
+- testnet deployment
+- mainnet deployment
+- funded transaction
+- governance transaction
+- BscScan verification
+- release creation
+- public visibility
+- runtime readiness
+- staging readiness
+- testnet readiness
+- mainnet readiness

@@ -39,6 +39,7 @@ cd ..
 ## Deployment Readiness
 
 - [Deployment readiness owner approval checklist](docs/deployment-readiness-checklist.md)
+- [Testnet preflight owner decision record](docs/testnet-preflight-owner-decisions.md)
 
 ## Included Scope
 
