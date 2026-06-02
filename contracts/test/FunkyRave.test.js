@@ -406,19 +406,124 @@ describe("FunkyRave", function () {
   });
 
   describe("Deployment script readiness", function () {
+    function withEnv(overrides, fn) {
+      const keys = Object.keys(overrides);
+      const previous = Object.fromEntries(keys.map((key) => [key, process.env[key]]));
+      try {
+        for (const [key, value] of Object.entries(overrides)) {
+          if (value === undefined) {
+            delete process.env[key];
+          } else {
+            process.env[key] = value;
+          }
+        }
+        fn();
+      } finally {
+        for (const [key, value] of Object.entries(previous)) {
+          if (value === undefined) {
+            delete process.env[key];
+          } else {
+            process.env[key] = value;
+          }
+        }
+      }
+    }
+
     it("keeps FUNKY deploy and governance scripts gated by explicit env vars", function () {
       const deployScript = fs.readFileSync(path.join(__dirname, "..", "scripts", "deploy-funky.js"), "utf8");
       const governanceScript = fs.readFileSync(path.join(__dirname, "..", "scripts", "configure-funky-governance.js"), "utf8");
 
-      expect(deployScript).to.include('requireEnv("FUNKY_INITIAL_ADMIN")');
-      expect(deployScript).to.include('requireEnv("FUNKY_INITIAL_FEE_RECIPIENT")');
+      expect(deployScript).to.include('requireAddressEnv("FUNKY_INITIAL_ADMIN")');
+      expect(deployScript).to.include('requireAddressEnv("FUNKY_INITIAL_FEE_RECIPIENT")');
       expect(deployScript).to.include("Set PRIVATE_KEY before deploying.");
 
-      expect(governanceScript).to.include('requireEnv("FUNKY_TOKEN_ADDRESS")');
+      expect(governanceScript).to.include('requireAddressEnv("FUNKY_TOKEN_ADDRESS")');
       expect(governanceScript).to.include("FUNKY_TIER_UPDATER");
       expect(governanceScript).to.include("FUNKY_TRUSTED_FACTORIES");
       expect(governanceScript).to.include("FUNKY_INITIAL_PAIRS");
       expect(governanceScript).to.include("Set PRIVATE_KEY in env.");
+    });
+
+    it("supports no-deploy validation before signer or transaction creation", function () {
+      const deployScript = fs.readFileSync(path.join(__dirname, "..", "scripts", "deploy-funky.js"), "utf8");
+      const governanceScript = fs.readFileSync(path.join(__dirname, "..", "scripts", "configure-funky-governance.js"), "utf8");
+
+      expect(deployScript).to.include("FUNKY_VALIDATE_ONLY");
+      expect(deployScript.indexOf("if (isValidateOnly())")).to.be.lessThan(deployScript.indexOf("ethers.getSigners()"));
+      expect(deployScript.indexOf("if (isValidateOnly())")).to.be.lessThan(deployScript.indexOf("FunkyRave.deploy"));
+      expect(deployScript).to.include("No deployment transaction was sent.");
+
+      expect(governanceScript).to.include("FUNKY_VALIDATE_ONLY");
+      expect(governanceScript.indexOf("if (isValidateOnly())")).to.be.lessThan(governanceScript.indexOf("ethers.getSigners()"));
+      expect(governanceScript.indexOf("if (isValidateOnly())")).to.be.lessThan(governanceScript.indexOf("new ethers.Contract"));
+      expect(governanceScript).to.include("No governance transaction was sent.");
+    });
+
+    it("validates deploy dry-run env names and addresses without secrets", function () {
+      const deployScript = require("../scripts/deploy-funky.js");
+      const validAddress = "0x0000000000000000000000000000000000000001";
+
+      withEnv({
+        FUNKY_INITIAL_ADMIN: undefined,
+        FUNKY_INITIAL_FEE_RECIPIENT: validAddress,
+      }, () => {
+        expect(() => deployScript.validateDeployInputs()).to.throw("Missing required env var: FUNKY_INITIAL_ADMIN");
+      });
+
+      withEnv({
+        FUNKY_INITIAL_ADMIN: "INITIAL_ADMIN_TBD",
+        FUNKY_INITIAL_FEE_RECIPIENT: validAddress,
+      }, () => {
+        expect(() => deployScript.validateDeployInputs()).to.throw("Invalid address for env var: FUNKY_INITIAL_ADMIN");
+      });
+
+      withEnv({
+        FUNKY_INITIAL_ADMIN: validAddress,
+        FUNKY_INITIAL_FEE_RECIPIENT: validAddress,
+      }, () => {
+        expect(() => deployScript.validateDeployInputs()).to.not.throw();
+      });
+    });
+
+    it("validates configure dry-run env names and address lists without secrets", function () {
+      const governanceScript = require("../scripts/configure-funky-governance.js");
+      const validAddress = "0x0000000000000000000000000000000000000001";
+
+      withEnv({
+        FUNKY_TOKEN_ADDRESS: undefined,
+        FUNKY_TIER_UPDATER: "",
+        FUNKY_TRUSTED_FACTORIES: "",
+        FUNKY_INITIAL_PAIRS: "",
+      }, () => {
+        expect(() => governanceScript.validateGovernanceInputs()).to.throw("Missing required env var: FUNKY_TOKEN_ADDRESS");
+      });
+
+      withEnv({
+        FUNKY_TOKEN_ADDRESS: "FUNKY_TOKEN_ADDRESS_TBD",
+        FUNKY_TIER_UPDATER: "",
+        FUNKY_TRUSTED_FACTORIES: "",
+        FUNKY_INITIAL_PAIRS: "",
+      }, () => {
+        expect(() => governanceScript.validateGovernanceInputs()).to.throw("Invalid address for env var: FUNKY_TOKEN_ADDRESS");
+      });
+
+      withEnv({
+        FUNKY_TOKEN_ADDRESS: validAddress,
+        FUNKY_TIER_UPDATER: validAddress,
+        FUNKY_TRUSTED_FACTORIES: `${validAddress},FACTORY_TBD`,
+        FUNKY_INITIAL_PAIRS: "",
+      }, () => {
+        expect(() => governanceScript.validateGovernanceInputs()).to.throw("Invalid address in env var: FUNKY_TRUSTED_FACTORIES");
+      });
+
+      withEnv({
+        FUNKY_TOKEN_ADDRESS: validAddress,
+        FUNKY_TIER_UPDATER: validAddress,
+        FUNKY_TRUSTED_FACTORIES: validAddress,
+        FUNKY_INITIAL_PAIRS: validAddress,
+      }, () => {
+        expect(() => governanceScript.validateGovernanceInputs()).to.not.throw();
+      });
     });
   });
 });

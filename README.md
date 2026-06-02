@@ -41,6 +41,9 @@ cd ..
 - [Deployment readiness owner approval checklist](docs/deployment-readiness-checklist.md)
 - [Testnet preflight owner decision record](docs/testnet-preflight-owner-decisions.md)
 
+Dry-run validation can be run with `FUNKY_VALIDATE_ONLY=true` to check required deployment and governance inputs without broadcasting transactions.
+Dry-run validation is not deployment readiness, runtime readiness, testnet readiness, or mainnet readiness.
+
 ## Included Scope
 
 - `contracts/funky/funky.sol`
