@@ -36,6 +36,10 @@ npx hardhat test test/FunkyRave.test.js
 cd ..
 ```
 
+## Deployment Readiness
+
+- [Deployment readiness owner approval checklist](docs/deployment-readiness-checklist.md)
+
 ## Included Scope
 
 - `contracts/funky/funky.sol`
