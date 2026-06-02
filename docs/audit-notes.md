@@ -9,14 +9,13 @@ This repo is token-only.
 
 This repo excludes backend, frontend, NFT app code, and Codex harness repair history.
 
-## Current On-Chain ERC20 Identity
+## Final Pre-Deploy ERC20 Identity
 
-- name = `FUNKY`
-- symbol = `FUNKY RAVE`
+- name = `FUNKY RAVE`
+- symbol = `FUNKY`
 
-This identity is unusual because ERC20 symbol is normally a short ticker.
-Do not silently change it.
-Do not deploy until the owner explicitly confirms whether this identity is final.
+This is a pre-deploy identity correction.
+The symbol is the short ticker.
 
 FUNKY token is the VGC Model token implementation.
 This repository does not prove deployment readiness.
@@ -27,16 +26,5 @@ This repository does not prove mainnet readiness.
 No deploy has been performed.
 No funded transaction has been performed.
 No governance transaction has been performed.
-
-## Owner Decision
-
-Token identity finalization:
-
-- Option A: keep name `FUNKY` and symbol `FUNKY RAVE`.
-- Option B: change to a more conventional identity before any deployment.
-
-Owner decision is required before testnet or mainnet deployment.
-
-Open decision: whether name `FUNKY` and symbol `FUNKY RAVE` remain final for deployment.
 
 Open decision: whether local `ERC20.sol` remains vendored or should be migrated to clean OpenZeppelin imports later.
