@@ -6,6 +6,15 @@ Current ERC20 name is `FUNKY`.
 Current ERC20 symbol is `FUNKY RAVE`.
 Source contract is `contracts/funky/funky.sol`.
 
+Current on-chain ERC20 identity:
+
+- name = `FUNKY`
+- symbol = `FUNKY RAVE`
+
+This identity is unusual because ERC20 symbol is normally a short ticker.
+Do not silently change it.
+Do not deploy until the owner explicitly confirms whether this identity is final.
+
 This repository contains token-only source, tests, and deployment tooling.
 
 This repository does not prove deployment readiness by itself.
@@ -17,6 +26,15 @@ This repository does not prove mainnet readiness by itself.
 No deployment has been performed from this repository.
 No funded transaction has been performed from this repository.
 No governance transaction has been performed from this repository.
+
+## Owner Decision
+
+Token identity finalization:
+
+- Option A: keep name `FUNKY` and symbol `FUNKY RAVE`.
+- Option B: change to a more conventional identity before any deployment.
+
+Owner decision is required before testnet or mainnet deployment.
 
 ## Test
 
