@@ -70,7 +70,7 @@ function isAllowedPublicBscScanUrl(urlText) {
 
   const host = parsed.hostname.toLowerCase();
   if (PRIVATE_HOST_RE.test(host)) return false;
-  if (!host.endsWith("bscscan.com")) return false;
+  if (host !== "bscscan.com" && !host.endsWith(".bscscan.com")) return false;
 
   for (const key of parsed.searchParams.keys()) {
     if (SECRET_QUERY_KEY_RE.test(key)) return false;
