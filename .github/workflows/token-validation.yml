@@ -1,0 +1,41 @@
+name: Token validation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  token-validation:
+    name: Token validation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: contracts/package-lock.json
+
+      - name: Install contracts dependencies
+        working-directory: contracts
+        run: npm ci
+
+      - name: Run contracts tests
+        working-directory: contracts
+        run: npm test
+
+      - name: Compile contracts
+        working-directory: contracts
+        run: npm run compile
+
+      - name: Run targeted FunkyRave tests
+        working-directory: contracts
+        run: npx hardhat test test/FunkyRave.test.js
