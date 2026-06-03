@@ -55,6 +55,7 @@ Required before any testnet deploy:
 - `npm run compile`
 - `npx hardhat test test/FunkyRave.test.js`
 - GitHub Actions token validation pass
+- GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
 - deploy script env var review
@@ -70,6 +71,7 @@ Dry-run validation is not runtime readiness.
 Dry-run validation is not testnet readiness.
 Dry-run validation is not mainnet readiness.
 Owner approval is still required before any actual testnet deploy.
+Owner-provided addresses are still required before any real testnet action.
 Funding is handled separately by owner and must not be represented in repo.
 
 ## 7. BSC Testnet Preflight
