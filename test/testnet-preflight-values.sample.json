@@ -1,0 +1,17 @@
+{
+  "targetNetwork": "BNB Smart Chain testnet",
+  "chainId": 97,
+  "initialAdmin": "INITIAL_ADMIN_TBD",
+  "initialFeeRecipient": "INITIAL_FEE_RECIPIENT_TBD",
+  "deployCommandApproved": "OWNER_APPROVAL_PENDING",
+  "deployerFundingHandledByOwner": "OWNER_APPROVAL_PENDING",
+  "bscScanVerificationPlan": "VERIFICATION_PLAN_TBD",
+  "multisigOwnerPolicy": "PENDING",
+  "adminRotationPolicy": "PENDING",
+  "feeRecipientPolicy": "PENDING",
+  "tierUpdaterDeployerPolicy": "PENDING",
+  "tierUpdaterOwnerPolicy": "PENDING",
+  "trustedFactoryPolicy": "PENDING",
+  "initialDexPairPolicy": "PENDING",
+  "feeExemptionPolicy": "PENDING"
+}

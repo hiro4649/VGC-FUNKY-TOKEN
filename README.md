@@ -41,6 +41,7 @@ cd ..
 GitHub Actions token validation runs contracts install, tests, compile, and the targeted `FunkyRave` test.
 CI also runs validate-only deploy/configure preflight with dummy public addresses.
 CI does not prove deployment readiness, runtime readiness, testnet readiness, or mainnet readiness.
+CI also validates the sample owner-values file for format and secret safety only.
 
 ## Deployment Readiness
 
@@ -50,6 +51,7 @@ CI does not prove deployment readiness, runtime readiness, testnet readiness, or
 Dry-run validation can be run with `FUNKY_VALIDATE_ONLY=true` to check required deployment and governance inputs without broadcasting transactions.
 CI validate-only preflight uses dummy public addresses only; owner-provided addresses are still required before any real testnet action.
 Dry-run validation is not deployment readiness, runtime readiness, testnet readiness, or mainnet readiness.
+Owner-values validation only checks format and secret safety; it does not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
 
 ## Included Scope
 
