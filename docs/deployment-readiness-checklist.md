@@ -55,6 +55,7 @@ Required before any testnet deploy:
 - `npm run compile`
 - `npx hardhat test test/FunkyRave.test.js`
 - GitHub Actions token validation pass
+- testnet preflight owner-values validator pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
@@ -72,6 +73,15 @@ Dry-run validation is not testnet readiness.
 Dry-run validation is not mainnet readiness.
 Owner approval is still required before any actual testnet deploy.
 Owner-provided addresses are still required before any real testnet action.
+Owner-values validation only checks format and secret safety.
+Owner-values validation does not approve deployment.
+Owner-values validation does not approve funded transactions.
+Owner-values validation does not approve governance transactions.
+Owner-values validation does not approve BscScan verification.
+Owner-values validation does not prove runtime readiness.
+Owner-values validation does not prove staging readiness.
+Owner-values validation does not prove testnet readiness.
+Owner-values validation does not prove mainnet readiness.
 Funding is handled separately by owner and must not be represented in repo.
 
 ## 7. BSC Testnet Preflight

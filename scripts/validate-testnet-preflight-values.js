@@ -1,0 +1,192 @@
+#!/usr/bin/env node
+
+const fs = require("fs");
+
+const REQUIRED_FIELDS = [
+  "targetNetwork",
+  "chainId",
+  "initialAdmin",
+  "initialFeeRecipient",
+  "deployCommandApproved",
+  "deployerFundingHandledByOwner",
+  "bscScanVerificationPlan",
+  "multisigOwnerPolicy",
+  "adminRotationPolicy",
+  "feeRecipientPolicy",
+  "tierUpdaterDeployerPolicy",
+  "tierUpdaterOwnerPolicy",
+  "trustedFactoryPolicy",
+  "initialDexPairPolicy",
+  "feeExemptionPolicy",
+];
+
+const POLICY_FIELDS = [
+  "multisigOwnerPolicy",
+  "adminRotationPolicy",
+  "feeRecipientPolicy",
+  "tierUpdaterDeployerPolicy",
+  "tierUpdaterOwnerPolicy",
+  "trustedFactoryPolicy",
+  "initialDexPairPolicy",
+  "feeExemptionPolicy",
+];
+
+const ADDRESS_RE = /^0x[0-9a-fA-F]{40}$/;
+const PRIVATE_KEY_RE = /\b0x[0-9a-fA-F]{64}\b|\b[0-9a-fA-F]{64}\b/;
+const JWT_RE = /\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/;
+const URL_RE = /\b(?:https?|wss?):\/\/[^\s"'<>]+/gi;
+const ENV_LINE_RE = /^\s*[A-Z0-9_]+\s*=\s*.+/m;
+const MNEMONIC_HINT_RE = /\b(?:mnemonic|seed phrase|recovery phrase)\b/i;
+const BEARER_TOKEN_RE = /\bbearer\s+[A-Za-z0-9._~+/=-]{16,}\b/i;
+const KEY_ASSIGNMENT_RE =
+  /\b(?:private[_ -]?key|api[_ -]?key|secret|password|cookie)\s*[:=]\s*\S+/i;
+const DB_URL_RE = /\b(?:postgres|postgresql|mysql|mongodb|redis):\/\/\S+/i;
+const PRIVATE_HOST_RE = /^(?:localhost|127\.|10\.|192\.168\.|172\.(?:1[6-9]|2\d|3[0-1])\.|\[?::1\]?)/i;
+const RPC_HOST_HINT_RE = /\b(?:rpc|alchemy|infura|quicknode|nodereal|ankr|moralis|getblock|chainstack)\b/i;
+const SECRET_QUERY_KEY_RE = /(?:^|[_-])(?:api(?:key)?|key|token|secret|auth|bearer|password|jwt|signature)(?:$|[_-])/i;
+
+function fail(category) {
+  console.error("secret-risk");
+  console.error(`unsafe field category: ${category}`);
+  console.error("no value echoed");
+  process.exit(1);
+}
+
+function failValidation(message) {
+  console.error(`validation-fail: ${message}`);
+  process.exit(1);
+}
+
+function isAllowedPublicBscScanUrl(urlText) {
+  let parsed;
+  try {
+    parsed = new URL(urlText);
+  } catch {
+    return false;
+  }
+
+  if (parsed.protocol !== "https:") return false;
+  if (parsed.username || parsed.password) return false;
+
+  const host = parsed.hostname.toLowerCase();
+  if (PRIVATE_HOST_RE.test(host)) return false;
+  if (host !== "bscscan.com" && !host.endsWith(".bscscan.com")) return false;
+
+  for (const key of parsed.searchParams.keys()) {
+    if (SECRET_QUERY_KEY_RE.test(key)) return false;
+  }
+
+  return true;
+}
+
+function urlCategory(path, value) {
+  const urls = value.match(URL_RE) || [];
+  if (urls.length === 0) return null;
+
+  if (path === "input.bscScanVerificationPlan") {
+    for (const url of urls) {
+      if (!isAllowedPublicBscScanUrl(url)) return "url-or-private-endpoint";
+    }
+    return null;
+  }
+
+  return "url-or-private-endpoint";
+}
+
+function secretCategory(path, value) {
+  if (typeof value !== "string") return null;
+  if (PRIVATE_KEY_RE.test(value)) return "private-key-like";
+  if (JWT_RE.test(value)) return "jwt";
+  if (DB_URL_RE.test(value)) return "db-url";
+  const urlRisk = urlCategory(path, value);
+  if (urlRisk) return urlRisk;
+  if (RPC_HOST_HINT_RE.test(value) && /\b(?:url|endpoint)\b/i.test(value)) return "rpc-endpoint";
+  if (ENV_LINE_RE.test(value)) return ".env-content";
+  if (MNEMONIC_HINT_RE.test(value)) return "mnemonic";
+  if (BEARER_TOKEN_RE.test(value)) return "bearer-token";
+  if (KEY_ASSIGNMENT_RE.test(value)) return "key-assignment";
+  return null;
+}
+
+function assertNoSecrets(path, value) {
+  if (Array.isArray(value)) {
+    value.forEach((entry, index) => assertNoSecrets(`${path}[${index}]`, entry));
+    return;
+  }
+  if (value && typeof value === "object") {
+    for (const [key, entry] of Object.entries(value)) {
+      assertNoSecrets(`${path}.${key}`, entry);
+    }
+    return;
+  }
+  const category = secretCategory(path, value);
+  if (category) fail(`${path}:${category}`);
+}
+
+function isApprovalValue(value) {
+  return value === true || value === false || value === "OWNER_APPROVAL_PENDING";
+}
+
+function assertTextOrPending(data, field, pendingValue = "PENDING") {
+  const value = data[field];
+  if (value === pendingValue) return;
+  if (typeof value !== "string" || value.trim().length === 0) {
+    failValidation(`${field} must be non-empty text or ${pendingValue}`);
+  }
+}
+
+const filePath = process.argv[2];
+if (!filePath) {
+  failValidation("usage: node scripts/validate-testnet-preflight-values.js <json-file>");
+}
+
+let data;
+try {
+  data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+} catch {
+  failValidation("input file must be valid JSON");
+}
+
+assertNoSecrets("input", data);
+
+for (const field of REQUIRED_FIELDS) {
+  if (!Object.prototype.hasOwnProperty.call(data, field)) {
+    failValidation(`${field} is required`);
+  }
+}
+
+if (data.targetNetwork !== "BNB Smart Chain testnet") {
+  failValidation("targetNetwork must equal BNB Smart Chain testnet");
+}
+
+if (data.chainId !== 97) {
+  failValidation("chainId must equal 97");
+}
+
+if (data.initialAdmin !== "INITIAL_ADMIN_TBD" && !ADDRESS_RE.test(data.initialAdmin)) {
+  failValidation("initialAdmin must be a public EVM address or INITIAL_ADMIN_TBD");
+}
+
+if (
+  data.initialFeeRecipient !== "INITIAL_FEE_RECIPIENT_TBD" &&
+  !ADDRESS_RE.test(data.initialFeeRecipient)
+) {
+  failValidation("initialFeeRecipient must be a public EVM address or INITIAL_FEE_RECIPIENT_TBD");
+}
+
+if (!isApprovalValue(data.deployCommandApproved)) {
+  failValidation("deployCommandApproved must be true, false, or OWNER_APPROVAL_PENDING");
+}
+
+if (!isApprovalValue(data.deployerFundingHandledByOwner)) {
+  failValidation("deployerFundingHandledByOwner must be true, false, or OWNER_APPROVAL_PENDING");
+}
+
+assertTextOrPending(data, "bscScanVerificationPlan", "VERIFICATION_PLAN_TBD");
+
+for (const field of POLICY_FIELDS) {
+  assertTextOrPending(data, field);
+}
+
+console.log("testnet preflight owner values validation passed");
+console.log("format-only validation; no deployment approval");

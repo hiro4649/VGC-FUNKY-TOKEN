@@ -64,6 +64,7 @@ Do not include real addresses unless the owner explicitly provided them in this 
 - `npm --prefix contracts test`
 - `npm --prefix contracts run compile`
 - `cd contracts && npx hardhat test test/FunkyRave.test.js`
+- `node scripts/validate-testnet-preflight-values.js test/testnet-preflight-values.sample.json`
 - GitHub Actions validate-only deploy/configure preflight with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
@@ -83,6 +84,16 @@ Dry-run validation is not testnet readiness.
 Dry-run validation is not mainnet readiness.
 Funding is handled separately by owner and must not be represented in repo.
 Owner-provided addresses are still required before any real testnet action.
+
+The owner-values validator only checks format and secret safety.
+The owner-values validator does not approve deployment.
+The owner-values validator does not approve funded transactions.
+The owner-values validator does not approve governance transactions.
+The owner-values validator does not approve BscScan verification.
+The owner-values validator does not prove runtime readiness.
+The owner-values validator does not prove staging readiness.
+The owner-values validator does not prove testnet readiness.
+The owner-values validator does not prove mainnet readiness.
 
 ## 9. Explicit Non-Approval
 
