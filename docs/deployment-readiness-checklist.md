@@ -56,6 +56,7 @@ Required before any testnet deploy:
 - `npx hardhat test test/FunkyRave.test.js`
 - GitHub Actions token validation pass
 - testnet preflight owner-values validator pass
+- testnet preflight owner-values validator self-test pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation

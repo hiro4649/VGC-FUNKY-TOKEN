@@ -65,6 +65,7 @@ Do not include real addresses unless the owner explicitly provided them in this 
 - `npm --prefix contracts run compile`
 - `cd contracts && npx hardhat test test/FunkyRave.test.js`
 - `node scripts/validate-testnet-preflight-values.js test/testnet-preflight-values.sample.json`
+- `node scripts/test-testnet-preflight-validator.js`
 - GitHub Actions validate-only deploy/configure preflight with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
