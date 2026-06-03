@@ -54,6 +54,7 @@ Required before any testnet deploy:
 - `npm test`
 - `npm run compile`
 - `npx hardhat test test/FunkyRave.test.js`
+- GitHub Actions token validation pass
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
 - deploy script env var review
