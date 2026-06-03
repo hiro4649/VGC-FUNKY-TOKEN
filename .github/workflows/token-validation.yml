@@ -39,3 +39,21 @@ jobs:
       - name: Run targeted FunkyRave tests
         working-directory: contracts
         run: npx hardhat test test/FunkyRave.test.js
+
+      - name: Validate deploy script inputs without deploying
+        working-directory: contracts
+        env:
+          FUNKY_VALIDATE_ONLY: "true"
+          FUNKY_INITIAL_ADMIN: "0x0000000000000000000000000000000000000001"
+          FUNKY_INITIAL_FEE_RECIPIENT: "0x0000000000000000000000000000000000000002"
+        run: node scripts/deploy-funky.js
+
+      - name: Validate governance configure inputs without transactions
+        working-directory: contracts
+        env:
+          FUNKY_VALIDATE_ONLY: "true"
+          FUNKY_TOKEN_ADDRESS: "0x0000000000000000000000000000000000000003"
+          FUNKY_TIER_UPDATER: "0x0000000000000000000000000000000000000004"
+          FUNKY_TRUSTED_FACTORIES: "0x0000000000000000000000000000000000000005"
+          FUNKY_INITIAL_PAIRS: "0x0000000000000000000000000000000000000006"
+        run: node scripts/configure-funky-governance.js

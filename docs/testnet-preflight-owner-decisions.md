@@ -64,6 +64,7 @@ Do not include real addresses unless the owner explicitly provided them in this 
 - `npm --prefix contracts test`
 - `npm --prefix contracts run compile`
 - `cd contracts && npx hardhat test test/FunkyRave.test.js`
+- GitHub Actions validate-only deploy/configure preflight with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
 - deploy script env var review
@@ -81,6 +82,7 @@ Dry-run validation is not staging readiness.
 Dry-run validation is not testnet readiness.
 Dry-run validation is not mainnet readiness.
 Funding is handled separately by owner and must not be represented in repo.
+Owner-provided addresses are still required before any real testnet action.
 
 ## 9. Explicit Non-Approval
 
