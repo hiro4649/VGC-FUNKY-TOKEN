@@ -42,6 +42,7 @@ GitHub Actions token validation runs contracts install, tests, compile, and the 
 CI also runs validate-only deploy/configure preflight with dummy public addresses.
 CI does not prove deployment readiness, runtime readiness, testnet readiness, or mainnet readiness.
 CI also validates the sample owner-values file for format and secret safety only.
+CI runs owner-values validator self-tests; those self-tests do not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
 
 ## Deployment Readiness
 

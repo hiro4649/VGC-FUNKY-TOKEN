@@ -43,6 +43,9 @@ jobs:
       - name: Validate testnet preflight owner values sample
         run: node scripts/validate-testnet-preflight-values.js test/testnet-preflight-values.sample.json
 
+      - name: Run testnet preflight owner values validator self-tests
+        run: node scripts/test-testnet-preflight-validator.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:
