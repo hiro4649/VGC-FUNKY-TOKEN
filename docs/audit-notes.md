@@ -29,5 +29,6 @@ No governance transaction has been performed.
 
 Testnet preflight decisions are pending in `docs/testnet-preflight-owner-decisions.md`.
 No deployment has occurred.
+Dry-run validation does not prove runtime, staging, testnet, or mainnet readiness.
 
 Open decision: whether local `ERC20.sol` remains vendored or should be migrated to clean OpenZeppelin imports later.

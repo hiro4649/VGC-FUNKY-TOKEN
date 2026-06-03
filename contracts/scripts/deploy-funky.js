@@ -1,5 +1,9 @@
 const { ethers, network } = require("hardhat");
 
+function isValidateOnly() {
+  return String(process.env.FUNKY_VALIDATE_ONLY || "").toLowerCase() === "true";
+}
+
 function requireEnv(name) {
   const value = process.env[name];
   if (!value || value.trim() === "") {
@@ -8,7 +12,27 @@ function requireEnv(name) {
   return value.trim();
 }
 
+function requireAddressEnv(name) {
+  const value = requireEnv(name);
+  if (!ethers.isAddress(value)) {
+    throw new Error(`Invalid address for env var: ${name}`);
+  }
+  return value;
+}
+
+function validateDeployInputs() {
+  requireAddressEnv("FUNKY_INITIAL_ADMIN");
+  requireAddressEnv("FUNKY_INITIAL_FEE_RECIPIENT");
+}
+
 async function main() {
+  if (isValidateOnly()) {
+    validateDeployInputs();
+    console.log("FunkyRave deploy validation completed.");
+    console.log("No deployment transaction was sent.");
+    return;
+  }
+
   const signers = await ethers.getSigners();
 
   if (signers.length === 0) {
@@ -20,8 +44,8 @@ async function main() {
   const deployer = signers[0];
   const balance = await ethers.provider.getBalance(deployer.address);
 
-  const initialAdmin = requireEnv("FUNKY_INITIAL_ADMIN");
-  const initialFeeRecipient = requireEnv("FUNKY_INITIAL_FEE_RECIPIENT");
+  const initialAdmin = requireAddressEnv("FUNKY_INITIAL_ADMIN");
+  const initialFeeRecipient = requireAddressEnv("FUNKY_INITIAL_FEE_RECIPIENT");
 
   console.log("Deploying FunkyRave");
   console.log("Network:", network.name);
@@ -42,9 +66,17 @@ async function main() {
   );
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error("Deployment failed:", error);
-    process.exit(1);
-  });
+if (require.main === module) {
+  main()
+    .then(() => process.exit(0))
+    .catch((error) => {
+      console.error("Deployment failed:", error);
+      process.exit(1);
+    });
+}
+
+module.exports = {
+  isValidateOnly,
+  requireAddressEnv,
+  validateDeployInputs,
+};

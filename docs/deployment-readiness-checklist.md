@@ -54,6 +54,8 @@ Required before any testnet deploy:
 - `npm test`
 - `npm run compile`
 - `npx hardhat test test/FunkyRave.test.js`
+- `FUNKY_VALIDATE_ONLY=true` deploy script validation
+- `FUNKY_VALIDATE_ONLY=true` configure script validation
 - deploy script env var review
 - configure script env var review
 - constructor arg review
@@ -61,6 +63,13 @@ Required before any testnet deploy:
 - no RPC URL committed
 - no `.env` committed
 - no funded transaction without explicit owner instruction
+
+Dry-run validation is not deployment readiness.
+Dry-run validation is not runtime readiness.
+Dry-run validation is not testnet readiness.
+Dry-run validation is not mainnet readiness.
+Owner approval is still required before any actual testnet deploy.
+Funding is handled separately by owner and must not be represented in repo.
 
 ## 7. BSC Testnet Preflight
 

@@ -36,6 +36,7 @@ Do not include real addresses unless the owner explicitly provided them in this 
 ## 5. Deployment Command Decision
 
 - deploy command: `DEPLOY_COMMAND_TBD`
+- dry-run validation mode: `FUNKY_VALIDATE_ONLY=true`
 - deploy script: `contracts/scripts/deploy-funky.js`
 - required env review: pending
 - funded transaction approval: not granted
@@ -63,6 +64,8 @@ Do not include real addresses unless the owner explicitly provided them in this 
 - `npm --prefix contracts test`
 - `npm --prefix contracts run compile`
 - `cd contracts && npx hardhat test test/FunkyRave.test.js`
+- `FUNKY_VALIDATE_ONLY=true` deploy script validation
+- `FUNKY_VALIDATE_ONLY=true` configure script validation
 - deploy script env var review
 - configure script env var review
 - constructor address review
@@ -72,6 +75,12 @@ Do not include real addresses unless the owner explicitly provided them in this 
 - no RPC URL committed
 - no API key committed
 - owner explicit written deploy approval
+
+Dry-run validation is not runtime readiness.
+Dry-run validation is not staging readiness.
+Dry-run validation is not testnet readiness.
+Dry-run validation is not mainnet readiness.
+Funding is handled separately by owner and must not be represented in repo.
 
 ## 9. Explicit Non-Approval
 

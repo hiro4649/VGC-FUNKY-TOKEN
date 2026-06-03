@@ -3,6 +3,7 @@
 This checklist is not deployment or verification approval.
 
 BscScan verification remains pending until owner approval is recorded in `docs/testnet-preflight-owner-decisions.md`.
+Dry-run validation does not approve BscScan verification.
 
 ## BSC Testnet Verification Steps
 
