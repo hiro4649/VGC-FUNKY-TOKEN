@@ -34,13 +34,16 @@ const POLICY_FIELDS = [
 const ADDRESS_RE = /^0x[0-9a-fA-F]{40}$/;
 const PRIVATE_KEY_RE = /\b0x[0-9a-fA-F]{64}\b|\b[0-9a-fA-F]{64}\b/;
 const JWT_RE = /\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/;
-const URL_RE = /\b(?:https?|wss?):\/\/\S+/i;
+const URL_RE = /\b(?:https?|wss?):\/\/[^\s"'<>]+/gi;
 const ENV_LINE_RE = /^\s*[A-Z0-9_]+\s*=\s*.+/m;
 const MNEMONIC_HINT_RE = /\b(?:mnemonic|seed phrase|recovery phrase)\b/i;
 const BEARER_TOKEN_RE = /\bbearer\s+[A-Za-z0-9._~+/=-]{16,}\b/i;
 const KEY_ASSIGNMENT_RE =
   /\b(?:private[_ -]?key|api[_ -]?key|secret|password|cookie)\s*[:=]\s*\S+/i;
 const DB_URL_RE = /\b(?:postgres|postgresql|mysql|mongodb|redis):\/\/\S+/i;
+const PRIVATE_HOST_RE = /^(?:localhost|127\.|10\.|192\.168\.|172\.(?:1[6-9]|2\d|3[0-1])\.|\[?::1\]?)/i;
+const RPC_HOST_HINT_RE = /\b(?:rpc|alchemy|infura|quicknode|nodereal|ankr|moralis|getblock|chainstack)\b/i;
+const SECRET_QUERY_KEY_RE = /(?:^|[_-])(?:api(?:key)?|key|token|secret|auth|bearer|password|jwt|signature)(?:$|[_-])/i;
 
 function fail(category) {
   console.error("secret-risk");
@@ -54,12 +57,50 @@ function failValidation(message) {
   process.exit(1);
 }
 
-function secretCategory(value) {
+function isAllowedPublicBscScanUrl(urlText) {
+  let parsed;
+  try {
+    parsed = new URL(urlText);
+  } catch {
+    return false;
+  }
+
+  if (parsed.protocol !== "https:") return false;
+  if (parsed.username || parsed.password) return false;
+
+  const host = parsed.hostname.toLowerCase();
+  if (PRIVATE_HOST_RE.test(host)) return false;
+  if (!host.endsWith("bscscan.com")) return false;
+
+  for (const key of parsed.searchParams.keys()) {
+    if (SECRET_QUERY_KEY_RE.test(key)) return false;
+  }
+
+  return true;
+}
+
+function urlCategory(path, value) {
+  const urls = value.match(URL_RE) || [];
+  if (urls.length === 0) return null;
+
+  if (path === "input.bscScanVerificationPlan") {
+    for (const url of urls) {
+      if (!isAllowedPublicBscScanUrl(url)) return "url-or-private-endpoint";
+    }
+    return null;
+  }
+
+  return "url-or-private-endpoint";
+}
+
+function secretCategory(path, value) {
   if (typeof value !== "string") return null;
   if (PRIVATE_KEY_RE.test(value)) return "private-key-like";
   if (JWT_RE.test(value)) return "jwt";
   if (DB_URL_RE.test(value)) return "db-url";
-  if (URL_RE.test(value)) return "url-or-private-endpoint";
+  const urlRisk = urlCategory(path, value);
+  if (urlRisk) return urlRisk;
+  if (RPC_HOST_HINT_RE.test(value) && /\b(?:url|endpoint)\b/i.test(value)) return "rpc-endpoint";
   if (ENV_LINE_RE.test(value)) return ".env-content";
   if (MNEMONIC_HINT_RE.test(value)) return "mnemonic";
   if (BEARER_TOKEN_RE.test(value)) return "bearer-token";
@@ -78,7 +119,7 @@ function assertNoSecrets(path, value) {
     }
     return;
   }
-  const category = secretCategory(value);
+  const category = secretCategory(path, value);
   if (category) fail(`${path}:${category}`);
 }
 
