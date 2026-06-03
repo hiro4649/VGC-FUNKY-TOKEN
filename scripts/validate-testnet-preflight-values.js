@@ -37,7 +37,9 @@ const JWT_RE = /\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/;
 const URL_RE = /\b(?:https?|wss?):\/\/\S+/i;
 const ENV_LINE_RE = /^\s*[A-Z0-9_]+\s*=\s*.+/m;
 const MNEMONIC_HINT_RE = /\b(?:mnemonic|seed phrase|recovery phrase)\b/i;
-const SECRET_HINT_RE = /\b(?:private[_ -]?key|api[_ -]?key|secret|password|cookie|jwt|bearer|token)\b/i;
+const BEARER_TOKEN_RE = /\bbearer\s+[A-Za-z0-9._~+/=-]{16,}\b/i;
+const KEY_ASSIGNMENT_RE =
+  /\b(?:private[_ -]?key|api[_ -]?key|secret|password|cookie)\s*[:=]\s*\S+/i;
 const DB_URL_RE = /\b(?:postgres|postgresql|mysql|mongodb|redis):\/\/\S+/i;
 
 function fail(category) {
@@ -60,7 +62,8 @@ function secretCategory(value) {
   if (URL_RE.test(value)) return "url-or-private-endpoint";
   if (ENV_LINE_RE.test(value)) return ".env-content";
   if (MNEMONIC_HINT_RE.test(value)) return "mnemonic";
-  if (SECRET_HINT_RE.test(value)) return "secret-like-text";
+  if (BEARER_TOKEN_RE.test(value)) return "bearer-token";
+  if (KEY_ASSIGNMENT_RE.test(value)) return "key-assignment";
   return null;
 }
 
