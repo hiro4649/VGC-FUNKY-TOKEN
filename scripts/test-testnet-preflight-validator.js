@@ -31,7 +31,7 @@ function cleanup() {
 
 function runCase(name, mutate, expectPass) {
   const data = structuredClone(base);
-  mutate(data);
+  const unsafeValue = mutate(data);
   const filePath = writeTempCase(name, data);
   const result = spawnSync(process.execPath, [VALIDATOR_PATH, filePath], {
     encoding: "utf8",
@@ -48,6 +48,17 @@ function runCase(name, mutate, expectPass) {
     console.error(`${name}: missing safe failure marker`);
     cleanup();
     process.exit(1);
+  }
+
+  if (!expectPass && unsafeValue) {
+    const output = `${result.stdout}\n${result.stderr}`;
+    if (output.includes(unsafeValue)) {
+      console.error(name);
+      console.error("unsafe output echo detected");
+      console.error("no value echoed");
+      cleanup();
+      process.exit(1);
+    }
   }
 
   console.log(`${name}: ${passed ? "pass" : "safe-fail"}`);
@@ -72,22 +83,32 @@ try {
   }, true);
 
   runCase("private-key-like-value", (data) => {
-    data.feeRecipientPolicy = `0x${"a".repeat(64)}`;
+    const value = `0x${"a".repeat(64)}`;
+    data.feeRecipientPolicy = value;
+    return value;
   }, false);
   runCase("jwt-like-value", (data) => {
-    data.feeRecipientPolicy = [`eyJ${"a".repeat(8)}`, "b".repeat(20), "c".repeat(20)].join(".");
+    const value = [`eyJ${"a".repeat(8)}`, "b".repeat(20), "c".repeat(20)].join(".");
+    data.feeRecipientPolicy = value;
+    return value;
   }, false);
   runCase("rpc-like-url", (data) => {
-    data.feeRecipientPolicy = ["https", "://", "example", ".invalid", "/rpc"].join("");
+    const value = ["https", "://", "example", ".invalid", "/rpc"].join("");
+    data.feeRecipientPolicy = value;
+    return value;
   }, false);
   runCase("wss-like-url", (data) => {
-    data.bscScanVerificationPlan = ["wss", "://", "testnet", ".bscscan", ".com", "/socket"].join("");
+    const value = ["wss", "://", "testnet", ".bscscan", ".com", "/socket"].join("");
+    data.bscScanVerificationPlan = value;
+    return value;
   }, false);
   runCase("credentialed-url", (data) => {
-    data.bscScanVerificationPlan = ["https", "://", "user", ":", "pass", "@", "testnet.bscscan.com/"].join("");
+    const value = ["https", "://", "user", ":", "pass", "@", "testnet.bscscan.com/"].join("");
+    data.bscScanVerificationPlan = value;
+    return value;
   }, false);
   runCase("bscscan-token-query-url", (data) => {
-    data.bscScanVerificationPlan = [
+    const value = [
       "https",
       "://",
       "testnet.bscscan.com/",
@@ -96,15 +117,23 @@ try {
       "=",
       "placeholder",
     ].join("");
+    data.bscScanVerificationPlan = value;
+    return value;
   }, false);
   runCase("env-style-content", (data) => {
-    data.feeRecipientPolicy = ["KEY", "=", "VALUE"].join("");
+    const value = ["KEY", "=", "VALUE"].join("");
+    data.feeRecipientPolicy = value;
+    return value;
   }, false);
   runCase("fake-bscscan-host", (data) => {
-    data.bscScanVerificationPlan = ["https", "://", "evilbscscan", ".com/"].join("");
+    const value = ["https", "://", "evilbscscan", ".com/"].join("");
+    data.bscScanVerificationPlan = value;
+    return value;
   }, false);
   runCase("bscscan-dot-evil-host", (data) => {
-    data.bscScanVerificationPlan = ["https", "://", "bscscan", ".com", ".evil", ".com/"].join("");
+    const value = ["https", "://", "bscscan", ".com", ".evil", ".com/"].join("");
+    data.bscScanVerificationPlan = value;
+    return value;
   }, false);
 
   console.log("testnet preflight validator self-tests passed");
