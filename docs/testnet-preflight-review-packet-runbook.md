@@ -113,3 +113,17 @@ For issue submissions, Codex must:
 - not deploy
 - not run BscScan verification
 - wait for explicit owner instruction after a clean review packet
+
+## 10. Owner Issue Parsing Workflow
+
+Required sequence:
+
+1. save issue body to local text file
+2. run `node scripts/parse-testnet-preflight-issue.js <issue-body-file>` to produce JSON
+3. run `node scripts/validate-testnet-preflight-values.js <owner-json-file>`
+4. run `node scripts/generate-testnet-preflight-summary.js <owner-json-file>`
+5. report safe summary
+6. stop for explicit owner instruction
+
+Do not deploy.
+Do not run BscScan verification.

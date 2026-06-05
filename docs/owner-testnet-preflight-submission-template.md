@@ -66,6 +66,7 @@ Use placeholders until the owner is ready to provide public values.
 
 Owner values may also be submitted through the [owner-safe GitHub issue template](../.github/ISSUE_TEMPLATE/testnet-preflight-owner-values.yml).
 The issue template is for public non-secret values only.
+Saved issue body text can be parsed locally into validator-compatible JSON with `node scripts/parse-testnet-preflight-issue.js <issue-body-file>` before validation.
 
 Validate a filled JSON file with:
 
