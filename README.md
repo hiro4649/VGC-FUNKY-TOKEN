@@ -63,6 +63,7 @@ The summary does not approve deployment, funded transactions, governance transac
 Owner issue submissions are public-value intake only; they do not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
 Owner issue submissions can be parsed locally into validator-compatible JSON with `node scripts/parse-testnet-preflight-issue.js <issue-body-file>`; parsing is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 A preflight review packet builder can create a safe packet from either validated JSON or owner issue body text with `node scripts/build-testnet-preflight-review-packet.js`; the packet is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
+A pre-testnet status command can summarize local tooling and remaining owner decisions with `node scripts/show-testnet-preflight-status.js`; the status command does not approve deployment, funded transactions, governance transactions, BscScan verification, release, public visibility, or readiness.
 
 ## Included Scope
 
