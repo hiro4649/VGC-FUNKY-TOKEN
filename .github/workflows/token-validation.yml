@@ -88,6 +88,9 @@ jobs:
       - name: Run safe preflight artifact exporter self-tests
         run: node scripts/test-testnet-preflight-safe-artifact-exporter.js
 
+      - name: Run safe preflight artifact snapshot self-tests
+        run: node scripts/test-testnet-preflight-safe-artifact-snapshot.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

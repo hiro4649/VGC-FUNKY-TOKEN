@@ -60,6 +60,14 @@ node scripts/export-testnet-preflight-safe-artifact.js --pretty
 Use the safe artifact after tooling checks pass to create a local machine-readable review artifact.
 Do not treat the artifact as deployment approval or readiness.
 
+Safe artifact snapshot fixture:
+
+```powershell
+node scripts/test-testnet-preflight-safe-artifact-snapshot.js
+```
+
+Use the snapshot fixture to confirm the default machine-readable artifact remains stable, pending-owner, and non-approving.
+
 Preferred safe path for JSON input:
 
 ```powershell

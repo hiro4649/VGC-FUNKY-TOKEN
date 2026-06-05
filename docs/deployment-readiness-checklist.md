@@ -68,6 +68,7 @@ Required before any testnet deploy:
 - e2e preflight packet fixture pass
 - safe-output audit pass
 - safe preflight artifact export pass
+- safe preflight artifact snapshot pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
