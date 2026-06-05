@@ -91,6 +91,15 @@ jobs:
       - name: Run safe preflight artifact snapshot self-tests
         run: node scripts/test-testnet-preflight-safe-artifact-snapshot.js
 
+      - name: Check blocked testnet preflight gate
+        run: node scripts/check-testnet-preflight-gate.js
+
+      - name: Check blocked testnet preflight gate JSON
+        run: node scripts/check-testnet-preflight-gate.js --json
+
+      - name: Run blocked testnet preflight gate self-tests
+        run: node scripts/test-testnet-preflight-gate.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

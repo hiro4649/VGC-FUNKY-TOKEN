@@ -69,6 +69,7 @@ Required before any testnet deploy:
 - safe-output audit pass
 - safe preflight artifact export pass
 - safe preflight artifact snapshot pass
+- testnet preflight gate command pass with expected `BLOCKED_OWNER_DECISIONS_PENDING`
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
