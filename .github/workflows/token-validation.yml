@@ -64,6 +64,12 @@ jobs:
       - name: Run pre-testnet status self-tests
         run: node scripts/test-testnet-preflight-status.js
 
+      - name: Run preflight tooling checks
+        run: node scripts/run-testnet-preflight-tooling-checks.js
+
+      - name: Run preflight tooling check self-tests
+        run: node scripts/test-testnet-preflight-tooling-checks.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

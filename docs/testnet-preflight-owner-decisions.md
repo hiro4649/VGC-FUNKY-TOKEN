@@ -106,6 +106,7 @@ The preflight summary does not approve deployment, funded transactions, governan
 Parsed issue JSON still requires owner-values validation and safe summary generation before any follow-up action.
 Owner issue body or owner-values JSON must be converted into a safe review packet before any next action.
 Pre-testnet status remains pending until owner decisions are supplied, validated, and summarized safely.
+Preflight tooling checks must pass before owner-submitted values are processed.
 
 ## 9. Explicit Non-Approval
 

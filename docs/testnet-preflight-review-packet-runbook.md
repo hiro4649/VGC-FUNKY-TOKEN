@@ -33,6 +33,12 @@ Safe read-only preliminary status check:
 node scripts/show-testnet-preflight-status.js
 ```
 
+Safe preliminary tooling check:
+
+```powershell
+node scripts/run-testnet-preflight-tooling-checks.js
+```
+
 Preferred safe path for JSON input:
 
 ```powershell
