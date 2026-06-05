@@ -33,6 +33,7 @@ Owner approval is required for:
 - initialFeeRecipient: `INITIAL_FEE_RECIPIENT_TBD`
 
 Owner-provided values should follow the [owner-safe testnet preflight submission template](owner-testnet-preflight-submission-template.md).
+Owner-provided values may also use the [owner-safe GitHub issue template](../.github/ISSUE_TEMPLATE/testnet-preflight-owner-values.yml) as an optional intake method before validation.
 Do not include real addresses unless owner explicitly provides them.
 
 ## 5. Governance Decisions
