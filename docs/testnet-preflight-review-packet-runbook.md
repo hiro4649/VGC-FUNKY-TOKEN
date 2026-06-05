@@ -76,6 +76,14 @@ node scripts/test-testnet-preflight-gate-safety-matrix.js
 
 Even synthetic complete owner decisions remain blocked until a separate explicit deploy instruction.
 
+Safe artifact schema guard:
+
+```powershell
+node scripts/test-testnet-preflight-safe-artifact-schema.js
+```
+
+Use the schema guard to ensure the safe artifact shape has not gained raw owner input, approvals, readiness claims, or dangerous action flags.
+
 Safe artifact snapshot fixture:
 
 ```powershell

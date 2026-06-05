@@ -71,6 +71,7 @@ Required before any testnet deploy:
 - safe preflight artifact snapshot pass
 - testnet preflight gate command pass with expected `BLOCKED_OWNER_DECISIONS_PENDING`
 - testnet preflight gate safety matrix pass
+- safe artifact schema guard pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
