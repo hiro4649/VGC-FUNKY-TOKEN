@@ -27,6 +27,12 @@
 
 ## 3. Required Command Sequence
 
+Safe read-only preliminary status check:
+
+```powershell
+node scripts/show-testnet-preflight-status.js
+```
+
 Preferred safe path for JSON input:
 
 ```powershell

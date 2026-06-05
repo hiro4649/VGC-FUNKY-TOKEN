@@ -105,6 +105,7 @@ The preflight summary generator is a safe redacted review step only.
 The preflight summary does not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
 Parsed issue JSON still requires owner-values validation and safe summary generation before any follow-up action.
 Owner issue body or owner-values JSON must be converted into a safe review packet before any next action.
+Pre-testnet status remains pending until owner decisions are supplied, validated, and summarized safely.
 
 ## 9. Explicit Non-Approval
 
