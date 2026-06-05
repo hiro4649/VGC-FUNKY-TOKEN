@@ -51,6 +51,15 @@ Safe-output audit check:
 node scripts/audit-testnet-preflight-safe-output.js
 ```
 
+Safe artifact export:
+
+```powershell
+node scripts/export-testnet-preflight-safe-artifact.js --pretty
+```
+
+Use the safe artifact after tooling checks pass to create a local machine-readable review artifact.
+Do not treat the artifact as deployment approval or readiness.
+
 Preferred safe path for JSON input:
 
 ```powershell

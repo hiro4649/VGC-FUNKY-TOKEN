@@ -109,6 +109,7 @@ Pre-testnet status remains pending until owner decisions are supplied, validated
 Preflight tooling checks must pass before owner-submitted values are processed.
 Owner decisions remain pending even when the e2e preflight packet fixture passes.
 Owner decisions remain pending even when the safe-output audit passes.
+Owner decisions remain pending in the safe artifact until explicit owner values are provided and validated.
 
 ## 9. Explicit Non-Approval
 

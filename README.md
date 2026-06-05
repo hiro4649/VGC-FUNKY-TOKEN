@@ -67,6 +67,7 @@ A pre-testnet status command can summarize local tooling and remaining owner dec
 A preflight tooling check command runs local no-deploy pre-testnet tooling checks in sequence with `node scripts/run-testnet-preflight-tooling-checks.js`; the command is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 A committed safe e2e fixture proves the placeholder owner issue path through parser, validator, summary, review packet, and tooling check with `node scripts/test-testnet-preflight-e2e-packet.js`; the fixture is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 A safe-output audit command verifies preflight tooling output remains redacted and non-approving with `node scripts/audit-testnet-preflight-safe-output.js`; the audit is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
+A safe preflight artifact exporter emits machine-readable local pre-testnet status with `node scripts/export-testnet-preflight-safe-artifact.js`; the artifact does not contain raw owner input, secrets, deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 
 ## Included Scope
 
