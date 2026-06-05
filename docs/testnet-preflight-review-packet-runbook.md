@@ -45,6 +45,12 @@ Safe e2e fixture check:
 node scripts/test-testnet-preflight-e2e-packet.js
 ```
 
+Safe-output audit check:
+
+```powershell
+node scripts/audit-testnet-preflight-safe-output.js
+```
+
 Preferred safe path for JSON input:
 
 ```powershell

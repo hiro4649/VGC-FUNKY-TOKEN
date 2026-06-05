@@ -71,6 +71,7 @@ Submitted JSON can be used with `node scripts/build-testnet-preflight-review-pac
 The owner may ask Codex to run `node scripts/show-testnet-preflight-status.js` before submitting values.
 Codex can run `node scripts/run-testnet-preflight-tooling-checks.js` before processing owner-submitted values.
 The sample issue fixture at `test/testnet-preflight-owner-issue.sample.md` uses placeholders only and is safe for local testing.
+Codex can run `node scripts/audit-testnet-preflight-safe-output.js` before processing owner values.
 
 Validate a filled JSON file with:
 
