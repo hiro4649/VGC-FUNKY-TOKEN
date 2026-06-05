@@ -76,6 +76,7 @@ Codex can run `node scripts/export-testnet-preflight-safe-artifact.js --pretty` 
 The safe artifact snapshot fixture proves the default pre-owner-values artifact remains pending and safe.
 The testnet preflight gate remains blocked until the owner provides public values and explicit approvals.
 Owner values alone do not authorize deployment; the gate requires a later explicit deploy instruction.
+The safe artifact schema guard validates only the default safe artifact shape and does not validate real owner values by itself.
 
 Validate a filled JSON file with:
 

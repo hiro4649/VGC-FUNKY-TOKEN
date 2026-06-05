@@ -103,6 +103,9 @@ jobs:
       - name: Run testnet preflight gate safety matrix
         run: node scripts/test-testnet-preflight-gate-safety-matrix.js
 
+      - name: Run safe preflight artifact schema guard
+        run: node scripts/test-testnet-preflight-safe-artifact-schema.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

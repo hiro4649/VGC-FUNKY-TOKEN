@@ -113,6 +113,7 @@ Owner decisions remain pending in the safe artifact until explicit owner values 
 Owner decisions remain pending in the safe artifact snapshot until explicit values are supplied and validated.
 The default testnet preflight gate status is blocked until owner decisions are supplied and validated.
 Complete owner decisions are not the same as deploy approval.
+Owner decisions remain pending in the default safe artifact schema.
 
 ## 9. Explicit Non-Approval
 

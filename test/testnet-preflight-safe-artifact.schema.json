@@ -1,0 +1,109 @@
+{
+  "descriptorType": "local-safe-artifact-schema",
+  "unexpectedFieldsAllowed": false,
+  "topLevelKeys": [
+    "schemaVersion",
+    "artifactType",
+    "repositoryScope",
+    "tokenIdentity",
+    "sourceContract",
+    "tooling",
+    "checks",
+    "ownerDecisionStatus",
+    "nonApproval",
+    "safety"
+  ],
+  "constants": {
+    "schemaVersion": "1.0.0",
+    "artifactType": "vgc-funky-token-testnet-preflight-safe-artifact",
+    "repositoryScope": "token-only",
+    "tokenIdentity.name": "FUNKY RAVE",
+    "tokenIdentity.symbol": "FUNKY",
+    "sourceContract": "contracts/funky/funky.sol"
+  },
+  "objects": {
+    "tokenIdentity": {
+      "keys": [
+        "name",
+        "symbol"
+      ]
+    },
+    "tooling": {
+      "keys": [
+        "preTestnetStatusCommand",
+        "ownerValuesValidator",
+        "summaryGenerator",
+        "issueParser",
+        "reviewPacketBuilder",
+        "aggregateToolingCheck",
+        "e2eFixture",
+        "safeOutputAudit"
+      ],
+      "allowedValues": [
+        "present"
+      ]
+    },
+    "checks": {
+      "keys": [
+        "preTestnetStatus",
+        "safeOutputAudit",
+        "aggregateToolingCheck"
+      ],
+      "allowedValues": [
+        "pass"
+      ]
+    },
+    "ownerDecisionStatus": {
+      "keys": [
+        "bnbSmartChainTestnetApproval",
+        "initialAdmin",
+        "initialFeeRecipient",
+        "deployCommandApproval",
+        "deployerWalletFunding",
+        "bscScanVerificationPlan",
+        "multisigOwnerPolicy",
+        "adminRotationPolicy",
+        "feeRecipientPolicy",
+        "tierUpdaterDeployerPolicy",
+        "tierUpdaterOwnerPolicy",
+        "trustedFactoryPolicy",
+        "initialDexPairPolicy",
+        "feeExemptionPolicy"
+      ],
+      "allowedValues": [
+        "pending",
+        "handled_separately_by_owner_pending"
+      ]
+    },
+    "nonApproval": {
+      "keys": [
+        "deployment",
+        "fundedTransaction",
+        "governanceTransaction",
+        "bscScanVerification",
+        "release",
+        "publicVisibility",
+        "runtimeReadiness",
+        "stagingReadiness",
+        "testnetReadiness",
+        "mainnetReadiness"
+      ],
+      "requiredValue": true
+    },
+    "safety": {
+      "keys": [
+        "rawOwnerJsonPrinted",
+        "rawIssueBodyPrinted",
+        "fullPublicAddressesPrinted",
+        "secretsPrinted",
+        "rpcUsed",
+        "bscScanUsed",
+        "deployScriptUsed",
+        "configureScriptUsed",
+        "fundedTransactionPerformed",
+        "governanceTransactionPerformed"
+      ],
+      "requiredValue": false
+    }
+  }
+}
