@@ -74,6 +74,7 @@ The sample issue fixture at `test/testnet-preflight-owner-issue.sample.md` uses 
 Codex can run `node scripts/audit-testnet-preflight-safe-output.js` before processing owner values.
 Codex can run `node scripts/export-testnet-preflight-safe-artifact.js --pretty` to summarize pending state without owner values.
 The safe artifact snapshot fixture proves the default pre-owner-values artifact remains pending and safe.
+The testnet preflight gate remains blocked until the owner provides public values and explicit approvals.
 
 Validate a filled JSON file with:
 

@@ -60,6 +60,14 @@ node scripts/export-testnet-preflight-safe-artifact.js --pretty
 Use the safe artifact after tooling checks pass to create a local machine-readable review artifact.
 Do not treat the artifact as deployment approval or readiness.
 
+Testnet preflight gate:
+
+```powershell
+node scripts/check-testnet-preflight-gate.js
+```
+
+The expected pre-owner-values result is `BLOCKED_OWNER_DECISIONS_PENDING`.
+
 Safe artifact snapshot fixture:
 
 ```powershell
