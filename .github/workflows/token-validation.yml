@@ -55,6 +55,9 @@ jobs:
       - name: Run testnet preflight issue parser self-tests
         run: node scripts/test-testnet-preflight-issue-parser.js
 
+      - name: Run testnet preflight review packet builder self-tests
+        run: node scripts/test-testnet-preflight-review-packet-builder.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

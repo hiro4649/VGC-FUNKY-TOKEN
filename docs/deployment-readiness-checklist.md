@@ -61,6 +61,7 @@ Required before any testnet deploy:
 - testnet preflight owner-values validator self-test pass
 - safe redacted testnet preflight summary generation pass
 - owner issue parser self-test pass
+- testnet preflight review packet builder self-test pass
 - safe testnet preflight review packet generation pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
