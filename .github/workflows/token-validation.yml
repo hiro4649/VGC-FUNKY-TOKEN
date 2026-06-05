@@ -100,6 +100,9 @@ jobs:
       - name: Run blocked testnet preflight gate self-tests
         run: node scripts/test-testnet-preflight-gate.js
 
+      - name: Run testnet preflight gate safety matrix
+        run: node scripts/test-testnet-preflight-gate-safety-matrix.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

@@ -70,6 +70,7 @@ A safe-output audit command verifies preflight tooling output remains redacted a
 A safe preflight artifact exporter emits machine-readable local pre-testnet status with `node scripts/export-testnet-preflight-safe-artifact.js`; the artifact does not contain raw owner input, secrets, deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 A safe artifact snapshot fixture locks the machine-readable preflight artifact shape with `node scripts/test-testnet-preflight-safe-artifact-snapshot.js`; the snapshot is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 A testnet preflight gate command reports the current state as blocked until owner decisions are provided and explicitly approved with `node scripts/check-testnet-preflight-gate.js`; the gate does not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
+The preflight gate safety matrix proves owner decision states remain blocked until a separate explicit deploy instruction with `node scripts/test-testnet-preflight-gate-safety-matrix.js`; the matrix is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 
 ## Included Scope
 

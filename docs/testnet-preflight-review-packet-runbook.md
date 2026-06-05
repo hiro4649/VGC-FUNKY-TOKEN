@@ -68,6 +68,14 @@ node scripts/check-testnet-preflight-gate.js
 
 The expected pre-owner-values result is `BLOCKED_OWNER_DECISIONS_PENDING`.
 
+Gate safety matrix:
+
+```powershell
+node scripts/test-testnet-preflight-gate-safety-matrix.js
+```
+
+Even synthetic complete owner decisions remain blocked until a separate explicit deploy instruction.
+
 Safe artifact snapshot fixture:
 
 ```powershell
