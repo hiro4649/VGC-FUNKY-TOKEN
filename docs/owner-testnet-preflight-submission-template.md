@@ -64,6 +64,9 @@ Use placeholders until the owner is ready to provide public values.
 
 ## Validation Instructions
 
+Owner values may also be submitted through the [owner-safe GitHub issue template](../.github/ISSUE_TEMPLATE/testnet-preflight-owner-values.yml).
+The issue template is for public non-secret values only.
+
 Validate a filled JSON file with:
 
 ```powershell

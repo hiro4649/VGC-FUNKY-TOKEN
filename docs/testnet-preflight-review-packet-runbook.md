@@ -99,3 +99,17 @@ After a clean packet:
 - list remaining owner decisions
 - wait for explicit owner instruction
 - do not deploy
+
+## 9. GitHub Issue Intake Path
+
+Owner decisions may be submitted through the [owner-safe GitHub issue template](../.github/ISSUE_TEMPLATE/testnet-preflight-owner-values.yml).
+
+For issue submissions, Codex must:
+
+- check that no secrets or secret-like values are present
+- convert issue fields into local JSON only after that check
+- run `node scripts/validate-testnet-preflight-values.js <owner-json-file>`
+- run `node scripts/generate-testnet-preflight-summary.js <owner-json-file>`
+- not deploy
+- not run BscScan verification
+- wait for explicit owner instruction after a clean review packet

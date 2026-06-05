@@ -1,0 +1,140 @@
+name: Testnet preflight owner values
+description: Submit public, non-secret BNB Smart Chain testnet preflight decisions for format validation only.
+title: "testnet preflight owner values: <date or short label>"
+labels:
+  - testnet-preflight
+  - owner-decision
+  - no-deploy
+body:
+  - type: checkboxes
+    id: safety-acknowledgement
+    attributes:
+      label: Safety acknowledgement
+      options:
+        - label: I will not include private keys, mnemonics, RPC URLs, API keys, .env contents, DB URLs, JWTs, cookies, private endpoints, or other secrets.
+          required: true
+  - type: checkboxes
+    id: boundary-acknowledgement
+    attributes:
+      label: Boundary acknowledgement
+      options:
+        - label: I understand this issue does not approve deployment, funded transactions, governance transactions, BscScan verification, release, public visibility, runtime readiness, staging readiness, testnet readiness, or mainnet readiness.
+          required: true
+  - type: dropdown
+    id: target-network-approval
+    attributes:
+      label: Target network approval
+      options:
+        - OWNER_APPROVAL_PENDING
+        - APPROVED
+        - NOT_APPROVED
+    validations:
+      required: true
+  - type: input
+    id: initial-admin
+    attributes:
+      label: initialAdmin public EVM address
+      description: Provide a public EVM address only, or leave INITIAL_ADMIN_TBD.
+      placeholder: INITIAL_ADMIN_TBD
+    validations:
+      required: true
+  - type: input
+    id: initial-fee-recipient
+    attributes:
+      label: initialFeeRecipient public EVM address
+      description: Provide a public EVM address only, or leave INITIAL_FEE_RECIPIENT_TBD.
+      placeholder: INITIAL_FEE_RECIPIENT_TBD
+    validations:
+      required: true
+  - type: dropdown
+    id: deploy-command-approval
+    attributes:
+      label: deploy command approval
+      options:
+        - OWNER_APPROVAL_PENDING
+        - APPROVED
+        - NOT_APPROVED
+    validations:
+      required: true
+  - type: dropdown
+    id: deployer-wallet-funding-confirmation
+    attributes:
+      label: deployer wallet funding confirmation
+      description: Do not include funding amount, transaction hash, private key, or wallet secret.
+      options:
+        - OWNER_APPROVAL_PENDING
+        - HANDLED_SEPARATELY_BY_OWNER
+        - NOT_APPROVED
+    validations:
+      required: true
+  - type: textarea
+    id: bscscan-verification-plan
+    attributes:
+      label: BscScan verification plan
+      description: Text only. Do not include API key.
+      placeholder: VERIFICATION_PLAN_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: multisig-owner-policy
+    attributes:
+      label: multisig owner policy
+      placeholder: PENDING
+    validations:
+      required: true
+  - type: textarea
+    id: admin-rotation-policy
+    attributes:
+      label: admin rotation policy
+      placeholder: PENDING
+    validations:
+      required: true
+  - type: textarea
+    id: fee-recipient-policy
+    attributes:
+      label: feeRecipient policy
+      placeholder: PENDING
+    validations:
+      required: true
+  - type: textarea
+    id: tier-updater-deployer-policy
+    attributes:
+      label: TierUpdater deployer policy
+      placeholder: PENDING
+    validations:
+      required: true
+  - type: textarea
+    id: tier-updater-owner-policy
+    attributes:
+      label: TierUpdater owner policy
+      placeholder: PENDING
+    validations:
+      required: true
+  - type: textarea
+    id: trusted-factory-policy
+    attributes:
+      label: trusted factory policy
+      placeholder: PENDING
+    validations:
+      required: true
+  - type: textarea
+    id: initial-dex-pair-policy
+    attributes:
+      label: initial DEX pair policy
+      placeholder: PENDING
+    validations:
+      required: true
+  - type: textarea
+    id: fee-exemption-policy
+    attributes:
+      label: fee exemption policy
+      placeholder: PENDING
+    validations:
+      required: true
+  - type: checkboxes
+    id: final-acknowledgement
+    attributes:
+      label: Final acknowledgement
+      options:
+        - label: I understand Codex will validate and summarize these values only, and will wait for explicit separate instruction before any documentation PR or deployment-related action.
+          required: true
