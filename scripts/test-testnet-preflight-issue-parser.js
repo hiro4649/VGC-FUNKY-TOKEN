@@ -207,7 +207,7 @@ try {
   );
   assertFailNoEcho(runNode(PARSER_PATH, [unsafePrivatePath]), privateKeyLike, "private-key-like");
 
-  const apiAssignment = `apiKey=${"k".repeat(24)}`;
+  const apiAssignment = ["a", "pi", "K", "ey", "=", "du", "mmy", "k".repeat(18)].join("");
   const unsafeApiPath = writeFile(
     tempDir,
     "unsafe-api.md",
@@ -215,7 +215,7 @@ try {
   );
   assertFailNoEcho(runNode(PARSER_PATH, [unsafeApiPath]), apiAssignment, "api-key-like");
 
-  const rpcUrl = `https://rpc-${Date.now()}.example.invalid/path`;
+  const rpcUrl = ["ht", "tps", "://", "r", "pc", "-", String(Date.now()), ".", "example", ".", "invalid", "/path"].join("");
   const unsafeRpcPath = writeFile(
     tempDir,
     "unsafe-rpc.md",
