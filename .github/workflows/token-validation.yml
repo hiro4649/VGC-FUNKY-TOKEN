@@ -73,6 +73,12 @@ jobs:
       - name: Run testnet preflight e2e packet fixture
         run: node scripts/test-testnet-preflight-e2e-packet.js
 
+      - name: Run preflight safe-output audit
+        run: node scripts/audit-testnet-preflight-safe-output.js
+
+      - name: Run preflight safe-output audit self-tests
+        run: node scripts/test-testnet-preflight-safe-output-audit.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

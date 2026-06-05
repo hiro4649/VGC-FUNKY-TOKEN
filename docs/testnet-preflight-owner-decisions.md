@@ -108,6 +108,7 @@ Owner issue body or owner-values JSON must be converted into a safe review packe
 Pre-testnet status remains pending until owner decisions are supplied, validated, and summarized safely.
 Preflight tooling checks must pass before owner-submitted values are processed.
 Owner decisions remain pending even when the e2e preflight packet fixture passes.
+Owner decisions remain pending even when the safe-output audit passes.
 
 ## 9. Explicit Non-Approval
 
