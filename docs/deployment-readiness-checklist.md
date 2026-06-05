@@ -58,6 +58,7 @@ Required before any testnet deploy:
 - GitHub Actions token validation pass
 - testnet preflight owner-values validator pass
 - testnet preflight owner-values validator self-test pass
+- safe redacted testnet preflight summary generation pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
@@ -84,6 +85,7 @@ Owner-values validation does not prove runtime readiness.
 Owner-values validation does not prove staging readiness.
 Owner-values validation does not prove testnet readiness.
 Owner-values validation does not prove mainnet readiness.
+A safe redacted owner-values summary is a review step only and does not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
 Funding is handled separately by owner and must not be represented in repo.
 
 ## 7. BSC Testnet Preflight

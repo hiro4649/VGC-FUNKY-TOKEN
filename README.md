@@ -43,6 +43,8 @@ CI also runs validate-only deploy/configure preflight with dummy public addresse
 CI does not prove deployment readiness, runtime readiness, testnet readiness, or mainnet readiness.
 CI also validates the sample owner-values file for format and secret safety only.
 CI runs owner-values validator self-tests; those self-tests do not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
+CI also runs a preflight summary generator and self-tests for safe redacted owner-values review output.
+The preflight summary is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 
 ## Deployment Readiness
 
@@ -54,6 +56,8 @@ Dry-run validation can be run with `FUNKY_VALIDATE_ONLY=true` to check required 
 CI validate-only preflight uses dummy public addresses only; owner-provided addresses are still required before any real testnet action.
 Dry-run validation is not deployment readiness, runtime readiness, testnet readiness, or mainnet readiness.
 Owner-values validation only checks format and secret safety; it does not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
+A validated owner-values JSON file can be summarized with `node scripts/generate-testnet-preflight-summary.js <file>` for redacted review before any testnet action.
+The summary does not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
 
 ## Included Scope
 
