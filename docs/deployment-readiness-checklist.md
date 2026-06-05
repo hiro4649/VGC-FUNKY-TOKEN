@@ -65,6 +65,7 @@ Required before any testnet deploy:
 - safe testnet preflight review packet generation pass
 - pre-testnet status command pass
 - preflight tooling check command pass
+- e2e preflight packet fixture pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation

@@ -70,6 +70,9 @@ jobs:
       - name: Run preflight tooling check self-tests
         run: node scripts/test-testnet-preflight-tooling-checks.js
 
+      - name: Run testnet preflight e2e packet fixture
+        run: node scripts/test-testnet-preflight-e2e-packet.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

@@ -70,6 +70,7 @@ Saved issue body text can be parsed locally into validator-compatible JSON with 
 Submitted JSON can be used with `node scripts/build-testnet-preflight-review-packet.js --json <file>` to create a safe review packet.
 The owner may ask Codex to run `node scripts/show-testnet-preflight-status.js` before submitting values.
 Codex can run `node scripts/run-testnet-preflight-tooling-checks.js` before processing owner-submitted values.
+The sample issue fixture at `test/testnet-preflight-owner-issue.sample.md` uses placeholders only and is safe for local testing.
 
 Validate a filled JSON file with:
 
