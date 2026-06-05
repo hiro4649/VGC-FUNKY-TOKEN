@@ -107,6 +107,7 @@ Parsed issue JSON still requires owner-values validation and safe summary genera
 Owner issue body or owner-values JSON must be converted into a safe review packet before any next action.
 Pre-testnet status remains pending until owner decisions are supplied, validated, and summarized safely.
 Preflight tooling checks must pass before owner-submitted values are processed.
+Owner decisions remain pending even when the e2e preflight packet fixture passes.
 
 ## 9. Explicit Non-Approval
 

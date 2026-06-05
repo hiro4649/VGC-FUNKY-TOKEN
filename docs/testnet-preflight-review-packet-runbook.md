@@ -39,6 +39,12 @@ Safe preliminary tooling check:
 node scripts/run-testnet-preflight-tooling-checks.js
 ```
 
+Safe e2e fixture check:
+
+```powershell
+node scripts/test-testnet-preflight-e2e-packet.js
+```
+
 Preferred safe path for JSON input:
 
 ```powershell
