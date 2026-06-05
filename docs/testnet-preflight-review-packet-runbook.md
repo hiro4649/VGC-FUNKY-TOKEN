@@ -27,6 +27,20 @@
 
 ## 3. Required Command Sequence
 
+Preferred safe path for JSON input:
+
+```powershell
+node scripts/build-testnet-preflight-review-packet.js --json <owner-values-json-file>
+```
+
+Preferred safe path for issue body input:
+
+```powershell
+node scripts/build-testnet-preflight-review-packet.js --issue-body <local-issue-body-file>
+```
+
+Stop after the safe packet and wait for explicit owner instruction.
+
 ```powershell
 node scripts/validate-testnet-preflight-values.js <owner-json-file>
 node scripts/generate-testnet-preflight-summary.js <owner-json-file>
@@ -126,4 +140,5 @@ Required sequence:
 6. stop for explicit owner instruction
 
 Do not deploy.
+Do not run configure.
 Do not run BscScan verification.
