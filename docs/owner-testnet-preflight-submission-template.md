@@ -70,6 +70,12 @@ Validate a filled JSON file with:
 node scripts/validate-testnet-preflight-values.js <file>
 ```
 
+After validation, generate a safe redacted review summary with:
+
+```powershell
+node scripts/generate-testnet-preflight-summary.js <file>
+```
+
 The validator is format-only.
 The validator does not approve deployment.
 The validator does not approve funded transactions.
@@ -79,3 +85,4 @@ The validator does not prove runtime readiness.
 The validator does not prove staging readiness.
 The validator does not prove testnet readiness.
 The validator does not prove mainnet readiness.
+The summary generator does not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.

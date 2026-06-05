@@ -67,6 +67,8 @@ Do not include real addresses unless the owner explicitly provided them in this 
 - `cd contracts && npx hardhat test test/FunkyRave.test.js`
 - `node scripts/validate-testnet-preflight-values.js test/testnet-preflight-values.sample.json`
 - `node scripts/test-testnet-preflight-validator.js`
+- `node scripts/generate-testnet-preflight-summary.js test/testnet-preflight-values.sample.json`
+- `node scripts/test-testnet-preflight-summary-generator.js`
 - GitHub Actions validate-only deploy/configure preflight with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
@@ -96,6 +98,8 @@ The owner-values validator does not prove runtime readiness.
 The owner-values validator does not prove staging readiness.
 The owner-values validator does not prove testnet readiness.
 The owner-values validator does not prove mainnet readiness.
+The preflight summary generator is a safe redacted review step only.
+The preflight summary does not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
 
 ## 9. Explicit Non-Approval
 
