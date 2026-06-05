@@ -1,9 +1,24 @@
 #!/usr/bin/env node
 
+const fs = require("fs");
 const { spawnSync } = require("child_process");
 
 const args = process.argv.slice(2);
-const jsonMode = args.length === 1 && args[0] === "--json";
+let jsonMode = false;
+let artifactPath = null;
+
+for (let i = 0; i < args.length; i += 1) {
+  const arg = args[i];
+  if (arg === "--json") {
+    jsonMode = true;
+  } else if (arg === "--artifact" && i + 1 < args.length) {
+    artifactPath = args[i + 1];
+    i += 1;
+  } else {
+    printFailure("FAIL", "unsupported argument");
+    process.exit(1);
+  }
+}
 
 const remainingOwnerDecisions = [
   "BNB Smart Chain testnet approval",
@@ -35,14 +50,9 @@ const nonApprovalLines = [
   "no mainnet readiness approval",
 ];
 
-if (args.length > 1 || (args.length === 1 && !jsonMode)) {
-  printFailure("FAIL", "unsupported argument");
-  process.exit(1);
-}
-
 function printFailure(status, reason) {
   if (jsonMode) {
-    console.log(JSON.stringify({ status, reason }));
+    console.log(JSON.stringify(safeResult(status, reason, [])));
   } else {
     console.log("VGC-FUNKY-TOKEN testnet preflight gate");
     console.log(`status: ${status}`);
@@ -51,16 +61,21 @@ function printFailure(status, reason) {
   }
 }
 
-function printBlocked() {
-  const result = {
-    status: "BLOCKED_OWNER_DECISIONS_PENDING",
+function safeResult(status, reason, remainingDecisions) {
+  return {
+    status,
     safeToDeploy: false,
     safeToVerifyBscScan: false,
     safeToPerformFundedTransaction: false,
     safeToPerformGovernanceTransaction: false,
     safeToClaimReadiness: false,
-    remainingOwnerDecisions,
+    remainingOwnerDecisions: remainingDecisions,
+    reason,
   };
+}
+
+function printBlocked(status, reason, decisions) {
+  const result = safeResult(status, reason, decisions);
 
   if (jsonMode) {
     console.log(JSON.stringify(result));
@@ -68,10 +83,10 @@ function printBlocked() {
   }
 
   console.log("VGC-FUNKY-TOKEN testnet preflight gate");
-  console.log("status: BLOCKED_OWNER_DECISIONS_PENDING");
-  console.log("reason: owner decisions are still required before any testnet action");
+  console.log(`status: ${status}`);
+  console.log(`reason: ${reason}`);
   console.log("remaining owner decisions:");
-  for (const decision of remainingOwnerDecisions) {
+  for (const decision of decisions) {
     console.log(`- ${decision}`);
   }
   for (const line of nonApprovalLines) {
@@ -84,20 +99,40 @@ function fail(status, reason) {
   process.exit(1);
 }
 
-const exporter = spawnSync(process.execPath, ["scripts/export-testnet-preflight-safe-artifact.js"], {
-  encoding: "utf8",
-  stdio: "pipe",
-});
+function readArtifactText() {
+  if (artifactPath) {
+    try {
+      return fs.readFileSync(artifactPath, "utf8");
+    } catch {
+      fail("FAIL", "safe artifact file could not be read");
+    }
+  }
 
-if (exporter.status !== 0) {
-  fail("FAIL", "safe artifact exporter failed");
+  const exporter = spawnSync(process.execPath, ["scripts/export-testnet-preflight-safe-artifact.js"], {
+    encoding: "utf8",
+    stdio: "pipe",
+  });
+
+  if (exporter.status !== 0) {
+    fail("FAIL", "safe artifact exporter failed");
+  }
+
+  return exporter.stdout;
 }
 
 let artifact;
 try {
-  artifact = JSON.parse(exporter.stdout);
+  artifact = JSON.parse(readArtifactText());
 } catch {
-  fail("FAIL", "safe artifact parse failed");
+  fail("validation-fail", "artifact JSON format not recognized");
+}
+
+if (artifact.schemaVersion !== "1.0.0") {
+  fail("FAIL_ARTIFACT_SCHEMA_MISMATCH", "artifact schema mismatch");
+}
+
+if (artifact.artifactType !== "vgc-funky-token-testnet-preflight-safe-artifact") {
+  fail("FAIL_ARTIFACT_SCHEMA_MISMATCH", "artifact type mismatch");
 }
 
 if (artifact.tokenIdentity?.name !== "FUNKY RAVE" || artifact.tokenIdentity?.symbol !== "FUNKY") {
@@ -120,17 +155,47 @@ for (const value of Object.values(artifact.safety || {})) {
   }
 }
 
-for (const value of Object.values(artifact.ownerDecisionStatus || {})) {
-  const allowed = value === "pending" || value === "handled_separately_by_owner_pending";
-  if (!allowed) {
-    fail("FAIL_UNEXPECTED_OWNER_DECISION_STATE", "unexpected owner decision state");
-  }
-}
-
 for (const value of Object.values(artifact.checks || {})) {
   if (value !== "pass") {
     fail("FAIL", "safe artifact check did not pass");
   }
 }
 
-printBlocked();
+const ownerDecisionEntries = Object.entries(artifact.ownerDecisionStatus || {});
+if (ownerDecisionEntries.length !== remainingOwnerDecisions.length) {
+  fail("FAIL_UNEXPECTED_OWNER_DECISION_STATE", "unexpected owner decision state");
+}
+
+const pendingValues = new Set(["pending", "handled_separately_by_owner_pending"]);
+let pendingCount = 0;
+let completeCount = 0;
+
+for (const [, value] of ownerDecisionEntries) {
+  if (pendingValues.has(value)) {
+    pendingCount += 1;
+  } else if (value === "provided" || value === "approved") {
+    completeCount += 1;
+  } else {
+    fail("FAIL_UNEXPECTED_OWNER_DECISION_STATE", "unexpected owner decision state");
+  }
+}
+
+if (pendingCount === ownerDecisionEntries.length) {
+  printBlocked(
+    "BLOCKED_OWNER_DECISIONS_PENDING",
+    "owner decisions are still required before any testnet action",
+    remainingOwnerDecisions,
+  );
+} else if (pendingCount > 0 && completeCount > 0) {
+  printBlocked(
+    "BLOCKED_OWNER_DECISIONS_INCOMPLETE",
+    "some owner decisions are still required before any testnet action",
+    remainingOwnerDecisions,
+  );
+} else {
+  printBlocked(
+    "BLOCKED_EXPLICIT_DEPLOY_INSTRUCTION_REQUIRED",
+    "explicit deploy instruction is still required before any testnet action",
+    [],
+  );
+}
