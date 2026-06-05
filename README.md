@@ -61,6 +61,7 @@ Owner-values validation only checks format and secret safety; it does not approv
 A validated owner-values JSON file can be summarized with `node scripts/generate-testnet-preflight-summary.js <file>` for redacted review before any testnet action.
 The summary does not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
 Owner issue submissions are public-value intake only; they do not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
+Owner issue submissions can be parsed locally into validator-compatible JSON with `node scripts/parse-testnet-preflight-issue.js <issue-body-file>`; parsing is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 
 ## Included Scope
 

@@ -52,6 +52,9 @@ jobs:
       - name: Run testnet preflight summary generator self-tests
         run: node scripts/test-testnet-preflight-summary-generator.js
 
+      - name: Run testnet preflight issue parser self-tests
+        run: node scripts/test-testnet-preflight-issue-parser.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:
