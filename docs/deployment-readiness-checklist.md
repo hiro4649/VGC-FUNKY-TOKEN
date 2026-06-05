@@ -32,6 +32,7 @@ Owner approval is required for:
 - initialAdmin: `INITIAL_ADMIN_TBD`
 - initialFeeRecipient: `INITIAL_FEE_RECIPIENT_TBD`
 
+Owner-provided values should follow the [owner-safe testnet preflight submission template](owner-testnet-preflight-submission-template.md).
 Do not include real addresses unless owner explicitly provides them.
 
 ## 5. Governance Decisions

@@ -48,6 +48,7 @@ CI runs owner-values validator self-tests; those self-tests do not approve deplo
 
 - [Deployment readiness owner approval checklist](docs/deployment-readiness-checklist.md)
 - [Testnet preflight owner decision record](docs/testnet-preflight-owner-decisions.md)
+- [Owner-safe testnet preflight submission template](docs/owner-testnet-preflight-submission-template.md)
 
 Dry-run validation can be run with `FUNKY_VALIDATE_ONLY=true` to check required deployment and governance inputs without broadcasting transactions.
 CI validate-only preflight uses dummy public addresses only; owner-provided addresses are still required before any real testnet action.
