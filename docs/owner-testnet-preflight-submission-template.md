@@ -76,6 +76,8 @@ After validation, generate a safe redacted review summary with:
 node scripts/generate-testnet-preflight-summary.js <file>
 ```
 
+Use the [testnet preflight review packet runbook](testnet-preflight-review-packet-runbook.md) before reporting owner-submitted values.
+
 The validator is format-only.
 The validator does not approve deployment.
 The validator does not approve funded transactions.

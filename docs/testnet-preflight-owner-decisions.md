@@ -4,6 +4,7 @@
 
 - This document is owner-decision preflight only.
 - Owner-provided values should follow the [owner-safe testnet preflight submission template](owner-testnet-preflight-submission-template.md).
+- Owner-submitted values should be reviewed with the [testnet preflight review packet runbook](testnet-preflight-review-packet-runbook.md).
 - This document does not approve deployment.
 - This document does not approve funded transactions.
 - This document does not approve governance transactions.

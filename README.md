@@ -51,6 +51,7 @@ The preflight summary is not deployment approval, funded transaction approval, g
 - [Deployment readiness owner approval checklist](docs/deployment-readiness-checklist.md)
 - [Testnet preflight owner decision record](docs/testnet-preflight-owner-decisions.md)
 - [Owner-safe testnet preflight submission template](docs/owner-testnet-preflight-submission-template.md)
+- [Testnet preflight review packet runbook](docs/testnet-preflight-review-packet-runbook.md)
 
 Dry-run validation can be run with `FUNKY_VALIDATE_ONLY=true` to check required deployment and governance inputs without broadcasting transactions.
 CI validate-only preflight uses dummy public addresses only; owner-provided addresses are still required before any real testnet action.
