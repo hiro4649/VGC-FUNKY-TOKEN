@@ -52,6 +52,7 @@ The preflight summary is not deployment approval, funded transaction approval, g
 - [Testnet preflight owner decision record](docs/testnet-preflight-owner-decisions.md)
 - [Owner-safe testnet preflight submission template](docs/owner-testnet-preflight-submission-template.md)
 - [Testnet preflight review packet runbook](docs/testnet-preflight-review-packet-runbook.md)
+- [VGC-TOKEN repository safety audit](docs/vgc-token-repo-safety-audit.md)
 - [Owner-safe testnet preflight issue template](.github/ISSUE_TEMPLATE/testnet-preflight-owner-values.yml)
 
 Dry-run validation can be run with `FUNKY_VALIDATE_ONLY=true` to check required deployment and governance inputs without broadcasting transactions.

@@ -33,6 +33,14 @@ Safe read-only preliminary status check:
 node scripts/show-testnet-preflight-status.js
 ```
 
+Repository safety audit:
+
+```powershell
+node scripts/audit-vgc-token-repo-safety.js
+```
+
+Use this as a safe preliminary command before owner value processing.
+
 Safe preliminary tooling check:
 
 ```powershell
