@@ -92,6 +92,14 @@ node scripts/build-owner-preflight-handoff-packet.js
 
 Use this before asking the owner for values.
 
+Owner handoff packet snapshot guard:
+
+```powershell
+node scripts/test-owner-preflight-handoff-packet-snapshot.js
+```
+
+Use it to ensure owner-facing handoff output stays blocked, redacted, and non-approving.
+
 Safe artifact snapshot fixture:
 
 ```powershell

@@ -115,6 +115,9 @@ jobs:
       - name: Run owner preflight handoff packet self-tests
         run: node scripts/test-owner-preflight-handoff-packet.js
 
+      - name: Run owner preflight handoff packet snapshot guard
+        run: node scripts/test-owner-preflight-handoff-packet-snapshot.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:
