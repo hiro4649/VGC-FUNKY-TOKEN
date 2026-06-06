@@ -73,6 +73,7 @@ A testnet preflight gate command reports the current state as blocked until owne
 The preflight gate safety matrix proves owner decision states remain blocked until a separate explicit deploy instruction with `node scripts/test-testnet-preflight-gate-safety-matrix.js`; the matrix is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 A safe artifact schema guard locks the machine-readable preflight artifact structure with `node scripts/test-testnet-preflight-safe-artifact-schema.js`; the schema guard is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 An owner preflight handoff packet command summarizes the current blocked pre-testnet state and tells the owner exactly what public values are still required with `node scripts/build-owner-preflight-handoff-packet.js`; the handoff packet is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
+Owner preflight handoff packet snapshots lock the owner-facing blocked-state output with `node scripts/test-owner-preflight-handoff-packet-snapshot.js`; the snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 
 ## Included Scope
 

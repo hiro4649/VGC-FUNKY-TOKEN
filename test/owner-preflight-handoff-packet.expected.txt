@@ -1,0 +1,65 @@
+VGC-FUNKY-TOKEN owner preflight handoff packet
+current status: BLOCKED_OWNER_DECISIONS_PENDING
+token identity: FUNKY RAVE / FUNKY
+repository scope: token-only
+source contract: contracts/funky/funky.sol
+
+current safe tooling:
+owner-values validator: present
+summary generator: present
+issue parser: present
+review packet builder: present
+safe artifact exporter: present
+preflight gate: present
+
+remaining owner decisions:
+- BNB Smart Chain testnet approval
+- initialAdmin public EVM address
+- initialFeeRecipient public EVM address
+- deploy command approval
+- deployer wallet funding handled separately by owner
+- BscScan verification command or plan
+- multisig owner policy
+- admin rotation policy
+- feeRecipient policy
+- TierUpdater deployer policy
+- TierUpdater owner policy
+- trusted factory policy
+- initial DEX pair policy
+- fee exemption policy
+
+owner input boundary:
+- provide public EVM addresses only for address fields
+- do not provide private keys
+- do not provide mnemonics
+- do not provide RPC URLs
+- do not provide API keys
+- do not provide .env contents
+- do not provide DB URLs
+- do not provide JWTs
+- do not provide cookies
+- do not provide private endpoints
+
+allowed next owner input formats:
+- owner-safe issue template
+- owner-values JSON matching docs/owner-testnet-preflight-submission-template.md
+
+next safe action after owner input:
+- validate
+- summarize
+- build review packet
+- export safe artifact
+- run preflight gate
+- wait for explicit separate instruction
+
+non-approval boundaries:
+- no deployment approval
+- no funded transaction approval
+- no governance transaction approval
+- no BscScan verification approval
+- no release approval
+- no public visibility approval
+- no runtime readiness approval
+- no staging readiness approval
+- no testnet readiness approval
+- no mainnet readiness approval

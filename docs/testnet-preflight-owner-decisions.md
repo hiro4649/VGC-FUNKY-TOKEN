@@ -115,6 +115,7 @@ The default testnet preflight gate status is blocked until owner decisions are s
 Complete owner decisions are not the same as deploy approval.
 Owner decisions remain pending in the default safe artifact schema.
 The owner preflight handoff packet lists all still-pending owner decisions.
+The owner handoff packet remains blocked until owner values and a later explicit deploy instruction are provided.
 
 ## 9. Explicit Non-Approval
 

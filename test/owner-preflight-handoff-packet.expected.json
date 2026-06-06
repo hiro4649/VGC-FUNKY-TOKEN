@@ -1,0 +1,66 @@
+{
+  "status": "BLOCKED_OWNER_DECISIONS_PENDING",
+  "tokenIdentity": {
+    "name": "FUNKY RAVE",
+    "symbol": "FUNKY"
+  },
+  "repositoryScope": "token-only",
+  "sourceContract": "contracts/funky/funky.sol",
+  "remainingOwnerDecisions": [
+    "BNB Smart Chain testnet approval",
+    "initialAdmin public EVM address",
+    "initialFeeRecipient public EVM address",
+    "deploy command approval",
+    "deployer wallet funding handled separately by owner",
+    "BscScan verification command or plan",
+    "multisig owner policy",
+    "admin rotation policy",
+    "feeRecipient policy",
+    "TierUpdater deployer policy",
+    "TierUpdater owner policy",
+    "trusted factory policy",
+    "initial DEX pair policy",
+    "fee exemption policy"
+  ],
+  "ownerInputBoundary": {
+    "publicEvmAddressesOnlyForAddressFields": true,
+    "noPrivateKeys": true,
+    "noMnemonics": true,
+    "noRpcUrls": true,
+    "noApiKeys": true,
+    "noEnvContents": true,
+    "noDbUrls": true,
+    "noJwts": true,
+    "noCookies": true,
+    "noPrivateEndpoints": true
+  },
+  "allowedInputFormats": [
+    "owner-safe issue template",
+    "owner-values JSON matching docs/owner-testnet-preflight-submission-template.md"
+  ],
+  "nextSafeActions": [
+    "validate",
+    "summarize",
+    "build review packet",
+    "export safe artifact",
+    "run preflight gate",
+    "wait for explicit separate instruction"
+  ],
+  "nonApproval": {
+    "deployment": true,
+    "fundedTransaction": true,
+    "governanceTransaction": true,
+    "bscScanVerification": true,
+    "release": true,
+    "publicVisibility": true,
+    "runtimeReadiness": true,
+    "stagingReadiness": true,
+    "testnetReadiness": true,
+    "mainnetReadiness": true
+  },
+  "safeToDeploy": false,
+  "safeToPerformFundedTransaction": false,
+  "safeToPerformGovernanceTransaction": false,
+  "safeToVerifyBscScan": false,
+  "safeToClaimReadiness": false
+}
