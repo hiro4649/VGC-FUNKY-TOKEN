@@ -77,6 +77,7 @@ The safe artifact snapshot fixture proves the default pre-owner-values artifact 
 The testnet preflight gate remains blocked until the owner provides public values and explicit approvals.
 Owner values alone do not authorize deployment; the gate requires a later explicit deploy instruction.
 The safe artifact schema guard validates only the default safe artifact shape and does not validate real owner values by itself.
+The owner preflight handoff packet is the safe owner-facing summary before value submission.
 
 Validate a filled JSON file with:
 

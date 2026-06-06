@@ -84,6 +84,14 @@ node scripts/test-testnet-preflight-safe-artifact-schema.js
 
 Use the schema guard to ensure the safe artifact shape has not gained raw owner input, approvals, readiness claims, or dangerous action flags.
 
+Owner preflight handoff packet:
+
+```powershell
+node scripts/build-owner-preflight-handoff-packet.js
+```
+
+Use this before asking the owner for values.
+
 Safe artifact snapshot fixture:
 
 ```powershell

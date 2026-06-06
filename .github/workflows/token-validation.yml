@@ -106,6 +106,15 @@ jobs:
       - name: Run safe preflight artifact schema guard
         run: node scripts/test-testnet-preflight-safe-artifact-schema.js
 
+      - name: Build owner preflight handoff packet
+        run: node scripts/build-owner-preflight-handoff-packet.js
+
+      - name: Build owner preflight handoff packet JSON
+        run: node scripts/build-owner-preflight-handoff-packet.js --json
+
+      - name: Run owner preflight handoff packet self-tests
+        run: node scripts/test-owner-preflight-handoff-packet.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:
