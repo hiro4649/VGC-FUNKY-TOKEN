@@ -1,0 +1,47 @@
+{
+  "overall": "pass",
+  "categories": {
+    "repositoryScope": "pass",
+    "tokenIdentity": "pass",
+    "contractSourceBoundary": "pass",
+    "deployScriptBoundary": "pass",
+    "configureScriptBoundary": "pass",
+    "workflowBoundary": "pass",
+    "preflightToolingBoundary": "pass",
+    "ownerInputBoundary": "pass",
+    "secretSafetyBoundary": "pass",
+    "readinessClaimBoundary": "pass",
+    "forbiddenContentBoundary": "pass",
+    "packageLockBoundary": "pass",
+    "visibilityBoundaryDocumentation": "pass",
+    "remainingOwnerDecisionBoundary": "pass"
+  },
+  "nonActions": {
+    "deployPerformed": false,
+    "fundedTransactionPerformed": false,
+    "governanceTransactionPerformed": false,
+    "bscScanVerificationPerformed": false,
+    "releaseCreated": false,
+    "publicVisibilityChanged": false,
+    "runtimeReadinessClaimed": false,
+    "stagingReadinessClaimed": false,
+    "testnetReadinessClaimed": false,
+    "mainnetReadinessClaimed": false
+  },
+  "remainingOwnerDecisions": [
+    "BNB Smart Chain testnet approval",
+    "initialAdmin",
+    "initialFeeRecipient",
+    "deploy command approval",
+    "deployer wallet funding handled separately by owner",
+    "BscScan verification command or plan",
+    "multisig owner policy",
+    "admin rotation policy",
+    "feeRecipient policy",
+    "TierUpdater deployer policy",
+    "TierUpdater owner policy",
+    "trusted factory policy",
+    "initial DEX pair policy",
+    "fee exemption policy"
+  ]
+}

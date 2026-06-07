@@ -75,6 +75,7 @@ Required before any testnet deploy:
 - owner preflight handoff packet pass
 - owner handoff packet snapshot guard pass
 - repository safety audit pass
+- repository safety audit snapshot pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation

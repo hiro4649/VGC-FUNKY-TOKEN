@@ -117,6 +117,7 @@ Owner decisions remain pending in the default safe artifact schema.
 The owner preflight handoff packet lists all still-pending owner decisions.
 The owner handoff packet remains blocked until owner values and a later explicit deploy instruction are provided.
 The repository safety audit does not replace owner decisions.
+Owner decisions remain pending even when repository safety audit snapshots pass.
 
 ## 9. Explicit Non-Approval
 

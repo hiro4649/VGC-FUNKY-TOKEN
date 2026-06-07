@@ -80,6 +80,8 @@ The safe artifact schema guard validates only the default safe artifact shape an
 The owner preflight handoff packet is the safe owner-facing summary before value submission.
 The owner handoff packet snapshot ensures the owner-facing prompt does not request or expose secrets.
 The repository safety audit can be run before owner values are processed.
+Repository safety audit snapshots are independent of owner values and do not
+validate real owner values.
 
 Validate a filled JSON file with:
 
