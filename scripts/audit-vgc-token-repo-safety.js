@@ -125,10 +125,17 @@ function isIntentionalSafetyFixtureFile(filePath) {
   return filePath.startsWith("scripts/test-") || filePath.startsWith("test/");
 }
 
+const intentionalSafetyVocabularyFiles = new Set([
+  "docs/vgc-token-source-invariant-audit.md",
+  "scripts/audit-testnet-preflight-safe-output.js",
+  "scripts/audit-vgc-token-repo-safety.js",
+  "scripts/audit-vgc-token-source-invariants.js",
+  "scripts/test-vgc-token-source-invariant-audit.js",
+]);
+
 function isIntentionalSafetyVocabularyFile(filePath) {
   return isIntentionalSafetyFixtureFile(filePath)
-    || filePath === "scripts/audit-testnet-preflight-safe-output.js"
-    || filePath === "scripts/audit-vgc-token-repo-safety.js";
+    || intentionalSafetyVocabularyFiles.has(filePath);
 }
 
 function requireFile(category, filePath) {

@@ -58,6 +58,34 @@ function assertSafe(text) {
   }
 }
 
+function assertSourceInvariantVocabularyAllowlist() {
+  const fs = require("fs");
+  const auditSource = fs.readFileSync("scripts/audit-vgc-token-repo-safety.js", "utf8");
+  const expectedExactFiles = [
+    "docs/vgc-token-source-invariant-audit.md",
+    "scripts/audit-vgc-token-source-invariants.js",
+    "scripts/test-vgc-token-source-invariant-audit.js",
+  ];
+
+  for (const filePath of expectedExactFiles) {
+    if (!auditSource.includes(`"${filePath}"`)) {
+      fail("source-invariant-vocabulary-file-not-allowlisted");
+    }
+  }
+
+  for (const unsafeWildcard of [
+    'filePath.startsWith("docs/")',
+    'filePath.startsWith("scripts/")',
+    'filePath.includes("source")',
+  ]) {
+    if (auditSource.includes(unsafeWildcard)) {
+      fail("source-invariant-vocabulary-allowlist-too-broad");
+    }
+  }
+}
+
+assertSourceInvariantVocabularyAllowlist();
+
 const text = runAudit();
 assertSafe(text);
 
