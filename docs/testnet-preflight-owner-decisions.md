@@ -118,6 +118,9 @@ The owner preflight handoff packet lists all still-pending owner decisions.
 The owner handoff packet remains blocked until owner values and a later explicit deploy instruction are provided.
 The repository safety audit does not replace owner decisions.
 Owner decisions remain pending even when repository safety audit snapshots pass.
+Source invariant audit manual review items remain part of the owner policy
+context for fee model, tier updater, trusted factory, and fee exemption
+decisions.
 
 ## 9. Explicit Non-Approval
 
