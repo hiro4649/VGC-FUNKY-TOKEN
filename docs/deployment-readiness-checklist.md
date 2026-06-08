@@ -77,6 +77,7 @@ Required before any testnet deploy:
 - repository safety audit pass
 - repository safety audit snapshot pass
 - source invariant audit pass_with_manual_review_items
+- source invariant audit snapshot pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation

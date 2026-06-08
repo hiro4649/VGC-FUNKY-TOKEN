@@ -55,6 +55,7 @@ The preflight summary is not deployment approval, funded transaction approval, g
 - [VGC-TOKEN repository safety audit](docs/vgc-token-repo-safety-audit.md)
 - [VGC-TOKEN source invariant audit](docs/vgc-token-source-invariant-audit.md)
 Repository safety audit snapshots lock the expected text and JSON audit outputs. The snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness.
+Source invariant audit snapshots lock the expected source invariant audit outputs and manual review items. The snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness.
 - [Owner-safe testnet preflight issue template](.github/ISSUE_TEMPLATE/testnet-preflight-owner-values.yml)
 
 Dry-run validation can be run with `FUNKY_VALIDATE_ONLY=true` to check required deployment and governance inputs without broadcasting transactions.

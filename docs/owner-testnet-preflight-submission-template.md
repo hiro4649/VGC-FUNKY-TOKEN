@@ -82,6 +82,8 @@ The owner handoff packet snapshot ensures the owner-facing prompt does not reque
 The repository safety audit can be run before owner values are processed.
 Repository safety audit snapshots are independent of owner values and do not
 validate real owner values.
+Source invariant audit snapshots are independent of owner values and do not
+validate real owner values.
 Owner policies must resolve source invariant audit manual review items before
 deployment planning.
 
