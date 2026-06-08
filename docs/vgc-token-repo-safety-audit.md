@@ -29,6 +29,13 @@ node scripts/test-vgc-token-repo-safety-audit-snapshot.js
 
 The snapshot guard prevents silent weakening of repository safety audit
 categories and non-action boundaries.
+The source invariant audit is a deeper code/spec boundary audit for manual
+review items and blocked owner-approved actions.
+Source invariant audit files are treated as exact intentional
+safety-vocabulary audit files because they contain reason codes and boundary
+phrases used to test the safety model.
+This does not weaken real secret detection, raw owner input detection, or
+affirmative deployment/readiness claim blocking outside those exact audit files.
 
 ## What It Checks
 

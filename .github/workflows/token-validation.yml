@@ -130,6 +130,15 @@ jobs:
       - name: Run VGC-TOKEN repository safety audit snapshot guard
         run: node scripts/test-vgc-token-repo-safety-audit-snapshot.js
 
+      - name: Run VGC-TOKEN source invariant audit
+        run: node scripts/audit-vgc-token-source-invariants.js
+
+      - name: Run VGC-TOKEN source invariant audit JSON
+        run: node scripts/audit-vgc-token-source-invariants.js --json
+
+      - name: Run VGC-TOKEN source invariant audit self-tests
+        run: node scripts/test-vgc-token-source-invariant-audit.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

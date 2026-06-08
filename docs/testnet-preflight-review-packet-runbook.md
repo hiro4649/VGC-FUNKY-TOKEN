@@ -116,6 +116,15 @@ node scripts/test-vgc-token-repo-safety-audit-snapshot.js
 
 Use the repository safety audit snapshot as a safe preliminary confidence check.
 
+Source invariant audit:
+
+```powershell
+node scripts/audit-vgc-token-source-invariants.js
+```
+
+Use the source invariant audit as a safe preliminary command before owner value
+processing or deployment planning.
+
 Safe artifact snapshot fixture:
 
 ```powershell

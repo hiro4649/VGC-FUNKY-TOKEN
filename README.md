@@ -53,6 +53,7 @@ The preflight summary is not deployment approval, funded transaction approval, g
 - [Owner-safe testnet preflight submission template](docs/owner-testnet-preflight-submission-template.md)
 - [Testnet preflight review packet runbook](docs/testnet-preflight-review-packet-runbook.md)
 - [VGC-TOKEN repository safety audit](docs/vgc-token-repo-safety-audit.md)
+- [VGC-TOKEN source invariant audit](docs/vgc-token-source-invariant-audit.md)
 Repository safety audit snapshots lock the expected text and JSON audit outputs. The snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness.
 - [Owner-safe testnet preflight issue template](.github/ISSUE_TEMPLATE/testnet-preflight-owner-values.yml)
 
