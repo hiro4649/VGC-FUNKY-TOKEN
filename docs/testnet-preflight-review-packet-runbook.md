@@ -108,6 +108,14 @@ node scripts/test-owner-preflight-handoff-packet-snapshot.js
 
 Use it to ensure owner-facing handoff output stays blocked, redacted, and non-approving.
 
+Repository safety audit snapshot guard:
+
+```powershell
+node scripts/test-vgc-token-repo-safety-audit-snapshot.js
+```
+
+Use the repository safety audit snapshot as a safe preliminary confidence check.
+
 Safe artifact snapshot fixture:
 
 ```powershell

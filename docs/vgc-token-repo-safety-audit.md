@@ -24,7 +24,11 @@ repository visibility separately through GitHub if needed.
 ```powershell
 node scripts/audit-vgc-token-repo-safety.js
 node scripts/audit-vgc-token-repo-safety.js --json
+node scripts/test-vgc-token-repo-safety-audit-snapshot.js
 ```
+
+The snapshot guard prevents silent weakening of repository safety audit
+categories and non-action boundaries.
 
 ## What It Checks
 
