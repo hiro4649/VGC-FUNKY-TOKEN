@@ -151,6 +151,15 @@ node scripts/test-owner-policy-decision-matrix-snapshot.js
 
 Use the owner policy matrix snapshot as a safe preliminary confidence check.
 
+Owner policy preflight gate:
+
+```powershell
+node scripts/check-owner-policy-preflight-gate.js
+node scripts/check-owner-policy-preflight-gate.js --json
+```
+
+Use the owner policy preflight gate as a safe preliminary blocked-state check.
+
 Safe artifact snapshot fixture:
 
 ```powershell

@@ -16,6 +16,8 @@ node scripts/test-owner-policy-decision-matrix-snapshot.js
 
 The snapshot guard prevents silent weakening of pending policy decisions,
 `safeTo` flags, and non-approval boundaries.
+The owner policy preflight gate consumes this matrix and keeps testnet action
+blocked while policy decisions remain pending.
 
 ## Manual Review Fields
 

@@ -21,6 +21,8 @@ The owner policy decision matrix maps the manual review items to explicit
 pending owner policy decisions.
 The owner policy matrix snapshot is the downstream guard that keeps those
 manual review items present and pending.
+The owner policy preflight gate then keeps testnet action blocked while those
+manual review items remain unresolved owner policy decisions.
 
 ## What It Checks
 

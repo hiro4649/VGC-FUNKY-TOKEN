@@ -129,6 +129,7 @@ last-removal, trusted factory registration, fee exemption proposer/approver,
 and tier updater code-presence validation policies.
 Owner policy matrix snapshots keep those decisions pending until explicit
 owner decisions are supplied later.
+Unresolved owner policy decisions block the owner policy preflight gate.
 
 ## 9. Explicit Non-Approval
 

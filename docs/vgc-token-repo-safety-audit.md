@@ -37,6 +37,8 @@ The owner policy decision matrix is a follow-on no-deploy check that keeps
 source invariant manual review items pending as owner policy decisions.
 The owner policy decision matrix snapshot guards the expected pending policy
 decision output and non-approval boundaries.
+The owner policy preflight gate combines that policy state with the testnet
+preflight gate and remains blocked while policy decisions are unresolved.
 Source invariant audit files are treated as exact intentional
 safety-vocabulary audit files because they contain reason codes and boundary
 phrases used to test the safety model.
