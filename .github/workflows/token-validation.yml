@@ -154,6 +154,15 @@ jobs:
       - name: Run owner policy decision matrix snapshot guard
         run: node scripts/test-owner-policy-decision-matrix-snapshot.js
 
+      - name: Run owner policy preflight gate
+        run: node scripts/check-owner-policy-preflight-gate.js
+
+      - name: Run owner policy preflight gate JSON
+        run: node scripts/check-owner-policy-preflight-gate.js --json
+
+      - name: Run owner policy preflight gate self-tests
+        run: node scripts/test-owner-policy-preflight-gate.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

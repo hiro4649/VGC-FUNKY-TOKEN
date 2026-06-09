@@ -90,6 +90,8 @@ Owner policy decision matrix fields must be resolved separately from public
 address and value submission.
 Owner policy matrix snapshots are independent of owner values and do not
 validate real owner values.
+Owner values alone do not satisfy the owner policy preflight gate; unresolved
+policy decisions still keep testnet action blocked.
 
 Validate a filled JSON file with:
 

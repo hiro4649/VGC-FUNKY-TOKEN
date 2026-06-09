@@ -55,6 +55,7 @@ The preflight summary is not deployment approval, funded transaction approval, g
 - [VGC-TOKEN repository safety audit](docs/vgc-token-repo-safety-audit.md)
 - [VGC-TOKEN source invariant audit](docs/vgc-token-source-invariant-audit.md)
 - [Owner policy decision matrix](docs/owner-policy-decision-matrix.md)
+- [Owner policy preflight gate](docs/owner-policy-preflight-gate.md)
 Repository safety audit snapshots lock the expected text and JSON audit outputs. The snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness.
 Source invariant audit snapshots lock the expected source invariant audit outputs and manual review items. The snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness.
 Owner policy decision matrix snapshots lock the expected pending owner-policy output. The snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness.
