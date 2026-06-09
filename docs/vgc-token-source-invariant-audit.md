@@ -12,7 +12,11 @@ manual review items without changing runtime behavior.
 ```powershell
 node scripts/audit-vgc-token-source-invariants.js
 node scripts/audit-vgc-token-source-invariants.js --json
+node scripts/test-vgc-token-source-invariant-audit-snapshot.js
 ```
+
+The snapshot guard prevents silent weakening of manual review items, blocked
+owner-approval boundaries, and non-action lines.
 
 ## What It Checks
 

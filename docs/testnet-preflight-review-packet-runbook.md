@@ -125,6 +125,14 @@ node scripts/audit-vgc-token-source-invariants.js
 Use the source invariant audit as a safe preliminary command before owner value
 processing or deployment planning.
 
+Source invariant audit snapshot guard:
+
+```powershell
+node scripts/test-vgc-token-source-invariant-audit-snapshot.js
+```
+
+Use the source invariant audit snapshot as a safe preliminary confidence check.
+
 Safe artifact snapshot fixture:
 
 ```powershell

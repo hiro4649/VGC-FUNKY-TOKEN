@@ -1,0 +1,32 @@
+VGC-FUNKY-TOKEN source invariant audit
+token identity invariant: pass
+initial supply invariant: pass
+fee denominator invariant: manual_review_required
+sell-only fee invariant: manual_review_required
+tier updater initial state invariant: pass
+tier updater contract-only invariant: pass
+tier updater last-removal invariant: manual_review_required
+factory registration invariant: manual_review_required
+pair validation invariant: pass
+fee exempt governance invariant: manual_review_required
+deploy validate-only boundary: pass
+deploy runtime boundary: blocked_by_owner_approval
+configure validate-only boundary: pass
+configure runtime boundary: blocked_by_owner_approval
+configure tier updater validate-only gap: manual_review_required
+workflow no-deploy boundary: pass
+owner decision boundary: pass
+preflight toolchain boundary: pass
+forbidden claim boundary: pass
+secret safety boundary: pass
+overall: pass_with_manual_review_items
+no deploy performed
+no funded transaction performed
+no governance transaction performed
+no BscScan verification performed
+no release created
+no public visibility change performed
+no runtime readiness claimed
+no staging readiness claimed
+no testnet readiness claimed
+no mainnet readiness claimed

@@ -139,6 +139,9 @@ jobs:
       - name: Run VGC-TOKEN source invariant audit self-tests
         run: node scripts/test-vgc-token-source-invariant-audit.js
 
+      - name: Run VGC-TOKEN source invariant audit snapshot guard
+        run: node scripts/test-vgc-token-source-invariant-audit-snapshot.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:
