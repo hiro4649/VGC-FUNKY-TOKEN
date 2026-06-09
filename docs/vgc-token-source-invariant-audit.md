@@ -19,6 +19,8 @@ The snapshot guard prevents silent weakening of manual review items, blocked
 owner-approval boundaries, and non-action lines.
 The owner policy decision matrix maps the manual review items to explicit
 pending owner policy decisions.
+The owner policy matrix snapshot is the downstream guard that keeps those
+manual review items present and pending.
 
 ## What It Checks
 

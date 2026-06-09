@@ -11,7 +11,11 @@ owner policy decisions.
 ```powershell
 node scripts/build-owner-policy-decision-matrix.js
 node scripts/build-owner-policy-decision-matrix.js --json
+node scripts/test-owner-policy-decision-matrix-snapshot.js
 ```
+
+The snapshot guard prevents silent weakening of pending policy decisions,
+`safeTo` flags, and non-approval boundaries.
 
 ## Manual Review Fields
 

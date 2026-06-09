@@ -127,6 +127,8 @@ Owner policy decision matrix fields remain pending until the owner explicitly
 resolves fee max, fee denominator, sell/LP-add fee behavior, tier updater
 last-removal, trusted factory registration, fee exemption proposer/approver,
 and tier updater code-presence validation policies.
+Owner policy matrix snapshots keep those decisions pending until explicit
+owner decisions are supplied later.
 
 ## 9. Explicit Non-Approval
 

@@ -1,0 +1,24 @@
+VGC-FUNKY-TOKEN owner policy decision matrix
+status: OWNER_POLICY_DECISIONS_PENDING
+fee max policy: pending owner decision
+fee denominator policy: pending owner decision
+sell/LP-add fee behavior policy: pending owner decision
+tier updater last-removal policy: pending owner decision
+trusted factory registration policy: pending owner decision
+fee exemption proposer/approver policy: pending owner decision
+tier updater code-presence validation policy: pending owner decision
+safeToDeploy: false
+safeToPerformFundedTransaction: false
+safeToPerformGovernanceTransaction: false
+safeToVerifyBscScan: false
+safeToClaimReadiness: false
+no deployment approval
+no funded transaction approval
+no governance transaction approval
+no BscScan verification approval
+no release approval
+no public visibility approval
+no runtime readiness approval
+no staging readiness approval
+no testnet readiness approval
+no mainnet readiness approval
