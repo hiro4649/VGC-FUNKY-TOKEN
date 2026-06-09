@@ -133,6 +133,16 @@ node scripts/test-vgc-token-source-invariant-audit-snapshot.js
 
 Use the source invariant audit snapshot as a safe preliminary confidence check.
 
+Owner policy decision matrix:
+
+```powershell
+node scripts/build-owner-policy-decision-matrix.js
+node scripts/build-owner-policy-decision-matrix.js --json
+```
+
+Use the owner policy decision matrix as a safe preliminary check before
+accepting owner values.
+
 Safe artifact snapshot fixture:
 
 ```powershell

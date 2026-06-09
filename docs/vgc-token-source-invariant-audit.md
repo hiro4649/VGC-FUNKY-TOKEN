@@ -17,6 +17,8 @@ node scripts/test-vgc-token-source-invariant-audit-snapshot.js
 
 The snapshot guard prevents silent weakening of manual review items, blocked
 owner-approval boundaries, and non-action lines.
+The owner policy decision matrix maps the manual review items to explicit
+pending owner policy decisions.
 
 ## What It Checks
 

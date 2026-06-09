@@ -142,6 +142,15 @@ jobs:
       - name: Run VGC-TOKEN source invariant audit snapshot guard
         run: node scripts/test-vgc-token-source-invariant-audit-snapshot.js
 
+      - name: Build owner policy decision matrix
+        run: node scripts/build-owner-policy-decision-matrix.js
+
+      - name: Build owner policy decision matrix JSON
+        run: node scripts/build-owner-policy-decision-matrix.js --json
+
+      - name: Run owner policy decision matrix self-tests
+        run: node scripts/test-owner-policy-decision-matrix.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

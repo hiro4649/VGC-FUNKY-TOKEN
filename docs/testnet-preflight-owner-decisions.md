@@ -123,6 +123,10 @@ items remain owner policy decisions even when those snapshots pass.
 Source invariant audit manual review items remain part of the owner policy
 context for fee model, tier updater, trusted factory, and fee exemption
 decisions.
+Owner policy decision matrix fields remain pending until the owner explicitly
+resolves fee max, fee denominator, sell/LP-add fee behavior, tier updater
+last-removal, trusted factory registration, fee exemption proposer/approver,
+and tier updater code-presence validation policies.
 
 ## 9. Explicit Non-Approval
 
