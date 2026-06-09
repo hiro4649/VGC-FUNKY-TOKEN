@@ -86,6 +86,8 @@ Source invariant audit snapshots are independent of owner values and do not
 validate real owner values.
 Owner policies must resolve source invariant audit manual review items before
 deployment planning.
+Owner policy decision matrix fields must be resolved separately from public
+address and value submission.
 
 Validate a filled JSON file with:
 

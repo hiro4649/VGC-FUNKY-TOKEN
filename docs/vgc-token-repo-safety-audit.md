@@ -33,6 +33,8 @@ The source invariant audit is a deeper code/spec boundary audit for manual
 review items and blocked owner-approved actions.
 The source invariant audit snapshot is a deeper source-boundary confidence
 check that locks those expected manual review and blocked-action outputs.
+The owner policy decision matrix is a follow-on no-deploy check that keeps
+source invariant manual review items pending as owner policy decisions.
 Source invariant audit files are treated as exact intentional
 safety-vocabulary audit files because they contain reason codes and boundary
 phrases used to test the safety model.
