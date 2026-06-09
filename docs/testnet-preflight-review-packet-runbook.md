@@ -143,6 +143,14 @@ node scripts/build-owner-policy-decision-matrix.js --json
 Use the owner policy decision matrix as a safe preliminary check before
 accepting owner values.
 
+Owner policy decision matrix snapshot guard:
+
+```powershell
+node scripts/test-owner-policy-decision-matrix-snapshot.js
+```
+
+Use the owner policy matrix snapshot as a safe preliminary confidence check.
+
 Safe artifact snapshot fixture:
 
 ```powershell

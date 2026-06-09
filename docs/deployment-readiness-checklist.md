@@ -79,6 +79,7 @@ Required before any testnet deploy:
 - source invariant audit pass_with_manual_review_items
 - source invariant audit snapshot pass
 - owner policy decision matrix pass
+- owner policy decision matrix snapshot pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
