@@ -166,6 +166,15 @@ jobs:
       - name: Run owner policy preflight gate snapshot guard
         run: node scripts/test-owner-policy-preflight-gate-snapshot.js
 
+      - name: Build source-of-truth repository decision
+        run: node scripts/build-source-of-truth-repository-decision.js
+
+      - name: Build source-of-truth repository decision JSON
+        run: node scripts/build-source-of-truth-repository-decision.js --json
+
+      - name: Run source-of-truth repository decision self-tests
+        run: node scripts/test-source-of-truth-repository-decision.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

@@ -51,3 +51,6 @@ This gate is not runtime readiness.
 This gate is not staging readiness.
 This gate is not testnet readiness.
 This gate is not mainnet readiness.
+
+The source-of-truth repository decision must stay explicit before this gate is
+used in any later testnet deploy approval path.
