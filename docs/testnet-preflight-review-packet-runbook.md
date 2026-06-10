@@ -160,6 +160,15 @@ node scripts/check-owner-policy-preflight-gate.js --json
 
 Use the owner policy preflight gate as a safe preliminary blocked-state check.
 
+Owner policy preflight gate snapshot guard:
+
+```powershell
+node scripts/test-owner-policy-preflight-gate-snapshot.js
+```
+
+Use the owner policy preflight gate snapshot to keep the blocked text and JSON
+outputs stable, redacted, and non-approving.
+
 Safe artifact snapshot fixture:
 
 ```powershell

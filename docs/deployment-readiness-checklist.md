@@ -81,6 +81,7 @@ Required before any testnet deploy:
 - owner policy decision matrix pass
 - owner policy decision matrix snapshot pass
 - owner policy preflight gate pass with expected `BLOCKED_OWNER_POLICY_DECISIONS_PENDING`
+- owner policy preflight gate snapshot pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation

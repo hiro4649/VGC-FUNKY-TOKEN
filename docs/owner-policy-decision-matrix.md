@@ -18,6 +18,9 @@ The snapshot guard prevents silent weakening of pending policy decisions,
 `safeTo` flags, and non-approval boundaries.
 The owner policy preflight gate consumes this matrix and keeps testnet action
 blocked while policy decisions remain pending.
+The owner policy preflight gate snapshot guard also keeps the combined blocked
+state, pending policy decisions, `safeTo` flags, and non-approval boundaries
+stable.
 
 ## Manual Review Fields
 
