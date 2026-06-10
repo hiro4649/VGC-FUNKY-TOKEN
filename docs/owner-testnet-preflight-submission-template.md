@@ -97,6 +97,8 @@ stays blocked, redacted, and non-approving before any later owner decision
 processing.
 The source-of-truth repository decision should remain explicit before owner
 values are used for any later testnet deploy approval path.
+The source-of-truth repository decision snapshot guard keeps that prompt
+stable, non-approving, and locked to the current canonical source/deploy target.
 
 Validate a filled JSON file with:
 

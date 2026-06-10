@@ -136,6 +136,9 @@ instruction are supplied.
 The source-of-truth repository decision remains pending until the owner confirms
 whether VGC-FUNKY-TOKEN stays the canonical contract source before testnet
 deploy.
+Source-of-truth repository decision snapshots keep the canonical source, deploy
+target, duplicate-source policy, migration policy, and non-approval boundaries
+stable until the owner makes a later explicit decision.
 
 ## 9. Explicit Non-Approval
 

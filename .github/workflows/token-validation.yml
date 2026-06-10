@@ -175,6 +175,9 @@ jobs:
       - name: Run source-of-truth repository decision self-tests
         run: node scripts/test-source-of-truth-repository-decision.js
 
+      - name: Run source-of-truth repository decision snapshot guard
+        run: node scripts/test-source-of-truth-repository-decision-snapshot.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

@@ -1,0 +1,22 @@
+VGC-FUNKY-TOKEN source-of-truth repository decision
+status: SOURCE_OF_TRUTH_DECISION_PENDING
+canonical contract source repo: hiro4649/VGC-FUNKY-TOKEN
+deploy target repo: hiro4649/VGC-FUNKY-TOKEN
+parent VGC repo role: pending or docs/meta only
+duplicate contract source policy: prohibited
+pre-testnet migration: explicit owner approval required
+post-testnet migration: prohibited without formal policy
+BscScan source alignment: must match canonical source
+safeToDeploy: false
+safeToVerifyBscScan: false
+safeToClaimReadiness: false
+no deployment approval
+no funded transaction approval
+no governance transaction approval
+no BscScan verification approval
+no release approval
+no public visibility approval
+no runtime readiness approval
+no staging readiness approval
+no testnet readiness approval
+no mainnet readiness approval

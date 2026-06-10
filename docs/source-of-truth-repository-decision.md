@@ -19,6 +19,23 @@ handled as a formal post-deploy migration policy with explicit owner approval.
 
 BscScan verification source must match the chosen canonical source.
 
+## Snapshot Guard
+
+Run `node scripts/test-source-of-truth-repository-decision-snapshot.js` to
+verify the source-of-truth decision output remains stable, non-approving, and
+locked to VGC-FUNKY-TOKEN as the current canonical contract source and deploy
+target.
+
+The snapshot guard is:
+
+- not deploy approval
+- not funded transaction approval
+- not governance transaction approval
+- not BscScan verification approval
+- not release approval
+- not public visibility approval
+- not readiness approval
+
 ## Default Decision Fields
 
 - canonicalContractSourceRepo: `hiro4649/VGC-FUNKY-TOKEN`
