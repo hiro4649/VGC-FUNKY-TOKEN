@@ -180,6 +180,15 @@ node scripts/test-source-of-truth-repository-decision.js
 Use this before any testnet deploy decision to confirm the canonical contract
 source repository remains explicit and non-duplicated.
 
+Source-of-truth repository decision snapshot guard:
+
+```powershell
+node scripts/test-source-of-truth-repository-decision-snapshot.js
+```
+
+Use this to keep the source-of-truth decision text and JSON stable,
+non-approving, and locked to the current canonical source/deploy target.
+
 Safe artifact snapshot fixture:
 
 ```powershell
