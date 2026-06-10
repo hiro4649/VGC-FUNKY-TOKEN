@@ -130,6 +130,9 @@ and tier updater code-presence validation policies.
 Owner policy matrix snapshots keep those decisions pending until explicit
 owner decisions are supplied later.
 Unresolved owner policy decisions block the owner policy preflight gate.
+Owner policy preflight gate snapshots keep the combined owner policy gate
+blocked until explicit owner policy decisions and a later separate deploy
+instruction are supplied.
 
 ## 9. Explicit Non-Approval
 

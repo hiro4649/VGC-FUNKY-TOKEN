@@ -27,6 +27,18 @@ node scripts/check-owner-policy-preflight-gate.js --json
 
 Expected status: `BLOCKED_OWNER_POLICY_DECISIONS_PENDING`.
 
+## Snapshot Guard
+
+Run `node scripts/test-owner-policy-preflight-gate-snapshot.js` to lock the
+blocked text and JSON outputs.
+This snapshot guard is not deployment approval.
+This snapshot guard is not funded transaction approval.
+This snapshot guard is not governance transaction approval.
+This snapshot guard is not BscScan verification approval.
+This snapshot guard is not release approval.
+This snapshot guard is not public visibility approval.
+This snapshot guard is not readiness approval.
+
 ## Explicit Boundaries
 
 This gate is not deployment approval.

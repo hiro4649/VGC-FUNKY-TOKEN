@@ -163,6 +163,9 @@ jobs:
       - name: Run owner policy preflight gate self-tests
         run: node scripts/test-owner-policy-preflight-gate.js
 
+      - name: Run owner policy preflight gate snapshot guard
+        run: node scripts/test-owner-policy-preflight-gate-snapshot.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

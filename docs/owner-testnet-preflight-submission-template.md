@@ -92,6 +92,9 @@ Owner policy matrix snapshots are independent of owner values and do not
 validate real owner values.
 Owner values alone do not satisfy the owner policy preflight gate; unresolved
 policy decisions still keep testnet action blocked.
+Owner policy preflight gate snapshots prove the owner-facing policy gate output
+stays blocked, redacted, and non-approving before any later owner decision
+processing.
 
 Validate a filled JSON file with:
 
