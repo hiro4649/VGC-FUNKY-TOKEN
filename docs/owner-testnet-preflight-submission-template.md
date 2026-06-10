@@ -95,6 +95,8 @@ policy decisions still keep testnet action blocked.
 Owner policy preflight gate snapshots prove the owner-facing policy gate output
 stays blocked, redacted, and non-approving before any later owner decision
 processing.
+The source-of-truth repository decision should remain explicit before owner
+values are used for any later testnet deploy approval path.
 
 Validate a filled JSON file with:
 

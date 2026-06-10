@@ -169,6 +169,17 @@ node scripts/test-owner-policy-preflight-gate-snapshot.js
 Use the owner policy preflight gate snapshot to keep the blocked text and JSON
 outputs stable, redacted, and non-approving.
 
+Source-of-truth repository decision:
+
+```powershell
+node scripts/build-source-of-truth-repository-decision.js
+node scripts/build-source-of-truth-repository-decision.js --json
+node scripts/test-source-of-truth-repository-decision.js
+```
+
+Use this before any testnet deploy decision to confirm the canonical contract
+source repository remains explicit and non-duplicated.
+
 Safe artifact snapshot fixture:
 
 ```powershell

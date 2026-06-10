@@ -21,6 +21,8 @@ blocked while policy decisions remain pending.
 The owner policy preflight gate snapshot guard also keeps the combined blocked
 state, pending policy decisions, `safeTo` flags, and non-approval boundaries
 stable.
+The source-of-truth repository decision is separate from owner policy decisions
+and must remain explicit before any later testnet deploy approval path.
 
 ## Manual Review Fields
 
