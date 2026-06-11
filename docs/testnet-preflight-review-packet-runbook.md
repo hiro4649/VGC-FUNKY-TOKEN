@@ -189,6 +189,17 @@ node scripts/test-source-of-truth-repository-decision-snapshot.js
 Use this to keep the source-of-truth decision text and JSON stable,
 non-approving, and locked to the current canonical source/deploy target.
 
+Deployment readiness blocker registry:
+
+```powershell
+node scripts/build-deployment-readiness-blocker-registry.js
+node scripts/build-deployment-readiness-blocker-registry.js --json
+node scripts/test-deployment-readiness-blocker-registry.js
+```
+
+Use this to consolidate remaining blockers into the expected
+`DEPLOYMENT_READINESS_BLOCKED` state before any later owner decision.
+
 Safe artifact snapshot fixture:
 
 ```powershell

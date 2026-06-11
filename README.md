@@ -57,12 +57,14 @@ The preflight summary is not deployment approval, funded transaction approval, g
 - [Owner policy decision matrix](docs/owner-policy-decision-matrix.md)
 - [Owner policy preflight gate](docs/owner-policy-preflight-gate.md)
 - [Source-of-truth repository decision](docs/source-of-truth-repository-decision.md)
+- [Deployment readiness blocker registry](docs/deployment-readiness-blocker-registry.md)
 Repository safety audit snapshots lock the expected text and JSON audit outputs. The snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness.
 Source invariant audit snapshots lock the expected source invariant audit outputs and manual review items. The snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness.
 Owner policy decision matrix snapshots lock the expected pending owner-policy output. The snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness.
 Owner policy preflight gate snapshots lock the expected blocked owner-policy gate output with `node scripts/test-owner-policy-preflight-gate-snapshot.js`; the snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness.
 The source-of-truth repository decision keeps VGC-FUNKY-TOKEN as the canonical FUNKY contract source unless the owner explicitly decides otherwise before testnet deploy; this decision is not deployment approval, BscScan verification approval, or readiness.
 Source-of-truth repository decision snapshots lock the canonical source, deploy target, duplicate-source policy, migration policy, and non-approval boundaries; the snapshots are not deployment approval, BscScan verification approval, or readiness.
+The deployment readiness blocker registry consolidates remaining blockers with `DEPLOYMENT_READINESS_BLOCKED`; the registry is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 - [Owner-safe testnet preflight issue template](.github/ISSUE_TEMPLATE/testnet-preflight-owner-values.yml)
 
 Dry-run validation can be run with `FUNKY_VALIDATE_ONLY=true` to check required deployment and governance inputs without broadcasting transactions.

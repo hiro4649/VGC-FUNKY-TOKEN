@@ -178,6 +178,15 @@ jobs:
       - name: Run source-of-truth repository decision snapshot guard
         run: node scripts/test-source-of-truth-repository-decision-snapshot.js
 
+      - name: Build deployment readiness blocker registry
+        run: node scripts/build-deployment-readiness-blocker-registry.js
+
+      - name: Build deployment readiness blocker registry JSON
+        run: node scripts/build-deployment-readiness-blocker-registry.js --json
+
+      - name: Run deployment readiness blocker registry self-tests
+        run: node scripts/test-deployment-readiness-blocker-registry.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:
