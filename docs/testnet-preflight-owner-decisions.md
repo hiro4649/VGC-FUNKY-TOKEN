@@ -139,6 +139,10 @@ deploy.
 Source-of-truth repository decision snapshots keep the canonical source, deploy
 target, duplicate-source policy, migration policy, and non-approval boundaries
 stable until the owner makes a later explicit decision.
+The deployment readiness blocker registry keeps owner values, owner policy,
+source-of-truth, deploy command, BscScan plan, governance policy, and visibility
+owner decisions blocked until explicit owner decisions and a later separate
+deploy instruction are supplied.
 
 ## 9. Explicit Non-Approval
 

@@ -61,3 +61,6 @@ This matrix is not runtime readiness.
 This matrix is not staging readiness.
 This matrix is not testnet readiness.
 This matrix is not mainnet readiness.
+
+The deployment readiness blocker registry includes the owner policy decision
+matrix as pending until the owner explicitly resolves those policy decisions.

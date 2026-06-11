@@ -54,3 +54,7 @@ This gate is not mainnet readiness.
 
 The source-of-truth repository decision must stay explicit before this gate is
 used in any later testnet deploy approval path.
+
+The deployment readiness blocker registry includes this owner policy preflight
+gate as blocked until owner policy decisions and a later separate deploy
+instruction are supplied.

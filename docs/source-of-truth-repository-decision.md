@@ -36,6 +36,10 @@ The snapshot guard is:
 - not public visibility approval
 - not readiness approval
 
+The deployment readiness blocker registry includes this pending
+source-of-truth decision as one blocker until the owner makes a later explicit
+decision.
+
 ## Default Decision Fields
 
 - canonicalContractSourceRepo: `hiro4649/VGC-FUNKY-TOKEN`
