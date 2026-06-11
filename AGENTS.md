@@ -34,6 +34,11 @@ instruction.
 
 ## Safety Boundaries
 
+Do not run `deploy:*` or `configure:*` scripts unless the owner gives a
+separate explicit deploy-scope instruction. Normal readonly validation may use
+tests or compile commands only when they do not invoke deploy or configure
+paths.
+
 No deploy action is allowed.
 No funded transaction approval is granted.
 No governance transaction approval is granted.
