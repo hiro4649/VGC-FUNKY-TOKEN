@@ -195,10 +195,13 @@ Deployment readiness blocker registry:
 node scripts/build-deployment-readiness-blocker-registry.js
 node scripts/build-deployment-readiness-blocker-registry.js --json
 node scripts/test-deployment-readiness-blocker-registry.js
+node scripts/test-deployment-readiness-blocker-registry-snapshot.js
 ```
 
 Use this to consolidate remaining blockers into the expected
 `DEPLOYMENT_READINESS_BLOCKED` state before any later owner decision.
+Use the snapshot guard to keep the registry text and JSON outputs blocked,
+redacted, and non-approving.
 
 Safe artifact snapshot fixture:
 

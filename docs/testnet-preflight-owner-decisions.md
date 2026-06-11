@@ -143,6 +143,8 @@ The deployment readiness blocker registry keeps owner values, owner policy,
 source-of-truth, deploy command, BscScan plan, governance policy, and visibility
 owner decisions blocked until explicit owner decisions and a later separate
 deploy instruction are supplied.
+Deployment readiness blocker registry snapshots keep those blockers stable until
+owner decisions and a later separate deploy instruction are supplied.
 
 ## 9. Explicit Non-Approval
 
