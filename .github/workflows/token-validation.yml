@@ -187,6 +187,9 @@ jobs:
       - name: Run deployment readiness blocker registry self-tests
         run: node scripts/test-deployment-readiness-blocker-registry.js
 
+      - name: Run deployment readiness blocker registry snapshot guard
+        run: node scripts/test-deployment-readiness-blocker-registry-snapshot.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

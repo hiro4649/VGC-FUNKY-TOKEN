@@ -1,0 +1,28 @@
+VGC-FUNKY-TOKEN deployment readiness blocker registry
+status: DEPLOYMENT_READINESS_BLOCKED
+owner values: pending
+owner policy decisions: pending
+source-of-truth decision: pending
+deploy command approval: pending
+deployer funding: owner handled separately
+BscScan verification plan: pending
+governance policy: pending
+repository visibility owner decision: pending
+testnet preflight gate: blocked
+owner policy preflight gate: blocked
+readiness claim: blocked
+safeToDeploy: false
+safeToPerformFundedTransaction: false
+safeToPerformGovernanceTransaction: false
+safeToVerifyBscScan: false
+safeToClaimReadiness: false
+no deployment approval
+no funded transaction approval
+no governance transaction approval
+no BscScan verification approval
+no release approval
+no public visibility approval
+no runtime readiness approval
+no staging readiness approval
+no testnet readiness approval
+no mainnet readiness approval

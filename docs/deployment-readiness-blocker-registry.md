@@ -25,7 +25,11 @@ The registry records that these items remain blocked or pending:
 node scripts/build-deployment-readiness-blocker-registry.js
 node scripts/build-deployment-readiness-blocker-registry.js --json
 node scripts/test-deployment-readiness-blocker-registry.js
+node scripts/test-deployment-readiness-blocker-registry-snapshot.js
 ```
+
+The snapshot guard locks the text and JSON outputs, required blockers, safeTo
+flags, and non-approval boundaries.
 
 ## Explicit Boundaries
 
