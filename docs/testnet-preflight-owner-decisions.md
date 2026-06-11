@@ -145,6 +145,10 @@ owner decisions blocked until explicit owner decisions and a later separate
 deploy instruction are supplied.
 Deployment readiness blocker registry snapshots keep those blockers stable until
 owner decisions and a later separate deploy instruction are supplied.
+The deployment readiness owner action packet turns those blockers into pending
+owner actions. It accepts no secrets or private values and does not approve
+deployment, funded transactions, governance transactions, BscScan verification,
+release, public visibility, or readiness.
 
 ## 9. Explicit Non-Approval
 

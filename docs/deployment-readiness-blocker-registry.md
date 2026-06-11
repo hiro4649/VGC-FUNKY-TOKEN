@@ -31,6 +31,19 @@ node scripts/test-deployment-readiness-blocker-registry-snapshot.js
 The snapshot guard locks the text and JSON outputs, required blockers, safeTo
 flags, and non-approval boundaries.
 
+The owner action packet command converts this registry into a blocked
+owner-facing list of pending actions:
+
+```powershell
+node scripts/build-deployment-readiness-owner-action-packet.js
+node scripts/build-deployment-readiness-owner-action-packet.js --json
+node scripts/test-deployment-readiness-owner-action-packet.js
+```
+
+The packet keeps every owner action pending and does not approve deployment,
+funded transactions, governance transactions, BscScan verification, release,
+public visibility, or readiness.
+
 ## Explicit Boundaries
 
 - not deployment approval

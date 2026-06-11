@@ -86,6 +86,7 @@ Required before any testnet deploy:
 - source-of-truth repository decision snapshot pass
 - deployment readiness blocker registry pass with expected `DEPLOYMENT_READINESS_BLOCKED`
 - deployment readiness blocker registry snapshot pass
+- deployment readiness owner action packet pass with expected `OWNER_ACTIONS_REQUIRED`
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
