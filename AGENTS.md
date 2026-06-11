@@ -34,18 +34,23 @@ instruction.
 
 ## Safety Boundaries
 
-Deploy: forbidden.
-Funded transaction: forbidden.
-Governance transaction: forbidden.
-BscScan verification: forbidden.
-Release: forbidden.
-Visibility change: forbidden.
-Runtime readiness claim: forbidden.
-Production readiness claim: forbidden.
-Legal compliance claim: forbidden.
-Secret or RPC value exposure: forbidden.
-Wallet access: forbidden.
-Raw logs: forbidden.
-8-session operation: forbidden.
+No deploy action is allowed.
+No funded transaction approval is granted.
+No governance transaction approval is granted.
+No BscScan verification approval is granted.
+No release action is allowed.
+No visibility change is allowed.
+No runtime readiness claim is allowed.
+No staging readiness claim is allowed.
+No testnet readiness claim is allowed.
+No mainnet readiness claim is allowed.
+No production readiness claim is allowed.
+No legal compliance claim is allowed.
+No deployment approval is granted.
+No readiness approval is granted.
+No secret or RPC value exposure is allowed.
+No wallet access is allowed.
+No raw log access is allowed.
+No 8-session operation is allowed.
 
 <!-- CODEX_QUALITY_HARNESS_END -->

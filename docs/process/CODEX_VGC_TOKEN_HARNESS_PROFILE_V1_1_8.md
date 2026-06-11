@@ -19,19 +19,24 @@ verification, or readiness claims.
 
 ## Forbidden Scope
 
-- deploy: forbidden
-- funded transaction: forbidden
-- governance transaction: forbidden
-- BscScan verification: forbidden
-- release: forbidden
-- visibility change: forbidden
-- runtime readiness claim: forbidden
-- production readiness claim: forbidden
-- legal compliance claim: forbidden
-- secret or RPC value exposure: forbidden
-- wallet access: forbidden
-- raw logs: forbidden
-- 8-session operation: forbidden
+- No deploy action is allowed.
+- No funded transaction approval is granted.
+- No governance transaction approval is granted.
+- No BscScan verification approval is granted.
+- No release action is allowed.
+- No visibility change is allowed.
+- No runtime readiness claim is allowed.
+- No staging readiness claim is allowed.
+- No testnet readiness claim is allowed.
+- No mainnet readiness claim is allowed.
+- No production readiness claim is allowed.
+- No legal compliance claim is allowed.
+- No deployment approval is granted.
+- No readiness approval is granted.
+- No secret or RPC value exposure is allowed.
+- No wallet access is allowed.
+- No raw log access is allowed.
+- No 8-session operation is allowed.
 
 ## v1.1.8 Evidence Semantics
 

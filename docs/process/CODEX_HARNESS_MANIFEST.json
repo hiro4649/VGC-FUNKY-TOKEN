@@ -40,5 +40,16 @@
   "visibilityChangeForbidden": true,
   "secretOrRpcValueExposureForbidden": true,
   "walletAccessForbidden": true,
+  "noRuntimeReadinessClaimAllowed": true,
+  "noStagingReadinessClaimAllowed": true,
+  "noTestnetReadinessClaimAllowed": true,
+  "noMainnetReadinessClaimAllowed": true,
+  "noProductionReadinessClaimAllowed": true,
+  "noLegalComplianceClaimAllowed": true,
+  "noDeploymentApprovalGranted": true,
+  "noReadinessApprovalGranted": true,
+  "noBscScanVerificationApprovalGranted": true,
+  "noFundedTransactionApprovalGranted": true,
+  "noGovernanceTransactionApprovalGranted": true,
   "safeSummaryOnly": true
 }
