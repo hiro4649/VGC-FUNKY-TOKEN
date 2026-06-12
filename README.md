@@ -66,6 +66,7 @@ The source-of-truth repository decision keeps VGC-FUNKY-TOKEN as the canonical F
 Source-of-truth repository decision snapshots lock the canonical source, deploy target, duplicate-source policy, migration policy, and non-approval boundaries; the snapshots are not deployment approval, BscScan verification approval, or readiness.
 The deployment readiness blocker registry consolidates remaining blockers with `DEPLOYMENT_READINESS_BLOCKED`; the registry is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
 Deployment readiness blocker registry snapshots lock the blocked text and JSON outputs, required blockers, safeTo flags, and non-approval boundaries; the snapshots are not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, or readiness approval.
+A deployment readiness owner action packet converts the blocker registry into pending owner actions with `OWNER_ACTIONS_REQUIRED`; the packet is not deployment approval, funded transaction approval, governance transaction approval, BscScan verification approval, release approval, public visibility approval, or readiness approval.
 - [Owner-safe testnet preflight issue template](.github/ISSUE_TEMPLATE/testnet-preflight-owner-values.yml)
 
 Dry-run validation can be run with `FUNKY_VALIDATE_ONLY=true` to check required deployment and governance inputs without broadcasting transactions.

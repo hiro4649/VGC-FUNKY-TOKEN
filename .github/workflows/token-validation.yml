@@ -190,6 +190,15 @@ jobs:
       - name: Run deployment readiness blocker registry snapshot guard
         run: node scripts/test-deployment-readiness-blocker-registry-snapshot.js
 
+      - name: Build deployment readiness owner action packet
+        run: node scripts/build-deployment-readiness-owner-action-packet.js
+
+      - name: Build deployment readiness owner action packet JSON
+        run: node scripts/build-deployment-readiness-owner-action-packet.js --json
+
+      - name: Run deployment readiness owner action packet self-tests
+        run: node scripts/test-deployment-readiness-owner-action-packet.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

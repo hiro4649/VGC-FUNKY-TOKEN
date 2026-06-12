@@ -1,0 +1,169 @@
+{
+  "status": "OWNER_ACTIONS_REQUIRED",
+  "ownerActions": {
+    "approveBscTestnetUse": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "approve BNB Smart Chain testnet use: pending owner action"
+    },
+    "provideInitialAdmin": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "provide initialAdmin: pending owner action"
+    },
+    "provideInitialFeeRecipient": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "provide initialFeeRecipient: pending owner action"
+    },
+    "approveDeployCommand": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "approve deploy command: pending owner action"
+    },
+    "handleDeployerFundingSeparately": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "deployer funding: owner handled separately"
+    },
+    "provideBscScanVerificationPlan": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "BscScan verification plan: pending owner action"
+    },
+    "resolveMultisigPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "multisig policy: pending owner action"
+    },
+    "resolveAdminRotationPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "admin rotation policy: pending owner action"
+    },
+    "resolveFeeRecipientPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "feeRecipient policy: pending owner action"
+    },
+    "resolveTierUpdaterPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "TierUpdater policy: pending owner action"
+    },
+    "resolveTrustedFactoryPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "trusted factory policy: pending owner action"
+    },
+    "resolvePairPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "pair policy: pending owner action"
+    },
+    "resolveFeeExemptionPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "fee exemption policy: pending owner action"
+    },
+    "resolveFeeMaxPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "fee max policy: pending owner action"
+    },
+    "resolveFeeDenominatorPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "fee denominator policy: pending owner action"
+    },
+    "resolveSellLpAddFeeBehaviorPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "sell/LP-add fee behavior policy: pending owner action"
+    },
+    "resolveTierUpdaterLastRemovalPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "tier updater last-removal policy: pending owner action"
+    },
+    "resolveFeeExemptionProposerApproverPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "fee exemption proposer/approver policy: pending owner action"
+    },
+    "resolveTierUpdaterCodePresenceValidationPolicy": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "tier updater code-presence validation policy: pending owner action"
+    },
+    "resolveSourceOfTruthRepositoryDecision": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "source-of-truth repository decision: pending owner action"
+    },
+    "resolveRepositoryVisibilityDecision": {
+      "status": "pending_owner_action",
+      "inputType": "owner_decision_or_public_value",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false,
+      "safeSummary": "repository visibility decision: pending owner action"
+    }
+  },
+  "safeToDeploy": false,
+  "safeToPerformFundedTransaction": false,
+  "safeToPerformGovernanceTransaction": false,
+  "safeToVerifyBscScan": false,
+  "safeToClaimReadiness": false,
+  "nonApproval": {
+    "deployment": true,
+    "fundedTransaction": true,
+    "governanceTransaction": true,
+    "bscScanVerification": true,
+    "release": true,
+    "publicVisibility": true,
+    "runtimeReadiness": true,
+    "stagingReadiness": true,
+    "testnetReadiness": true,
+    "mainnetReadiness": true
+  }
+}

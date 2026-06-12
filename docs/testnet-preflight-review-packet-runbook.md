@@ -203,6 +203,17 @@ Use this to consolidate remaining blockers into the expected
 Use the snapshot guard to keep the registry text and JSON outputs blocked,
 redacted, and non-approving.
 
+Deployment readiness owner action packet:
+
+```powershell
+node scripts/build-deployment-readiness-owner-action-packet.js
+node scripts/build-deployment-readiness-owner-action-packet.js --json
+node scripts/test-deployment-readiness-owner-action-packet.js
+```
+
+Use it after the blocker registry to list pending owner actions. The packet is
+not deployment approval and is not readiness approval.
+
 Safe artifact snapshot fixture:
 
 ```powershell
