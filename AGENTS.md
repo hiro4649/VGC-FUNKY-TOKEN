@@ -1,12 +1,12 @@
 # AGENTS.md
 
 <!-- CODEX_QUALITY_HARNESS_BEGIN -->
-CODEX_QUALITY_HARNESS_FILE v1.1.8
+CODEX_QUALITY_HARNESS_FILE v1.1.9
 
 ## Prime Directive
 
 This repository is a token-only downstream project consuming Codex Harness
-v1.1.8 as a managed readonly target. Work here must stay within the explicitly
+v1.1.9 as a managed readonly target. Work here must stay within the explicitly
 authorized repo and task scope.
 
 ## Token-Only Harness Boundary
@@ -19,14 +19,16 @@ claims.
 
 Use `docs/process/CODEX_HARNESS_MANIFEST.json` for machine-readable harness
 metadata and `docs/process/CODEX_VGC_TOKEN_HARNESS_PROFILE_V1_1_8.md` for the
+v1.1.8 token-only readonly profile history. Use
+`docs/process/CODEX_VGC_TOKEN_HARNESS_PROFILE_V1_1_9.md` for the active
 token-only readonly profile.
 
-## v1.1.8 Decision Rules
+## v1.1.9 Decision Rules
 
-Final Decision artifacts are the authoritative machine decision surface.
-Evidence Capsules describe current-head evidence boundaries. PR bodies are
-human-rendered summaries only and must not satisfy machine evidence. Machine
-evidence must be a safe artifact or manifest entry.
+Final Decision artifacts remain the authoritative machine decision surface.
+v1.1.9 adds readonly orchestration, worker proof, and owner decision brief
+metadata only. PR bodies are human-rendered summaries only and must not satisfy
+machine evidence. Machine evidence must be a safe artifact or manifest entry.
 
 `create_pr_only` may pass local validation without remote evidence.
 `merge_current_pr` requires same-head remote evidence and explicit owner merge
