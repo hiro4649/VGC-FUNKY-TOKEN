@@ -209,6 +209,7 @@ Deployment readiness owner action packet:
 node scripts/build-deployment-readiness-owner-action-packet.js
 node scripts/build-deployment-readiness-owner-action-packet.js --json
 node scripts/test-deployment-readiness-owner-action-packet.js
+node scripts/test-deployment-readiness-owner-action-packet-snapshot.js
 ```
 
 Use it after the blocker registry to list pending owner actions. The packet is

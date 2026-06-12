@@ -101,6 +101,8 @@ The source-of-truth repository decision snapshot guard keeps that prompt
 stable, non-approving, and locked to the current canonical source/deploy target.
 The deployment readiness owner action packet lists the remaining owner actions
 without accepting secrets, private values, or real owner values.
+The deployment readiness owner action packet snapshot guard keeps that
+owner-facing action list stable, redacted, and non-approving.
 
 Validate a filled JSON file with:
 
