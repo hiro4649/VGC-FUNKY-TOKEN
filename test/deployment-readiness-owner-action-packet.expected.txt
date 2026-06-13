@@ -1,0 +1,38 @@
+VGC-FUNKY-TOKEN deployment readiness owner action packet
+status: OWNER_ACTIONS_REQUIRED
+approve BNB Smart Chain testnet use: pending owner action
+provide initialAdmin: pending owner action
+provide initialFeeRecipient: pending owner action
+approve deploy command: pending owner action
+deployer funding: owner handled separately
+BscScan verification plan: pending owner action
+multisig policy: pending owner action
+admin rotation policy: pending owner action
+feeRecipient policy: pending owner action
+TierUpdater policy: pending owner action
+trusted factory policy: pending owner action
+pair policy: pending owner action
+fee exemption policy: pending owner action
+fee max policy: pending owner action
+fee denominator policy: pending owner action
+sell/LP-add fee behavior policy: pending owner action
+tier updater last-removal policy: pending owner action
+fee exemption proposer/approver policy: pending owner action
+tier updater code-presence validation policy: pending owner action
+source-of-truth repository decision: pending owner action
+repository visibility decision: pending owner action
+safeToDeploy: false
+safeToPerformFundedTransaction: false
+safeToPerformGovernanceTransaction: false
+safeToVerifyBscScan: false
+safeToClaimReadiness: false
+no deployment approval
+no funded transaction approval
+no governance transaction approval
+no BscScan verification approval
+no release approval
+no public visibility approval
+no runtime readiness approval
+no staging readiness approval
+no testnet readiness approval
+no mainnet readiness approval

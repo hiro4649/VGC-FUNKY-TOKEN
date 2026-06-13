@@ -149,6 +149,9 @@ The deployment readiness owner action packet turns those blockers into pending
 owner actions. It accepts no secrets or private values and does not approve
 deployment, funded transactions, governance transactions, BscScan verification,
 release, public visibility, or readiness.
+Deployment readiness owner action packet snapshots keep the owner action list,
+pending statuses, safe input boundaries, safeTo flags, and non-approval
+boundaries stable.
 
 ## 9. Explicit Non-Approval
 
