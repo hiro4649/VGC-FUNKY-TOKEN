@@ -23,6 +23,10 @@ const expectedBlockedActionCategories = [
   "readinessBoundary",
 ];
 
+function normalizeTextSnapshot(text) {
+  return text.replace(/\r\n?/g, "\n");
+}
+
 function fail(reason, fieldPath) {
   console.log("VGC-TOKEN source invariant audit snapshot test failed");
   console.log(`safe reason code: ${reason}`);
@@ -160,7 +164,7 @@ function assertExpectedAuditSemantics(report) {
 const text = runAudit();
 const expectedText = read(expectedTextPath);
 assertSafeOutput(text);
-if (text !== expectedText) {
+if (normalizeTextSnapshot(text) !== normalizeTextSnapshot(expectedText)) {
   fail("text-snapshot-mismatch");
 }
 
