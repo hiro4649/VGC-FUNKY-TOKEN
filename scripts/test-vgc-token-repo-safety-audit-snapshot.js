@@ -6,6 +6,10 @@ const { spawnSync } = require("child_process");
 const expectedTextPath = "test/vgc-token-repo-safety-audit.expected.txt";
 const expectedJsonPath = "test/vgc-token-repo-safety-audit.expected.json";
 
+function normalizeTextSnapshot(text) {
+  return text.replace(/\r\n?/g, "\n");
+}
+
 function fail(reason, fieldPath) {
   console.log("VGC-TOKEN repository safety audit snapshot test failed");
   console.log(`safe reason code: ${reason}`);
@@ -99,7 +103,7 @@ function assertSafeOutput(text) {
 const text = runAudit();
 const expectedText = read(expectedTextPath);
 assertSafeOutput(text);
-if (text !== expectedText) {
+if (normalizeTextSnapshot(text) !== normalizeTextSnapshot(expectedText)) {
   fail("text-snapshot-mismatch");
 }
 
