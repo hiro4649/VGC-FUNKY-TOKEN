@@ -214,6 +214,10 @@ node scripts/test-deployment-readiness-owner-action-packet-snapshot.js
 
 Use it after the blocker registry to list pending owner actions. The packet is
 not deployment approval and is not readiness approval.
+The deployment readiness owner action issue template may collect public owner
+decisions for later review, but not deployment approval, not funded transaction
+approval, not governance transaction approval, not BscScan verification
+approval, not release approval, not visibility approval, and not readiness.
 
 Safe artifact snapshot fixture:
 

@@ -152,6 +152,11 @@ release, public visibility, or readiness.
 Deployment readiness owner action packet snapshots keep the owner action list,
 pending statuses, safe input boundaries, safeTo flags, and non-approval
 boundaries stable.
+The deployment readiness owner action issue template is an optional public
+owner-decision intake form for those actions only; not deployment approval, not
+funded transaction approval, not governance transaction approval, not BscScan
+verification approval, not release approval, not visibility approval, and not
+readiness.
 
 ## 9. Explicit Non-Approval
 

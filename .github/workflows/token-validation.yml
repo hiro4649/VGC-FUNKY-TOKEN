@@ -202,6 +202,9 @@ jobs:
       - name: Run deployment readiness owner action packet snapshot guard
         run: node scripts/test-deployment-readiness-owner-action-packet-snapshot.js
 
+      - name: Run deployment readiness owner action issue template guard
+        run: node scripts/test-deployment-readiness-owner-action-issue-template.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

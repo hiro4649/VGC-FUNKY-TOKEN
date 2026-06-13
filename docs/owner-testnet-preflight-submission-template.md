@@ -103,6 +103,10 @@ The deployment readiness owner action packet lists the remaining owner actions
 without accepting secrets, private values, or real owner values.
 The deployment readiness owner action packet snapshot guard keeps that
 owner-facing action list stable, redacted, and non-approving.
+The deployment readiness owner action issue template can be used for public
+owner-decision intake only; not deployment approval, not funded transaction
+approval, not governance transaction approval, not BscScan verification
+approval, not release approval, not visibility approval, and not readiness.
 
 Validate a filled JSON file with:
 

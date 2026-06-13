@@ -45,6 +45,17 @@ The packet keeps every owner action pending and does not approve deployment,
 funded transactions, governance transactions, BscScan verification, release,
 public visibility, or readiness.
 
+The deployment readiness owner action issue template is a public owner-decision
+intake form only:
+
+- not deployment approval
+- not funded transaction approval
+- not governance transaction approval
+- not BscScan verification approval
+- not release approval
+- not visibility approval
+- not readiness
+
 ## Explicit Boundaries
 
 - not deployment approval
