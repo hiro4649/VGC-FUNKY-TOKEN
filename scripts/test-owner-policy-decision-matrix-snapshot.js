@@ -37,6 +37,10 @@ const nonApprovalFields = [
   "mainnetReadiness",
 ];
 
+function normalizeTextSnapshot(text) {
+  return text.replace(/\r\n?/g, "\n");
+}
+
 function fail(reason, fieldPath) {
   console.log("owner policy decision matrix snapshot guard failed");
   console.log(`safe reason code: ${reason}`);
@@ -168,7 +172,7 @@ try {
 
 const text = runMatrix();
 assertSafeOutput(text);
-if (text !== expectedText) {
+if (normalizeTextSnapshot(text) !== normalizeTextSnapshot(expectedText)) {
   fail("text-snapshot-mismatch");
 }
 
