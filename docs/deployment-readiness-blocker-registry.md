@@ -61,6 +61,9 @@ into blocked or pending owner action data only. It accepts no secrets; not
 deployment approval, not funded transaction approval, not governance transaction
 approval, not BscScan verification approval, not release approval, not
 visibility approval, and not readiness.
+Owner action issue parser snapshots keep the parser text and JSON outputs,
+pending owner actions, safe input boundaries, safeTo flags, unsafe-input
+rejection, secret-input rejection, and non-approval boundaries stable.
 
 ## Explicit Boundaries
 

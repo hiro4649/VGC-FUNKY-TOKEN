@@ -214,6 +214,9 @@ jobs:
       - name: Run deployment readiness owner action issue parser self-tests
         run: node scripts/test-deployment-readiness-owner-action-issue-parser.js
 
+      - name: Run deployment readiness owner action issue parser snapshot guard
+        run: node scripts/test-deployment-readiness-owner-action-issue-parser-snapshot.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

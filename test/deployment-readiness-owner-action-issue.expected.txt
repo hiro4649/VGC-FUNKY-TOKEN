@@ -1,0 +1,38 @@
+VGC-FUNKY-TOKEN deployment readiness owner action issue parse
+status: OWNER_ACTION_ISSUE_PARSE_BLOCKED_OR_PENDING
+approveBscTestnetUse: pending_owner_action
+initialAdmin: pending_owner_action
+initialFeeRecipient: pending_owner_action
+deployCommandApprovalText: pending_owner_action
+bscScanVerificationPlanText: pending_owner_action
+multisigPolicy: pending_owner_action
+adminRotationPolicy: pending_owner_action
+feeRecipientPolicy: pending_owner_action
+tierUpdaterPolicy: pending_owner_action
+trustedFactoryPolicy: pending_owner_action
+pairPolicy: pending_owner_action
+feeExemptionPolicy: pending_owner_action
+feeMaxPolicy: pending_owner_action
+feeDenominatorPolicy: pending_owner_action
+sellLpAddFeeBehaviorPolicy: pending_owner_action
+tierUpdaterLastRemovalPolicy: pending_owner_action
+feeExemptionProposerApproverPolicy: pending_owner_action
+tierUpdaterCodePresenceValidationPolicy: pending_owner_action
+sourceOfTruthRepositoryDecision: pending_owner_action
+repositoryVisibilityDecision: pending_owner_action
+safeToDeploy: false
+safeToPerformFundedTransaction: false
+safeToPerformGovernanceTransaction: false
+safeToVerifyBscScan: false
+safeToClaimReadiness: false
+nonApproval: true
+no deployment approval
+no funded transaction approval
+no governance transaction approval
+no BscScan verification approval
+no release approval
+no public visibility approval
+no runtime readiness approval
+no staging readiness approval
+no testnet readiness approval
+no mainnet readiness approval
