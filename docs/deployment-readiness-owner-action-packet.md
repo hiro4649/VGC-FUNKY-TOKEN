@@ -36,6 +36,12 @@ visibility approval, and not readiness.
 Owner action issue parser snapshots lock the text and JSON outputs, pending
 owner actions, safe input boundaries, safeTo flags, unsafe-input rejection,
 secret-input rejection, and non-approval boundaries.
+Owner action review packets can be built with
+`node scripts/build-deployment-readiness-owner-action-review-packet.js <issue-body-file>`
+for later owner review only. The review packet accepts no secrets; not
+deployment approval, not funded transaction approval, not governance transaction
+approval, not BscScan verification approval, not release approval, not
+visibility approval, and not readiness.
 
 The packet is not deployment approval.
 The packet is not funded transaction approval.
