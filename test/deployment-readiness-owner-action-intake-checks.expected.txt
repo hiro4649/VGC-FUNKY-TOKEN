@@ -1,0 +1,28 @@
+VGC-FUNKY-TOKEN deployment readiness owner action intake checks
+status: OWNER_ACTION_INTAKE_CHECKS_BLOCKED_OR_PENDING
+template guard: pass
+parser: pass
+parser snapshot: pass
+review packet: pass
+review packet snapshot: pass
+owner action packet: pass
+owner action packet snapshot: pass
+blocker registry: pass
+blocker registry snapshot: pass
+testnet preflight gate: blocked
+owner policy preflight gate: blocked
+safeToDeploy: false
+safeToPerformFundedTransaction: false
+safeToPerformGovernanceTransaction: false
+safeToVerifyBscScan: false
+safeToClaimReadiness: false
+no deployment approval
+no funded transaction approval
+no governance transaction approval
+no BscScan verification approval
+no release approval
+no public visibility approval
+no runtime readiness approval
+no staging readiness approval
+no testnet readiness approval
+no mainnet readiness approval

@@ -193,3 +193,8 @@ This PR does not approve:
 - staging readiness
 - testnet readiness
 - mainnet readiness
+
+Deployment readiness owner action intake checks snapshots cover only
+placeholder aggregate output. They do not process real owner values and do not
+approve deployment, funded transactions, governance transactions, BscScan
+verification, releases, visibility changes, or readiness.

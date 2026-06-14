@@ -152,3 +152,8 @@ The validator does not prove staging readiness.
 The validator does not prove testnet readiness.
 The validator does not prove mainnet readiness.
 The summary generator does not approve deployment, funded transactions, governance transactions, BscScan verification, or readiness.
+
+Deployment readiness owner action intake checks snapshots protect only
+placeholder aggregate output. They do not make owner input sufficient by
+themselves and do not approve deployment, funded transactions, governance
+transactions, BscScan verification, releases, visibility changes, or readiness.

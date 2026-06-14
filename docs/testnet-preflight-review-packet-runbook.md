@@ -363,3 +363,10 @@ Required sequence:
 Do not deploy.
 Do not run configure.
 Do not run BscScan verification.
+
+Run `node scripts/test-deployment-readiness-owner-action-intake-checks-snapshot.js`
+when changing deployment readiness owner action intake-check output. The guard
+locks placeholder-only text and JSON output while preserving blocked gates,
+false safe-to flags, no-secret state, no-real-owner-values state, owner review
+requirement, later explicit deploy instruction requirement, and non-approval
+boundaries.

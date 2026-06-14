@@ -96,3 +96,9 @@ The registry does not process real owner values.
 The registry does not call RPC.
 The registry does not call BscScan.
 The registry does not create files or modify files.
+
+The deployment readiness owner action intake checks snapshot guard locks the
+aggregate intake status, subcheck statuses, blocked gate statuses, false
+safe-to flags, no-secret state, no-real-owner-values state, owner review
+requirement, later explicit deploy instruction requirement, and non-approval
+boundaries. It does not clear `DEPLOYMENT_READINESS_BLOCKED`.
