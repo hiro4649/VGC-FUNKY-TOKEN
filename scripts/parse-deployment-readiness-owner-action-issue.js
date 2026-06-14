@@ -46,6 +46,19 @@ const nonApprovalFields = [
   "mainnetReadiness",
 ];
 
+const nonApprovalTextLines = [
+  "no deployment approval",
+  "no funded transaction approval",
+  "no governance transaction approval",
+  "no BscScan verification approval",
+  "no release approval",
+  "no public visibility approval",
+  "no runtime readiness approval",
+  "no staging readiness approval",
+  "no testnet readiness approval",
+  "no mainnet readiness approval",
+];
+
 function fail(reason) {
   console.error("deployment readiness owner action issue parser failed");
   console.error(`safe reason code: ${reason}`);
@@ -165,4 +178,7 @@ if (jsonMode) {
     console.log(`${field}: false`);
   }
   console.log("nonApproval: true");
+  for (const line of nonApprovalTextLines) {
+    console.log(line);
+  }
 }
