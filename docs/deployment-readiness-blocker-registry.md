@@ -56,6 +56,12 @@ intake form only:
 - not visibility approval
 - not readiness
 
+The deployment readiness owner action issue parser converts later issue text
+into blocked or pending owner action data only. It accepts no secrets; not
+deployment approval, not funded transaction approval, not governance transaction
+approval, not BscScan verification approval, not release approval, not
+visibility approval, and not readiness.
+
 ## Explicit Boundaries
 
 - not deployment approval

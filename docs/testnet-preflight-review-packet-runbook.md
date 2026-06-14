@@ -218,6 +218,10 @@ The deployment readiness owner action issue template may collect public owner
 decisions for later review, but not deployment approval, not funded transaction
 approval, not governance transaction approval, not BscScan verification
 approval, not release approval, not visibility approval, and not readiness.
+The deployment readiness owner action issue parser reads later issue text for
+review only, accepts no secrets; not deployment approval, not funded transaction
+approval, not governance transaction approval, not BscScan verification
+approval, not release approval, not visibility approval, and not readiness.
 
 Safe artifact snapshot fixture:
 
