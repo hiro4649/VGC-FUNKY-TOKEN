@@ -1,0 +1,202 @@
+name: Deployment readiness owner actions
+description: Submit public owner decisions for deployment readiness action intake without secrets or readiness claims.
+title: "deployment readiness owner actions: <date or short label>"
+labels:
+  - deployment-readiness
+  - owner-action
+  - no-deploy
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this issue for public owner decisions and public addresses only.
+        Do not include private keys.
+        Do not include mnemonics.
+        Do not include RPC URLs.
+        Do not include API keys.
+        Do not include .env contents.
+        Do not include DB URLs.
+        Do not include JWTs.
+        Do not include cookies.
+        Do not include wallet funding proof.
+        Deployer funding is handled separately by owner and must not be posted here.
+        This issue does not approve deployment.
+        This issue does not approve funded transactions.
+        This issue does not approve governance transactions.
+        This issue does not approve BscScan verification.
+        This issue does not approve releases.
+        This issue does not approve public visibility changes.
+        This issue does not approve runtime readiness.
+        This issue does not approve staging readiness.
+        This issue does not approve testnet readiness.
+        This issue does not approve mainnet readiness.
+        A later separate explicit deploy instruction is still required.
+  - type: checkboxes
+    id: safety-acknowledgement
+    attributes:
+      label: Safety acknowledgement
+      options:
+        - label: I will provide public decisions and public addresses only, with no secrets, no wallet funding proof, and no private deployment material.
+          required: true
+  - type: checkboxes
+    id: non-approval-acknowledgement
+    attributes:
+      label: Non-approval acknowledgement
+      options:
+        - label: I understand this issue does not approve deployment, funded transactions, governance transactions, BscScan verification, releases, public visibility changes, runtime readiness, staging readiness, testnet readiness, or mainnet readiness.
+          required: true
+  - type: dropdown
+    id: bnb-smart-chain-testnet-approval
+    attributes:
+      label: BNB Smart Chain testnet approval
+      options:
+        - OWNER_ACTION_PENDING
+        - PUBLIC_OWNER_VALUE_PROVIDED
+        - NOT_APPROVED
+    validations:
+      required: true
+  - type: input
+    id: initial-admin-public-address
+    attributes:
+      label: initialAdmin public address
+      description: Public address only, or leave INITIAL_ADMIN_TBD.
+      placeholder: INITIAL_ADMIN_TBD
+    validations:
+      required: true
+  - type: input
+    id: initial-fee-recipient-public-address
+    attributes:
+      label: initialFeeRecipient public address
+      description: Public address only, or leave INITIAL_FEE_RECIPIENT_TBD.
+      placeholder: INITIAL_FEE_RECIPIENT_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: deploy-command-approval-text
+    attributes:
+      label: deploy command approval text
+      description: Public text only. This is intake only and does not approve deployment.
+      placeholder: DEPLOY_COMMAND_DECISION_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: bscscan-verification-plan-text
+    attributes:
+      label: BscScan verification plan text
+      description: Public text only. Do not include API keys.
+      placeholder: BSC_SCAN_VERIFICATION_PLAN_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: multisig-policy
+    attributes:
+      label: multisig policy
+      placeholder: MULTISIG_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: admin-rotation-policy
+    attributes:
+      label: admin rotation policy
+      placeholder: ADMIN_ROTATION_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: fee-recipient-policy
+    attributes:
+      label: feeRecipient policy
+      placeholder: FEE_RECIPIENT_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: tier-updater-policy
+    attributes:
+      label: TierUpdater policy
+      placeholder: TIER_UPDATER_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: trusted-factory-policy
+    attributes:
+      label: trusted factory policy
+      placeholder: TRUSTED_FACTORY_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: pair-policy
+    attributes:
+      label: pair policy
+      placeholder: PAIR_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: fee-exemption-policy
+    attributes:
+      label: fee exemption policy
+      placeholder: FEE_EXEMPTION_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: fee-max-policy
+    attributes:
+      label: fee max policy
+      placeholder: FEE_MAX_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: fee-denominator-policy
+    attributes:
+      label: fee denominator policy
+      placeholder: FEE_DENOMINATOR_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: sell-lp-add-fee-behavior-policy
+    attributes:
+      label: sell/LP-add fee behavior policy
+      placeholder: SELL_LP_ADD_FEE_BEHAVIOR_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: tier-updater-last-removal-policy
+    attributes:
+      label: tier updater last-removal policy
+      placeholder: TIER_UPDATER_LAST_REMOVAL_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: fee-exemption-proposer-approver-policy
+    attributes:
+      label: fee exemption proposer/approver policy
+      placeholder: FEE_EXEMPTION_PROPOSER_APPROVER_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: tier-updater-code-presence-validation-policy
+    attributes:
+      label: tier updater code-presence validation policy
+      placeholder: TIER_UPDATER_CODE_PRESENCE_VALIDATION_POLICY_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: source-of-truth-repository-decision
+    attributes:
+      label: source-of-truth repository decision
+      placeholder: SOURCE_OF_TRUTH_REPOSITORY_DECISION_TBD
+    validations:
+      required: true
+  - type: textarea
+    id: repository-visibility-decision
+    attributes:
+      label: repository visibility decision
+      description: Record decision text only. Do not request or perform visibility changes here.
+      placeholder: REPOSITORY_VISIBILITY_DECISION_TBD
+    validations:
+      required: true
+  - type: checkboxes
+    id: final-acknowledgement
+    attributes:
+      label: Final acknowledgement
+      options:
+        - label: I understand a later separate explicit deploy instruction is still required before any deployment-related action.
+          required: true

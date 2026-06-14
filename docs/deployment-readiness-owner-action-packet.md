@@ -22,6 +22,12 @@ The snapshot guard locks the text and JSON outputs, required owner actions,
 pending statuses, safe input boundaries, safeTo flags, and non-approval
 boundaries.
 
+The [deployment readiness owner action issue template](../.github/ISSUE_TEMPLATE/deployment-readiness-owner-actions.yml)
+is a public owner-decision intake form only; not deployment approval, not funded
+transaction approval, not governance transaction approval, not BscScan
+verification approval, not release approval, not visibility approval, and not
+readiness.
+
 The packet is not deployment approval.
 The packet is not funded transaction approval.
 The packet is not governance transaction approval.
