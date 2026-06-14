@@ -63,3 +63,10 @@ The packet is not runtime readiness approval.
 The packet is not staging readiness approval.
 The packet is not testnet readiness approval.
 The packet is not mainnet readiness approval.
+
+The deployment readiness owner action intake checks snapshot guard locks the
+placeholder-only aggregate intake text and JSON outputs. It preserves
+`OWNER_ACTION_INTAKE_CHECKS_BLOCKED_OR_PENDING`, blocked gate statuses, false
+safe-to flags, no-secret state, no-real-owner-values state, owner review
+requirement, later explicit deploy instruction requirement, and non-approval
+boundaries.
