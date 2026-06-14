@@ -27,6 +27,12 @@ is a public owner-decision intake form only; not deployment approval, not funded
 transaction approval, not governance transaction approval, not BscScan
 verification approval, not release approval, not visibility approval, and not
 readiness.
+Owner action issue submissions can be parsed with
+`node scripts/parse-deployment-readiness-owner-action-issue.js <issue-body-file>`
+for later owner issue review only. The parser accepts no secrets; not
+deployment approval, not funded transaction approval, not governance transaction
+approval, not BscScan verification approval, not release approval, not
+visibility approval, and not readiness.
 
 The packet is not deployment approval.
 The packet is not funded transaction approval.

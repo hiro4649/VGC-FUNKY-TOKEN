@@ -205,6 +205,15 @@ jobs:
       - name: Run deployment readiness owner action issue template guard
         run: node scripts/test-deployment-readiness-owner-action-issue-template.js
 
+      - name: Parse deployment readiness owner action issue sample
+        run: node scripts/parse-deployment-readiness-owner-action-issue.js test/deployment-readiness-owner-action-issue.sample.md
+
+      - name: Parse deployment readiness owner action issue sample JSON
+        run: node scripts/parse-deployment-readiness-owner-action-issue.js test/deployment-readiness-owner-action-issue.sample.md --json
+
+      - name: Run deployment readiness owner action issue parser self-tests
+        run: node scripts/test-deployment-readiness-owner-action-issue-parser.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

@@ -107,6 +107,10 @@ The deployment readiness owner action issue template can be used for public
 owner-decision intake only; not deployment approval, not funded transaction
 approval, not governance transaction approval, not BscScan verification
 approval, not release approval, not visibility approval, and not readiness.
+The deployment readiness owner action issue parser is for later owner issue
+review only, accepts no secrets; not deployment approval, not funded transaction
+approval, not governance transaction approval, not BscScan verification
+approval, not release approval, not visibility approval, and not readiness.
 
 Validate a filled JSON file with:
 

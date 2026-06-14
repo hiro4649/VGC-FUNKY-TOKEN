@@ -157,6 +157,10 @@ owner-decision intake form for those actions only; not deployment approval, not
 funded transaction approval, not governance transaction approval, not BscScan
 verification approval, not release approval, not visibility approval, and not
 readiness.
+The deployment readiness owner action issue parser is for later owner issue
+review only, accepts no secrets; not deployment approval, not funded transaction
+approval, not governance transaction approval, not BscScan verification
+approval, not release approval, not visibility approval, and not readiness.
 
 ## 9. Explicit Non-Approval
 
