@@ -1,0 +1,151 @@
+{
+  "status": "OWNER_ACTION_REVIEW_REQUIRED",
+  "sourceStatus": "OWNER_ACTION_ISSUE_PARSE_BLOCKED_OR_PENDING",
+  "ownerActionsSummary": {
+    "approveBscTestnetUse": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "initialAdmin": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "initialFeeRecipient": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "deployCommandApprovalText": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "bscScanVerificationPlanText": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "multisigPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "adminRotationPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "feeRecipientPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "tierUpdaterPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "trustedFactoryPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "pairPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "feeExemptionPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "feeMaxPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "feeDenominatorPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "sellLpAddFeeBehaviorPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "tierUpdaterLastRemovalPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "feeExemptionProposerApproverPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "tierUpdaterCodePresenceValidationPolicy": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "sourceOfTruthRepositoryDecision": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    },
+    "repositoryVisibilityDecision": {
+      "status": "pending_owner_action",
+      "valueClass": "placeholder_safe",
+      "unsafeInputAccepted": false,
+      "secretInputAccepted": false
+    }
+  },
+  "pendingActionCount": 20,
+  "placeholderSafeActionCount": 20,
+  "unsafeInputAccepted": false,
+  "secretInputAccepted": false,
+  "safeToDeploy": false,
+  "safeToPerformFundedTransaction": false,
+  "safeToPerformGovernanceTransaction": false,
+  "safeToVerifyBscScan": false,
+  "safeToClaimReadiness": false,
+  "nonApproval": {
+    "deployment": true,
+    "fundedTransaction": true,
+    "governanceTransaction": true,
+    "bscScanVerification": true,
+    "release": true,
+    "publicVisibility": true,
+    "runtimeReadiness": true,
+    "stagingReadiness": true,
+    "testnetReadiness": true,
+    "mainnetReadiness": true
+  },
+  "requiresLaterExplicitDeployInstruction": true,
+  "requiresOwnerReview": true,
+  "containsSecrets": false,
+  "containsRealOwnerValues": false
+}

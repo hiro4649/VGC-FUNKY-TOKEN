@@ -225,6 +225,11 @@ approval, not release approval, not visibility approval, and not readiness.
 Owner action issue parser snapshots keep the parser text and JSON outputs,
 pending owner actions, safe input boundaries, safeTo flags, unsafe-input
 rejection, secret-input rejection, and non-approval boundaries stable.
+Owner action review packets convert parsed owner action issue data into a
+redacted packet for later owner review only. They accept no secrets; not
+deployment approval, not funded transaction approval, not governance transaction
+approval, not BscScan verification approval, not release approval, not
+visibility approval, and not readiness.
 
 Safe artifact snapshot fixture:
 

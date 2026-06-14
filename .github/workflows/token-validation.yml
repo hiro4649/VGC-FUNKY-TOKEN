@@ -217,6 +217,15 @@ jobs:
       - name: Run deployment readiness owner action issue parser snapshot guard
         run: node scripts/test-deployment-readiness-owner-action-issue-parser-snapshot.js
 
+      - name: Build deployment readiness owner action review packet
+        run: node scripts/build-deployment-readiness-owner-action-review-packet.js test/deployment-readiness-owner-action-issue.sample.md
+
+      - name: Build deployment readiness owner action review packet JSON
+        run: node scripts/build-deployment-readiness-owner-action-review-packet.js test/deployment-readiness-owner-action-issue.sample.md --json
+
+      - name: Run deployment readiness owner action review packet self-tests
+        run: node scripts/test-deployment-readiness-owner-action-review-packet.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:
