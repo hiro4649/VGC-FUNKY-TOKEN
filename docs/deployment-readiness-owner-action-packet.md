@@ -46,6 +46,12 @@ Owner action review packet snapshots lock text and JSON outputs, source parse
 status, safeTo flags, owner review requirement, later deploy instruction
 requirement, no-secret state, no-real-owner-values state, and non-approval
 boundaries.
+Owner action intake checks can be run with
+`node scripts/run-deployment-readiness-owner-action-intake-checks.js` for later
+owner action intake validation only. The checks accept no secrets or real owner
+values; not deployment approval, not funded transaction approval, not governance
+transaction approval, not BscScan verification approval, not release approval,
+not visibility approval, and not readiness.
 
 The packet is not deployment approval.
 The packet is not funded transaction approval.

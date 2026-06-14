@@ -229,6 +229,15 @@ jobs:
       - name: Run deployment readiness owner action review packet snapshot guard
         run: node scripts/test-deployment-readiness-owner-action-review-packet-snapshot.js
 
+      - name: Run deployment readiness owner action intake checks
+        run: node scripts/run-deployment-readiness-owner-action-intake-checks.js
+
+      - name: Run deployment readiness owner action intake checks JSON
+        run: node scripts/run-deployment-readiness-owner-action-intake-checks.js --json
+
+      - name: Run deployment readiness owner action intake checks self-tests
+        run: node scripts/test-deployment-readiness-owner-action-intake-checks.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

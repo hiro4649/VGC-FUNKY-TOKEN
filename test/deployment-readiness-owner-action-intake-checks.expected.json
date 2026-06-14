@@ -1,0 +1,110 @@
+{
+  "status": "OWNER_ACTION_INTAKE_CHECKS_BLOCKED_OR_PENDING",
+  "checks": {
+    "templateGuard": {
+      "label": "template guard",
+      "status": "pass"
+    },
+    "parser": {
+      "label": "parser",
+      "status": "pass"
+    },
+    "parserJson": {
+      "label": "parser JSON",
+      "status": "pass"
+    },
+    "parserSelfTest": {
+      "label": "parser self-test",
+      "status": "pass"
+    },
+    "parserSnapshot": {
+      "label": "parser snapshot",
+      "status": "pass"
+    },
+    "reviewPacket": {
+      "label": "review packet",
+      "status": "pass"
+    },
+    "reviewPacketJson": {
+      "label": "review packet JSON",
+      "status": "pass"
+    },
+    "reviewPacketSelfTest": {
+      "label": "review packet self-test",
+      "status": "pass"
+    },
+    "reviewPacketSnapshot": {
+      "label": "review packet snapshot",
+      "status": "pass"
+    },
+    "ownerActionPacket": {
+      "label": "owner action packet",
+      "status": "pass"
+    },
+    "ownerActionPacketJson": {
+      "label": "owner action packet JSON",
+      "status": "pass"
+    },
+    "ownerActionPacketSelfTest": {
+      "label": "owner action packet self-test",
+      "status": "pass"
+    },
+    "ownerActionPacketSnapshot": {
+      "label": "owner action packet snapshot",
+      "status": "pass"
+    },
+    "blockerRegistry": {
+      "label": "blocker registry",
+      "status": "pass"
+    },
+    "blockerRegistryJson": {
+      "label": "blocker registry JSON",
+      "status": "pass"
+    },
+    "blockerRegistrySelfTest": {
+      "label": "blocker registry self-test",
+      "status": "pass"
+    },
+    "blockerRegistrySnapshot": {
+      "label": "blocker registry snapshot",
+      "status": "pass"
+    },
+    "testnetPreflightGate": {
+      "label": "testnet preflight gate",
+      "status": "blocked"
+    },
+    "testnetPreflightGateJson": {
+      "label": "testnet preflight gate JSON",
+      "status": "blocked"
+    },
+    "ownerPolicyPreflightGate": {
+      "label": "owner policy preflight gate",
+      "status": "blocked"
+    },
+    "ownerPolicyPreflightGateJson": {
+      "label": "owner policy preflight gate JSON",
+      "status": "blocked"
+    }
+  },
+  "safeToDeploy": false,
+  "safeToPerformFundedTransaction": false,
+  "safeToPerformGovernanceTransaction": false,
+  "safeToVerifyBscScan": false,
+  "safeToClaimReadiness": false,
+  "nonApproval": {
+    "deployment": true,
+    "fundedTransaction": true,
+    "governanceTransaction": true,
+    "bscScanVerification": true,
+    "release": true,
+    "publicVisibility": true,
+    "runtimeReadiness": true,
+    "stagingReadiness": true,
+    "testnetReadiness": true,
+    "mainnetReadiness": true
+  },
+  "containsSecrets": false,
+  "containsRealOwnerValues": false,
+  "requiresOwnerReview": true,
+  "requiresLaterExplicitDeployInstruction": true
+}
