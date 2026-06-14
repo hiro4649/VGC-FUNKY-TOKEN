@@ -93,6 +93,7 @@ Required before any testnet deploy:
 - deployment readiness owner action issue parser snapshot pass
 - deployment readiness owner action review packet self-test pass
 - deployment readiness owner action review packet snapshot pass
+- deployment readiness owner action intake checks pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation

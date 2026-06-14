@@ -122,6 +122,11 @@ Owner action review packet snapshots keep text and JSON outputs, source parse
 status, safeTo flags, owner review requirement, later deploy instruction
 requirement, no-secret state, no-real-owner-values state, and non-approval
 boundaries stable.
+Owner action intake checks are for later owner action intake validation only,
+accept no secrets or real owner values, and are not deployment approval, not
+funded transaction approval, not governance transaction approval, not BscScan
+verification approval, not release approval, not visibility approval, and not
+readiness.
 
 Validate a filled JSON file with:
 
