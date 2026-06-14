@@ -102,3 +102,9 @@ aggregate intake status, subcheck statuses, blocked gate statuses, false
 safe-to flags, no-secret state, no-real-owner-values state, owner review
 requirement, later explicit deploy instruction requirement, and non-approval
 boundaries. It does not clear `DEPLOYMENT_READINESS_BLOCKED`.
+
+The deployment readiness owner action intake artifact exporter records the
+blocked intake state for later owner review only. It does not clear
+`DEPLOYMENT_READINESS_BLOCKED`, does not process real owner values, and does not
+approve deployment, funded transactions, governance transactions, BscScan
+verification, releases, visibility changes, or readiness.

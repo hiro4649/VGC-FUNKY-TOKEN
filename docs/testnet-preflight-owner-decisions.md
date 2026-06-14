@@ -198,3 +198,8 @@ Deployment readiness owner action intake checks snapshots cover only
 placeholder aggregate output. They do not process real owner values and do not
 approve deployment, funded transactions, governance transactions, BscScan
 verification, releases, visibility changes, or readiness.
+
+Deployment readiness owner action intake artifacts are for later owner action
+intake review only. They use placeholder sample data, accept no secrets or real
+owner values, and do not approve deployment, funded transactions, governance
+transactions, BscScan verification, releases, visibility changes, or readiness.
