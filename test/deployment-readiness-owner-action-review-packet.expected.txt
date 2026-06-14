@@ -1,0 +1,23 @@
+VGC-FUNKY-TOKEN deployment readiness owner action review packet
+status: OWNER_ACTION_REVIEW_REQUIRED
+source parse status: OWNER_ACTION_ISSUE_PARSE_BLOCKED_OR_PENDING
+owner actions: pending or placeholder-safe
+unsafe input accepted: false
+secret input accepted: false
+safeToDeploy: false
+safeToPerformFundedTransaction: false
+safeToPerformGovernanceTransaction: false
+safeToVerifyBscScan: false
+safeToClaimReadiness: false
+later explicit deploy instruction required: true
+owner review required: true
+no deployment approval
+no funded transaction approval
+no governance transaction approval
+no BscScan verification approval
+no release approval
+no public visibility approval
+no runtime readiness approval
+no staging readiness approval
+no testnet readiness approval
+no mainnet readiness approval

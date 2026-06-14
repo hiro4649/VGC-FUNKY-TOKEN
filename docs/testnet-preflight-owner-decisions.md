@@ -168,6 +168,10 @@ Owner action review packets are for later owner review only, accept no secrets,
 and are not deployment approval, not funded transaction approval, not governance
 transaction approval, not BscScan verification approval, not release approval,
 not visibility approval, and not readiness.
+Owner action review packet snapshots keep text and JSON outputs, source parse
+status, safeTo flags, owner review requirement, later deploy instruction
+requirement, no-secret state, no-real-owner-values state, and non-approval
+boundaries stable.
 
 ## 9. Explicit Non-Approval
 
