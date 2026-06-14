@@ -370,3 +370,10 @@ locks placeholder-only text and JSON output while preserving blocked gates,
 false safe-to flags, no-secret state, no-real-owner-values state, owner review
 requirement, later explicit deploy instruction requirement, and non-approval
 boundaries.
+
+Run `node scripts/export-deployment-readiness-owner-action-intake-artifact.js`
+to export a compact machine-readable owner action intake artifact for later
+owner review only. The artifact accepts no secrets or real owner values and is
+not deployment approval, not funded transaction approval, not governance
+transaction approval, not BscScan verification approval, not release approval,
+not visibility approval, and not readiness.

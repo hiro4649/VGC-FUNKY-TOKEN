@@ -241,6 +241,15 @@ jobs:
       - name: Run deployment readiness owner action intake checks snapshot guard
         run: node scripts/test-deployment-readiness-owner-action-intake-checks-snapshot.js
 
+      - name: Export deployment readiness owner action intake artifact
+        run: node scripts/export-deployment-readiness-owner-action-intake-artifact.js
+
+      - name: Export pretty deployment readiness owner action intake artifact
+        run: node scripts/export-deployment-readiness-owner-action-intake-artifact.js --pretty
+
+      - name: Run deployment readiness owner action intake artifact self-tests
+        run: node scripts/test-deployment-readiness-owner-action-intake-artifact.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:
