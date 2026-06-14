@@ -1,7 +1,7 @@
 # AGENTS.md
 
 <!-- CODEX_QUALITY_HARNESS_BEGIN -->
-CODEX_QUALITY_HARNESS_FILE v1.2.1
+CODEX_QUALITY_HARNESS_FILE v1.2.2
 
 ## Prime Directive
 
@@ -73,3 +73,15 @@ routing/review pool contracts. v1.2.1 must not add new P0 artifacts,
 top-level statuses, product/package/runtime/workflow changes, raw-log access,
 8-session use, wallet/RPC/deploy access, self approval, GitHub approval review,
 readiness claims, legal compliance claims, or YouTube policy compliance claims.
+For v1.2.2 Context-Aware Skill Routing and Read Budget Discipline, use
+`docs/process/CODEX_V122_SPEC.md`. v1.2.2 adds only internal
+`skillContextRouting` fields inside the existing orchestration capsule when the
+repo carries the full harness scripts. Read less, preserve authority: read
+AGENTS.md, the active manifest, and the active v1.2.2 spec first; defer README,
+legacy specs, and PR history unless task profile or safe artifact pointer
+requires them. Preserve v1.1.8 Final Decision authority, v1.1.9 artifact/status
+surface, v1.2.0 routing/review pool, and v1.2.1 calibration compatibility.
+v1.2.2 does not add target rollout beyond this metadata/script install, product
+code, package/lockfile, runtime/workflow changes, raw-log access, 8-session use,
+wallet/RPC/deploy access, self approval, GitHub approval review, or readiness,
+legal, or YouTube policy compliance claims.
