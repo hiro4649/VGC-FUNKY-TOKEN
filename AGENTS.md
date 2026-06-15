@@ -1,47 +1,46 @@
 # AGENTS.md
 
 <!-- CODEX_QUALITY_HARNESS_BEGIN -->
-CODEX_QUALITY_HARNESS_FILE v1.2.3
+CODEX_QUALITY_HARNESS_FILE v1.2.4
 
-
-For v1.2.3 Observed Skill Evidence and Decision Closure, use
-`docs/process/CODEX_V123_SPEC.md` and
+For v1.2.4 Delegated Autonomy Semantics, use
+`docs/process/CODEX_V124_SPEC.md` and
 `docs/process/CODEX_ACTIVE_POLICY_INDEX.json`. Profile ID:
-`HARNESS_V123_TARGET_INSTALL`. Preserve v1.1.8 Final Decision, v1.1.9
-P0 artifacts/statuses, and v1.2.0-v1.2.2 compatibility. No product, package,
-lockfile, runtime, workflow, raw-log, full-history, wallet/RPC/deploy,
-self-approval, GitHub approval review, readiness, legal, or YouTube compliance
-claim.
+`VGC_TOKEN_NO_DEPLOY_NO_VALUE_TRANSFER_V1`.
+
 ## Prime Directive
 
 This repository is a token-only downstream project consuming Codex Harness
-v1.1.9 as a managed readonly target. Work here must stay within the explicitly
-authorized repo and task scope.
+v1.2.4 as a restricted managed target. Ship the smallest correct change that
+increases product value without weakening truth, trust, security, or
+maintainability.
 
 ## Token-Only Harness Boundary
 
-VGC-FUNKY-TOKEN is onboarded only for harness metadata, readonly evidence, and
-safe governance of future review scopes. This onboarding does not authorize
-product implementation, contract edits, deployment, BscScan verification,
-owner-value changes, wallet access, RPC access, release activity, or readiness
-claims.
+VGC-FUNKY-TOKEN is onboarded only for harness metadata, readonly evidence,
+token validation, and safe governance of future review scopes. This rollout does
+not authorize product implementation, contract edits, deployment, BscScan
+verification, owner-value changes, wallet access, RPC access, release activity,
+or readiness claims.
 
 Use `docs/process/CODEX_HARNESS_MANIFEST.json` for machine-readable harness
 metadata and `docs/process/CODEX_VGC_TOKEN_HARNESS_PROFILE_V1_1_8.md` for the
 v1.1.8 token-only readonly profile history. Use
 `docs/process/CODEX_VGC_TOKEN_HARNESS_PROFILE_V1_1_9.md` for the active
-token-only readonly profile.
+token-only readonly profile history.
 
-## v1.1.9 Decision Rules
+## Authority
 
-Final Decision artifacts remain the authoritative machine decision surface.
-v1.1.9 adds readonly orchestration, worker proof, and owner decision brief
-metadata only. PR bodies are human-rendered summaries only and must not satisfy
-machine evidence. Machine evidence must be a safe artifact or manifest entry.
+v1.1.8 Final Decision remains final authority.
+v1.1.9 readonly orchestration, worker proof, and owner decision brief metadata
+remain compatibility layers. v1.2.0-v1.2.3 routing, calibration, read-budget,
+and observed decision-closure compatibility remains preserved. v1.2.4 adds only
+internal goal, delegation, evidence semantics, bounded expert loop, safe
+failure, and target-footprint semantics inside existing harness surfaces.
 
-`create_pr_only` may pass local validation without remote evidence.
-`merge_current_pr` requires same-head remote evidence and explicit owner merge
-instruction.
+PR bodies are human-rendered summaries only and must not satisfy machine
+evidence. Machine evidence must be a safe artifact, manifest entry, or token
+validation result.
 
 ## Safety Boundaries
 
@@ -70,27 +69,3 @@ No raw log access is allowed.
 No 8-session operation is allowed.
 
 <!-- CODEX_QUALITY_HARNESS_END -->
-
-For v1.2.1 Adaptive Routing Metrics and Evidence Calibration Guard, use
-`docs/process/CODEX_V121_SPEC.md`. v1.2.1 target installs add only internal
-calibration fields inside the existing v1.1.9 P0 artifacts: adaptive metrics,
-routing calibration, evidence freshness, target score baseline, root-cause loop
-guard, boundary diff classification, claim lint, owner burden metrics, and
-merge decision integrity. Preserve the v1.1.8 Final Decision authority, the
-v1.1.9 artifact set and operator status surface, and the v1.2.0 adaptive
-routing/review pool contracts. v1.2.1 must not add new P0 artifacts,
-top-level statuses, product/package/runtime/workflow changes, raw-log access,
-8-session use, wallet/RPC/deploy access, self approval, GitHub approval review,
-readiness claims, legal compliance claims, or YouTube policy compliance claims.
-For v1.2.2 Context-Aware Skill Routing and Read Budget Discipline, use
-`docs/process/CODEX_V122_SPEC.md`. v1.2.2 adds only internal
-`skillContextRouting` fields inside the existing orchestration capsule when the
-repo carries the full harness scripts. Read less, preserve authority: read
-AGENTS.md, the active manifest, and the active v1.2.2 spec first; defer README,
-legacy specs, and PR history unless task profile or safe artifact pointer
-requires them. Preserve v1.1.8 Final Decision authority, v1.1.9 artifact/status
-surface, v1.2.0 routing/review pool, and v1.2.1 calibration compatibility.
-v1.2.2 does not add target rollout beyond this metadata/script install, product
-code, package/lockfile, runtime/workflow changes, raw-log access, 8-session use,
-wallet/RPC/deploy access, self approval, GitHub approval review, or readiness,
-legal, or YouTube policy compliance claims.
