@@ -77,3 +77,8 @@ no secrets or real owner values and is not deployment approval, not funded
 transaction approval, not governance transaction approval, not BscScan
 verification approval, not release approval, not visibility approval, and not
 readiness.
+
+The deployment readiness owner action intake artifact snapshot guard locks the
+compact and pretty JSON artifact outputs, blocked/pending statuses, no-secret
+state, no-real-owner-values state, safeTo flags, owner review requirement, later
+deploy instruction requirement, non-approval boundaries, and summary counts.

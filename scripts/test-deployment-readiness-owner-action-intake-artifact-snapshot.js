@@ -1,0 +1,147 @@
+#!/usr/bin/env node
+
+const fs = require("fs");
+const path = require("path");
+const { spawnSync } = require("child_process");
+
+const exporterPath = path.join(__dirname, "export-deployment-readiness-owner-action-intake-artifact.js");
+const expectedJsonPath = "test/deployment-readiness-owner-action-intake-artifact.expected.json";
+const expectedPrettyJsonPath = "test/deployment-readiness-owner-action-intake-artifact.expected.pretty.json";
+
+const safeToFields = [
+  "safeToDeploy",
+  "safeToPerformFundedTransaction",
+  "safeToPerformGovernanceTransaction",
+  "safeToVerifyBscScan",
+  "safeToClaimReadiness",
+];
+
+const nonApprovalFields = [
+  "deployment",
+  "fundedTransaction",
+  "governanceTransaction",
+  "bscScanVerification",
+  "release",
+  "publicVisibility",
+  "runtimeReadiness",
+  "stagingReadiness",
+  "testnetReadiness",
+  "mainnetReadiness",
+];
+
+function fail(reason) {
+  console.log("deployment readiness owner action intake artifact snapshot test failed");
+  console.log(`safe reason code: ${reason}`);
+  console.log("no value echoed");
+  process.exit(1);
+}
+
+function assert(condition, reason) {
+  if (!condition) fail(reason);
+}
+
+function normalizeText(text) {
+  return text.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n").trimEnd();
+}
+
+function runExporter(args = []) {
+  const result = spawnSync(process.execPath, [exporterPath, ...args], {
+    encoding: "utf8",
+    stdio: "pipe",
+  });
+  assert(result.status === 0, "exporter-command-failed");
+  return normalizeText(result.stdout);
+}
+
+function assertSafeOutput(text) {
+  const forbidden = [
+    ["raw-issue-body", /###\s+Target network approval/i],
+    ["raw-owner-json", /{\s*"targetNetwork"\s*:/],
+    ["full-evm-address", /0x[a-fA-F0-9]{40}/],
+    ["private-key-like-64-hex", /0x[a-fA-F0-9]{64}/],
+    ["rpc-url", /\b(?:ht|f)tps?:\/\/[^\s"'<>]*(?:bsc|binance|alchemy|infura|quicknode|nodereal|ankr|moralis|chainstack|rpc)/i],
+    ["api-key-assignment", /\b(?:api[_-]?key|apikey|secret)\s*[:=]\s*[^\s"'<>]+/i],
+    ["env-assignment", /^\s*[A-Z][A-Z0-9_]{2,}\s*=\s*.+/m],
+    ["db-url", /\b(?:postgres|mysql|mongodb|redis):\/\//i],
+    ["jwt-literal", /eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/],
+    ["cookie-assignment", /\bcookie\s*[:=]\s*[^\s"'<>]+/i],
+    ["local-machine-path", /[A-Z]:\\/],
+    ["timestamp", /\b20\d{2}-\d{2}-\d{2}[T\s]\d{2}:\d{2}/],
+    ["approval-claim", /\b(deployment|funded transaction|governance transaction|BscScan verification|release|visibility|readiness)\s+approval\b/i],
+  ];
+
+  for (const [, pattern] of forbidden) {
+    assert(!pattern.test(text), "forbidden-output-detected");
+  }
+}
+
+function readJson(filePath) {
+  try {
+    return JSON.parse(normalizeText(fs.readFileSync(filePath, "utf8")));
+  } catch {
+    fail("expected-json-parse-failed");
+  }
+}
+
+const jsonText = runExporter();
+const prettyText = runExporter(["--pretty"]);
+const expectedPrettyText = normalizeText(fs.readFileSync(expectedPrettyJsonPath, "utf8"));
+
+assertSafeOutput(jsonText);
+assertSafeOutput(prettyText);
+assert(prettyText === expectedPrettyText, "pretty-json-snapshot-mismatch");
+
+let actual;
+let pretty;
+try {
+  actual = JSON.parse(jsonText);
+  pretty = JSON.parse(prettyText);
+} catch {
+  fail("generated-json-parse-failed");
+}
+
+const expected = readJson(expectedJsonPath);
+const expectedPretty = readJson(expectedPrettyJsonPath);
+
+assert(JSON.stringify(actual) === JSON.stringify(expected), "json-snapshot-mismatch");
+assert(JSON.stringify(pretty) === JSON.stringify(expectedPretty), "pretty-json-semantic-mismatch");
+assert(JSON.stringify(actual) === JSON.stringify(pretty), "json-pretty-semantic-mismatch");
+
+assert(actual.schemaName === "VGC_DEPLOYMENT_READINESS_OWNER_ACTION_INTAKE_ARTIFACT", "schema-name-mismatch");
+assert(actual.schemaVersion === 1, "schema-version-mismatch");
+assert(actual.status === "OWNER_ACTION_INTAKE_ARTIFACT_BLOCKED_OR_PENDING", "status-mismatch");
+assert(actual.intakeChecksStatus === "OWNER_ACTION_INTAKE_CHECKS_BLOCKED_OR_PENDING", "intake-status-mismatch");
+assert(actual.parserStatus === "OWNER_ACTION_ISSUE_PARSE_BLOCKED_OR_PENDING", "parser-status-mismatch");
+assert(actual.reviewPacketStatus === "OWNER_ACTION_REVIEW_REQUIRED", "review-packet-status-mismatch");
+assert(actual.ownerActionPacketStatus === "OWNER_ACTIONS_REQUIRED", "owner-action-packet-status-mismatch");
+assert(actual.blockerRegistryStatus === "DEPLOYMENT_READINESS_BLOCKED", "blocker-registry-status-mismatch");
+assert(actual.testnetPreflightGateStatus === "BLOCKED_OWNER_DECISIONS_PENDING", "testnet-gate-status-mismatch");
+assert(actual.ownerPolicyPreflightGateStatus === "BLOCKED_OWNER_POLICY_DECISIONS_PENDING", "owner-policy-gate-status-mismatch");
+
+for (const field of safeToFields) {
+  assert(actual[field] === false, "safe-to-flag-mismatch");
+}
+
+assert(actual.containsSecrets === false, "contains-secrets-mismatch");
+assert(actual.containsRealOwnerValues === false, "contains-real-owner-values-mismatch");
+assert(actual.unsafeInputAccepted === false, "unsafe-input-mismatch");
+assert(actual.secretInputAccepted === false, "secret-input-mismatch");
+assert(actual.requiresOwnerReview === true, "owner-review-mismatch");
+assert(actual.requiresLaterExplicitDeployInstruction === true, "deploy-instruction-mismatch");
+
+for (const field of nonApprovalFields) {
+  assert(actual.nonApproval && actual.nonApproval[field] === true, "non-approval-mismatch");
+}
+
+for (const field of [
+  "pendingOwnerActionCount",
+  "placeholderSafeActionCount",
+  "requiredCheckCount",
+  "passedCheckCount",
+  "blockedGateCount",
+]) {
+  assert(Number.isInteger(actual.summary && actual.summary[field]), "summary-count-missing");
+  assert(actual.summary[field] >= 0, "summary-count-negative");
+}
+
+console.log("deployment readiness owner action intake artifact snapshot tests passed");

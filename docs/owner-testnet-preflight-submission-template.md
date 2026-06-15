@@ -162,3 +162,8 @@ Deployment readiness owner action intake artifacts summarize placeholder-only
 intake status for later owner review. They accept no secrets or real owner
 values and do not approve deployment, funded transactions, governance
 transactions, BscScan verification, releases, visibility changes, or readiness.
+
+Deployment readiness owner action intake artifact snapshots lock compact and
+pretty JSON outputs, blocked/pending statuses, no-secret state,
+no-real-owner-values state, safeTo flags, owner review requirement, later deploy
+instruction requirement, non-approval boundaries, and summary counts.

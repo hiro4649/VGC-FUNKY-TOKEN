@@ -1,0 +1,42 @@
+{
+  "schemaName": "VGC_DEPLOYMENT_READINESS_OWNER_ACTION_INTAKE_ARTIFACT",
+  "schemaVersion": 1,
+  "status": "OWNER_ACTION_INTAKE_ARTIFACT_BLOCKED_OR_PENDING",
+  "intakeChecksStatus": "OWNER_ACTION_INTAKE_CHECKS_BLOCKED_OR_PENDING",
+  "parserStatus": "OWNER_ACTION_ISSUE_PARSE_BLOCKED_OR_PENDING",
+  "reviewPacketStatus": "OWNER_ACTION_REVIEW_REQUIRED",
+  "ownerActionPacketStatus": "OWNER_ACTIONS_REQUIRED",
+  "blockerRegistryStatus": "DEPLOYMENT_READINESS_BLOCKED",
+  "testnetPreflightGateStatus": "BLOCKED_OWNER_DECISIONS_PENDING",
+  "ownerPolicyPreflightGateStatus": "BLOCKED_OWNER_POLICY_DECISIONS_PENDING",
+  "safeToDeploy": false,
+  "safeToPerformFundedTransaction": false,
+  "safeToPerformGovernanceTransaction": false,
+  "safeToVerifyBscScan": false,
+  "safeToClaimReadiness": false,
+  "containsSecrets": false,
+  "containsRealOwnerValues": false,
+  "unsafeInputAccepted": false,
+  "secretInputAccepted": false,
+  "requiresOwnerReview": true,
+  "requiresLaterExplicitDeployInstruction": true,
+  "nonApproval": {
+    "deployment": true,
+    "fundedTransaction": true,
+    "governanceTransaction": true,
+    "bscScanVerification": true,
+    "release": true,
+    "publicVisibility": true,
+    "runtimeReadiness": true,
+    "stagingReadiness": true,
+    "testnetReadiness": true,
+    "mainnetReadiness": true
+  },
+  "summary": {
+    "pendingOwnerActionCount": 20,
+    "placeholderSafeActionCount": 20,
+    "requiredCheckCount": 21,
+    "passedCheckCount": 17,
+    "blockedGateCount": 4
+  }
+}

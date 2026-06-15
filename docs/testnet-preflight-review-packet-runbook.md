@@ -377,3 +377,9 @@ owner review only. The artifact accepts no secrets or real owner values and is
 not deployment approval, not funded transaction approval, not governance
 transaction approval, not BscScan verification approval, not release approval,
 not visibility approval, and not readiness.
+
+Run `node scripts/test-deployment-readiness-owner-action-intake-artifact-snapshot.js`
+when changing the intake artifact shape. The guard locks compact and pretty JSON
+outputs, blocked/pending statuses, safeTo flags, no-secret state,
+no-real-owner-values state, owner review requirement, later deploy instruction
+requirement, non-approval boundaries, and summary counts.
