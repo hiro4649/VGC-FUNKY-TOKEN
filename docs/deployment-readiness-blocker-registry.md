@@ -108,3 +108,8 @@ blocked intake state for later owner review only. It does not clear
 `DEPLOYMENT_READINESS_BLOCKED`, does not process real owner values, and does not
 approve deployment, funded transactions, governance transactions, BscScan
 verification, releases, visibility changes, or readiness.
+
+The deployment readiness owner action intake artifact snapshot guard fixes the
+compact and pretty JSON outputs so blocked/pending statuses, no-secret state,
+no-real-owner-values state, safeTo flags, non-approval boundaries, and summary
+counts cannot silently weaken.

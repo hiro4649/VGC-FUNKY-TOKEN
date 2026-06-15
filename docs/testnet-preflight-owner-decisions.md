@@ -203,3 +203,9 @@ Deployment readiness owner action intake artifacts are for later owner action
 intake review only. They use placeholder sample data, accept no secrets or real
 owner values, and do not approve deployment, funded transactions, governance
 transactions, BscScan verification, releases, visibility changes, or readiness.
+
+Deployment readiness owner action intake artifact snapshots keep compact and
+pretty JSON outputs stable so schemaName, schemaVersion, blocked/pending
+statuses, safeTo flags, no-secret state, no-real-owner-values state, owner
+review requirement, later deploy instruction requirement, non-approval
+boundaries, and summary counts cannot silently weaken.

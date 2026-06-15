@@ -96,6 +96,7 @@ Required before any testnet deploy:
 - deployment readiness owner action intake checks pass
 - deployment readiness owner action intake checks snapshot guard pass
 - deployment readiness owner action intake artifact export pass
+- deployment readiness owner action intake artifact snapshot guard pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation
