@@ -1,17 +1,17 @@
 {
-  "marker": "CODEX_QUALITY_HARNESS_FILE v1.2.4",
-  "schemaVersion": "1.2.4",
-  "sourceHarnessVersion": "1.2.4",
-  "harnessVersion": "1.2.4",
-  "activeHarnessVersion": "1.2.4",
-  "targetHarnessVersion": "1.2.4",
+  "marker": "CODEX_QUALITY_HARNESS_FILE v1.2.5",
+  "schemaVersion": "1.2.5",
+  "sourceHarnessVersion": "1.2.5",
+  "harnessVersion": "1.2.5",
+  "activeHarnessVersion": "1.2.5",
+  "targetHarnessVersion": "1.2.5",
   "targetRepoType": "token_only_managed",
   "targetRepoMode": true,
   "readonlyHarnessProfile": true,
   "sourceOnlyRelease": false,
   "targetRollout": "completed",
-  "activeSelfTestSuite": "v124",
-  "activeSelfTestStatusKey": "v124SelfTestStatus",
+  "activeSelfTestSuite": "v125",
+  "activeSelfTestStatusKey": "v125SelfTestStatus",
   "forbiddenScopeProfile": "VGC_TOKEN_NO_DEPLOY_NO_VALUE_TRANSFER_V1",
   "verificationProfile": "TOKEN_READONLY_HARNESS_L1",
   "mergeReadinessProfile": "SAME_HEAD_REQUIRED_CHECKS_CLEAN",
@@ -52,7 +52,7 @@
   "noFundedTransactionApprovalGranted": true,
   "noGovernanceTransactionApprovalGranted": true,
   "safeSummaryOnly": true,
-  "theme": "Delegated Autonomy Semantics",
+  "theme": "Goal-Sharded Worktree Fleet and Evidence Lane Closure",
   "legacySelfTests": {
     "v122": "blocking_compatibility",
     "v121": "blocking_compatibility",
@@ -66,16 +66,17 @@
     "v113": "selected_critical",
     "v080_v112": "target_shadow_legacy_count_only",
     "v123": "blocking_compatibility",
-    "v124": "blocking_current"
+    "v124": "blocking_compatibility",
+    "v125": "token_metadata_current"
   },
-  "upgradePath": "direct_v123_to_v124_metadata_only",
+  "upgradePath": "direct_v124_to_v125_metadata_only",
   "contextRouting": {
-    "version": "1.2.4",
+    "version": "1.2.5",
     "field": "metadata_profile.skillContextRouting",
     "newP0Artifact": false,
     "newTopLevelStatus": false,
     "newSkill": false,
-    "subtitle": "Read Less, Preserve Authority",
+    "subtitle": "Goal-Sharded Worktree Fleet and Evidence Lane Closure",
     "tokenOnlyMetadataProfile": true
   },
   "observedSkillDecisionClosure": {
@@ -109,6 +110,21 @@
     "newP0Artifact": false,
     "newTopLevelStatus": false,
     "newSkill": false,
+    "safeSummaryOnly": true
+  },
+  "goalShardedWorktreeFleet": {
+    "version": "1.2.5",
+    "tokenOnlyMetadataProfile": true,
+    "goalShard": "delegated_packet_only_not_owner_authority",
+    "worktreeFleet": "metadata_only_no_parallel_contract_worktrees_without_owner_scope",
+    "evidenceLane": "safe_token_validation_and_manifest_metadata_only",
+    "typedMonitorInbox": "advisory_only_no_authority_or_mutation",
+    "costAwareFanout": "no_high_tier_or_multi_agent_escalation_without_new_safe_evidence",
+    "productValueDelta": "advisory_pressure_only_no_contract_or_deploy_scope",
+    "newP0Artifact": false,
+    "newTopLevelStatus": false,
+    "newSkill": false,
+    "targetRollout": "metadata_only",
     "safeSummaryOnly": true
   }
 }

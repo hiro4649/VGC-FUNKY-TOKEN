@@ -1,17 +1,17 @@
 # AGENTS.md
 
 <!-- CODEX_QUALITY_HARNESS_BEGIN -->
-CODEX_QUALITY_HARNESS_FILE v1.2.4
+CODEX_QUALITY_HARNESS_FILE v1.2.5
 
-For v1.2.4 Delegated Autonomy Semantics, use
-`docs/process/CODEX_V124_SPEC.md` and
+For v1.2.5 Goal-Sharded Worktree Fleet and Evidence Lane Closure, use
+`docs/process/CODEX_V125_SPEC.md` and
 `docs/process/CODEX_ACTIVE_POLICY_INDEX.json`. Profile ID:
 `VGC_TOKEN_NO_DEPLOY_NO_VALUE_TRANSFER_V1`.
 
 ## Prime Directive
 
 This repository is a token-only downstream project consuming Codex Harness
-v1.2.4 as a restricted managed target. Ship the smallest correct change that
+v1.2.5 as a restricted managed target. Ship the smallest correct change that
 increases product value without weakening truth, trust, security, or
 maintainability.
 
@@ -34,9 +34,10 @@ token-only readonly profile history.
 v1.1.8 Final Decision remains final authority.
 v1.1.9 readonly orchestration, worker proof, and owner decision brief metadata
 remain compatibility layers. v1.2.0-v1.2.3 routing, calibration, read-budget,
-and observed decision-closure compatibility remains preserved. v1.2.4 adds only
-internal goal, delegation, evidence semantics, bounded expert loop, safe
-failure, and target-footprint semantics inside existing harness surfaces.
+and observed decision-closure compatibility remains preserved. v1.2.4
+specialist-governance semantics remain compatibility layers. v1.2.5 adds only
+internal goal shard, worktree fleet, evidence lane, typed monitor inbox, fanout
+guard, and yield semantics inside existing harness surfaces.
 
 PR bodies are human-rendered summaries only and must not satisfy machine
 evidence. Machine evidence must be a safe artifact, manifest entry, or token
