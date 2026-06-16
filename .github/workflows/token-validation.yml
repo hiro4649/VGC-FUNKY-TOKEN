@@ -253,6 +253,15 @@ jobs:
       - name: Run deployment readiness owner action intake artifact snapshot guard
         run: node scripts/test-deployment-readiness-owner-action-intake-artifact-snapshot.js
 
+      - name: Check deployment readiness owner action intake final gate
+        run: node scripts/check-deployment-readiness-owner-action-intake-final-gate.js
+
+      - name: Check deployment readiness owner action intake final gate JSON
+        run: node scripts/check-deployment-readiness-owner-action-intake-final-gate.js --json
+
+      - name: Run deployment readiness owner action intake final gate self-tests
+        run: node scripts/test-deployment-readiness-owner-action-intake-final-gate.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

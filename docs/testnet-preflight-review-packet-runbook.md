@@ -383,3 +383,9 @@ when changing the intake artifact shape. The guard locks compact and pretty JSON
 outputs, blocked/pending statuses, safeTo flags, no-secret state,
 no-real-owner-values state, owner review requirement, later deploy instruction
 requirement, non-approval boundaries, and summary counts.
+
+Run `node scripts/check-deployment-readiness-owner-action-intake-final-gate.js`
+as the final placeholder-only owner action intake gate before any future real
+owner value intake. The gate accepts no secrets or real owner values and does
+not approve deployment, funded transactions, governance transactions, BscScan
+verification, releases, visibility changes, or readiness claims.

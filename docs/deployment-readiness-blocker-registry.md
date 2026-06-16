@@ -113,3 +113,10 @@ The deployment readiness owner action intake artifact snapshot guard fixes the
 compact and pretty JSON outputs so blocked/pending statuses, no-secret state,
 no-real-owner-values state, safeTo flags, non-approval boundaries, and summary
 counts cannot silently weaken.
+
+The deployment readiness owner action intake final gate aggregates the
+placeholder-only artifact, checks, parser, review packet, owner action packet,
+registry, testnet gate, and owner policy gate into a single blocked status. It
+does not process real owner values and does not approve deployment, funded
+transactions, governance transactions, BscScan verification, releases,
+visibility changes, or readiness.
