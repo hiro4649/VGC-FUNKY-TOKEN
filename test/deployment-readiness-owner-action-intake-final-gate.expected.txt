@@ -1,0 +1,27 @@
+VGC-FUNKY-TOKEN deployment readiness owner action intake final gate
+status: OWNER_ACTION_INTAKE_FINAL_GATE_BLOCKED
+artifact: blocked or pending
+intake checks: blocked or pending
+parser: blocked or pending
+review packet: review required
+owner action packet: owner actions required
+blocker registry: deployment readiness blocked
+testnet preflight gate: blocked
+owner policy preflight gate: blocked
+safeToDeploy: false
+safeToPerformFundedTransaction: false
+safeToPerformGovernanceTransaction: false
+safeToVerifyBscScan: false
+safeToClaimReadiness: false
+owner review required: true
+later explicit deploy instruction required: true
+no deployment approval
+no funded transaction approval
+no governance transaction approval
+no BscScan verification approval
+no release approval
+no public visibility approval
+no runtime readiness approval
+no staging readiness approval
+no testnet readiness approval
+no mainnet readiness approval
