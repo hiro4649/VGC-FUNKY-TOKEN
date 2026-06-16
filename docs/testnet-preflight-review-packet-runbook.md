@@ -203,6 +203,15 @@ Use this to consolidate remaining blockers into the expected
 Use the snapshot guard to keep the registry text and JSON outputs blocked,
 redacted, and non-approving.
 
+Deployment readiness owner action intake final gate snapshot guard:
+
+```powershell
+node scripts/test-deployment-readiness-owner-action-intake-final-gate-snapshot.js
+```
+
+Use this to keep the final gate text and JSON outputs blocked, redacted, and
+non-approving before any future real owner value intake.
+
 Deployment readiness owner action packet:
 
 ```powershell

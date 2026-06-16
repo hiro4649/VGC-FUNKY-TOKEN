@@ -89,3 +89,8 @@ secrets or real owner values, keeps deployment readiness blocked, and is not
 deployment approval. It does not approve funded transactions, governance
 transactions, BscScan verification, releases, visibility changes, or readiness
 claims.
+
+The deployment readiness owner action intake final gate snapshot guard locks the
+text and JSON final gate outputs, blocked upstream statuses, false safeTo flags,
+owner review requirement, later explicit deploy instruction requirement,
+no-secret state, no-real-owner-values state, and non-approval boundaries.
