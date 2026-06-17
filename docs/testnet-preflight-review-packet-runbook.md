@@ -398,3 +398,12 @@ as the final placeholder-only owner action intake gate before any future real
 owner value intake. The gate accepts no secrets or real owner values and does
 not approve deployment, funded transactions, governance transactions, BscScan
 verification, releases, visibility changes, or readiness claims.
+
+Deployment readiness owner action intake runbook:
+
+Use [the intake runbook](deployment-readiness-owner-action-intake-runbook.md)
+as owner-facing guidance for later public owner decision intake only. It accepts
+no secrets and no real owner values in this PR, and it is not deploy approval,
+not funded transaction approval, not governance transaction approval, not
+BscScan verification approval, not release approval, not visibility approval,
+and not readiness.
