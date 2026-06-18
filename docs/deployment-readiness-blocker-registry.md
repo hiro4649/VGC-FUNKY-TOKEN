@@ -126,3 +126,10 @@ text and JSON final gate outputs so blocked upstream statuses, false safeTo
 flags, owner review requirement, later explicit deploy instruction requirement,
 no-secret state, no-real-owner-values state, and non-approval boundaries cannot
 silently weaken.
+
+The [deployment readiness owner action intake runbook](deployment-readiness-owner-action-intake-runbook.md)
+explains later public owner decision intake boundaries. It accepts no secrets
+and no real owner values in this PR, and it is not deploy approval, not funded
+transaction approval, not governance transaction approval, not BscScan
+verification approval, not release approval, not visibility approval, and not
+readiness.

@@ -265,6 +265,9 @@ jobs:
       - name: Run deployment readiness owner action intake final gate snapshot guard
         run: node scripts/test-deployment-readiness-owner-action-intake-final-gate-snapshot.js
 
+      - name: Run deployment readiness owner action intake runbook guard
+        run: node scripts/test-deployment-readiness-owner-action-intake-runbook.js
+
       - name: Validate deploy script inputs without deploying
         working-directory: contracts
         env:

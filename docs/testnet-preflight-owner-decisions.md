@@ -220,3 +220,10 @@ Deployment readiness owner action intake final gate snapshots lock the text and
 JSON final gate outputs, blocked upstream statuses, false safeTo flags, owner
 review requirement, later explicit deploy instruction requirement, no-secret
 state, no-real-owner-values state, and non-approval boundaries.
+
+The [deployment readiness owner action intake runbook](deployment-readiness-owner-action-intake-runbook.md)
+is owner-facing guidance for later public owner decision intake only. It accepts
+no secrets and no real owner values in this PR, and it is not deploy approval,
+not funded transaction approval, not governance transaction approval, not
+BscScan verification approval, not release approval, not visibility approval,
+and not readiness.
