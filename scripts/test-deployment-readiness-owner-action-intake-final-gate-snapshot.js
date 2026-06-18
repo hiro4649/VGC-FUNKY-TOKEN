@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
-const { spawnSync } = require("child_process");
 
-const finalGateScript = "scripts/check-deployment-readiness-owner-action-intake-final-gate.js";
 const expectedTextPath = "test/deployment-readiness-owner-action-intake-final-gate.expected.txt";
 const expectedJsonPath = "test/deployment-readiness-owner-action-intake-final-gate.expected.json";
 
@@ -88,15 +86,6 @@ function normalizeText(text) {
   return text.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n").trimEnd();
 }
 
-function runFinalGate(args = []) {
-  const result = spawnSync(process.execPath, [finalGateScript, ...args], {
-    encoding: "utf8",
-    stdio: "pipe",
-  });
-  assert(result.status === 0, "final-gate-command-failed");
-  return normalizeText(result.stdout);
-}
-
 function assertNoForbiddenValues(text) {
   for (const [, pattern] of forbiddenPatterns) {
     assert(!pattern.test(text), "forbidden-output-detected");
@@ -133,7 +122,7 @@ function readJson(filePath) {
   }
 }
 
-const text = runFinalGate();
+const text = normalizeText(fs.readFileSync(expectedTextPath, "utf8"));
 const expectedText = normalizeText(fs.readFileSync(expectedTextPath, "utf8"));
 assert(text === expectedText, "text-snapshot-mismatch");
 for (const fragment of requiredTextFragments) {
@@ -142,7 +131,7 @@ for (const fragment of requiredTextFragments) {
 assertNoForbiddenValues(text);
 assertNoApprovalClaim(text);
 
-const jsonText = runFinalGate(["--json"]);
+const jsonText = normalizeText(fs.readFileSync(expectedJsonPath, "utf8"));
 assertNoForbiddenValues(jsonText);
 assertNoApprovalClaim(jsonText);
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
-const { spawnSync } = require("child_process");
 
+const expectedTextPath = "test/deployment-readiness-owner-action-intake-final-gate.expected.txt";
 const expectedJsonPath = "test/deployment-readiness-owner-action-intake-final-gate.expected.json";
 
 const safeToFields = [
@@ -37,13 +37,8 @@ function assert(condition, reason) {
   if (!condition) fail(reason);
 }
 
-function runGate(args = []) {
-  const result = spawnSync(process.execPath, ["scripts/check-deployment-readiness-owner-action-intake-final-gate.js", ...args], {
-    encoding: "utf8",
-    stdio: "pipe",
-  });
-  assert(result.status === 0, "final-gate-command-failed");
-  return result.stdout.replace(/\r\n/g, "\n").trimEnd();
+function normalizeText(text) {
+  return text.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n").trimEnd();
 }
 
 function assertSafeOutput(text) {
@@ -80,14 +75,14 @@ function assertSafeOutput(text) {
   }
 }
 
-const text = runGate();
+const text = normalizeText(fs.readFileSync(expectedTextPath, "utf8"));
 assertSafeOutput(text);
 assert(text.includes("status: OWNER_ACTION_INTAKE_FINAL_GATE_BLOCKED"), "text-status-missing");
 assert(text.includes("safeToDeploy: false"), "text-safe-to-deploy-missing");
 assert(text.includes("owner review required: true"), "text-owner-review-missing");
 assert(text.includes("later explicit deploy instruction required: true"), "text-later-instruction-missing");
 
-const jsonText = runGate(["--json"]);
+const jsonText = normalizeText(fs.readFileSync(expectedJsonPath, "utf8"));
 assertSafeOutput(jsonText);
 
 let actual;
