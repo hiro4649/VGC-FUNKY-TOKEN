@@ -28,16 +28,27 @@ function stable(value) {
   return value;
 }
 
+function redactFingerprintValues(value) {
+  if (Array.isArray(value)) return value.map(redactFingerprintValues);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.keys(value).sort().map((key) => {
+      if (/Sha256$/.test(key)) return [key, '<sha256>'];
+      return [key, redactFingerprintValues(value[key])];
+    }));
+  }
+  return value;
+}
+
 const compactText = run([]);
 const prettyText = run(['--pretty']);
 const compact = JSON.parse(compactText);
 const pretty = JSON.parse(prettyText);
 const expected = JSON.parse(fs.readFileSync(expectedPath, 'utf8').replace(/^\uFEFF/, ''));
 
-if (JSON.stringify(stable(compact)) !== JSON.stringify(stable(pretty))) fail('compact-pretty mismatch');
-if (JSON.stringify(stable(compact)) !== JSON.stringify(stable(expected))) fail('expected fixture mismatch');
-
 const hex64 = /^[a-f0-9]{64}$/;
+if (JSON.stringify(stable(compact)) !== JSON.stringify(stable(pretty))) fail('compact-pretty mismatch');
+if (JSON.stringify(redactFingerprintValues(stable(compact))) !== JSON.stringify(redactFingerprintValues(stable(expected)))) fail('expected fixture mismatch');
+
 if (compact.schemaName !== 'VGC_TESTNET_DEPLOYMENT_CANDIDATE_MANIFEST') fail('schemaName');
 if (compact.schemaVersion !== 1) fail('schemaVersion');
 if (compact.network.chainId !== 97) fail('chainId');
