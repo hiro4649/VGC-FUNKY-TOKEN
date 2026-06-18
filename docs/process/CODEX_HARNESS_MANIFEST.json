@@ -1,17 +1,17 @@
 {
-  "marker": "CODEX_QUALITY_HARNESS_FILE v1.2.5",
-  "schemaVersion": "1.2.5",
-  "sourceHarnessVersion": "1.2.5",
-  "harnessVersion": "1.2.5",
-  "activeHarnessVersion": "1.2.5",
-  "targetHarnessVersion": "1.2.5",
+  "marker": "CODEX_QUALITY_HARNESS_FILE v1.2.6",
+  "schemaVersion": "1.2.6",
+  "sourceHarnessVersion": "1.2.6",
+  "harnessVersion": "1.2.6",
+  "activeHarnessVersion": "1.2.6",
+  "targetHarnessVersion": "1.2.6",
   "targetRepoType": "token_only_managed",
   "targetRepoMode": true,
   "readonlyHarnessProfile": true,
   "sourceOnlyRelease": false,
   "targetRollout": "completed",
-  "activeSelfTestSuite": "v125",
-  "activeSelfTestStatusKey": "v125SelfTestStatus",
+  "activeSelfTestSuite": "v126",
+  "activeSelfTestStatusKey": "v126SelfTestStatus",
   "forbiddenScopeProfile": "VGC_TOKEN_NO_DEPLOY_NO_VALUE_TRANSFER_V1",
   "verificationProfile": "TOKEN_READONLY_HARNESS_L1",
   "mergeReadinessProfile": "SAME_HEAD_REQUIRED_CHECKS_CLEAN",
@@ -52,7 +52,7 @@
   "noFundedTransactionApprovalGranted": true,
   "noGovernanceTransactionApprovalGranted": true,
   "safeSummaryOnly": true,
-  "theme": "Goal-Sharded Worktree Fleet and Evidence Lane Closure",
+  "theme": "Observed-State Bridge-Safe Loop Runtime with Context-Slim Skill and Validation Routing",
   "legacySelfTests": {
     "v122": "blocking_compatibility",
     "v121": "blocking_compatibility",
@@ -67,16 +67,17 @@
     "v080_v112": "target_shadow_legacy_count_only",
     "v123": "blocking_compatibility",
     "v124": "blocking_compatibility",
-    "v125": "token_metadata_current"
+    "v125": "token_metadata_compatibility",
+    "v126": "token_metadata_current"
   },
-  "upgradePath": "direct_v124_to_v125_metadata_only",
+  "upgradePath": "direct_v125_to_v126_metadata_only",
   "contextRouting": {
-    "version": "1.2.5",
+    "version": "1.2.6",
     "field": "metadata_profile.skillContextRouting",
     "newP0Artifact": false,
     "newTopLevelStatus": false,
     "newSkill": false,
-    "subtitle": "Goal-Sharded Worktree Fleet and Evidence Lane Closure",
+    "subtitle": "Self-reporting becomes observed state; long autonomy uses short safe loops.",
     "tokenOnlyMetadataProfile": true
   },
   "observedSkillDecisionClosure": {
@@ -126,5 +127,40 @@
     "newSkill": false,
     "targetRollout": "metadata_only",
     "safeSummaryOnly": true
+  },
+  "observedStateMinimalLoopRuntime": {
+    "version": "1.2.6",
+    "name": "Observed-State Bridge-Safe Loop Runtime with Context-Slim Skill and Validation Routing",
+    "p0InternalBlocks": [
+      "Observed Workspace, Owner Receipt, and Capability Boundary",
+      "Spec-First Checker/Builder Loop and Stop Circuit",
+      "Evidence Lane State Machine and Safe Failure Capsule",
+      "Context / Skill / Validation Budget Router",
+      "Skill / Review / Product Value Effectiveness"
+    ],
+    "fields": [
+      "orchestrationCapsule.observedWorkspaceOwnerReceiptAndCapability",
+      "orchestrationCapsule.specFirstCheckerBuilderLoopAndStopCircuit",
+      "orchestrationCapsule.evidenceLaneStateMachineAndSafeFailureCapsule",
+      "orchestrationCapsule.contextSkillValidationBudgetRouter",
+      "orchestrationCapsule.skillReviewProductValueEffectiveness",
+      "workerProofCapsule.observedGitWorktreePrState",
+      "ownerDecisionBrief.ownerDecisionReceipt",
+      "ownerDecisionBrief.ownerDelegatedProcessReceipt"
+    ],
+    "p1OptionalSurfaces": [
+      "Knowledge Map Capsule",
+      "Bridge Handoff Extended Mode",
+      "Operator Output Discipline",
+      "Repo-specific Visual Proof",
+      "Safe Session Learning Proposal",
+      "Architecture Entropy Watch"
+    ],
+    "newP0Artifact": false,
+    "newTopLevelStatus": false,
+    "newSkill": false,
+    "targetRollout": "completed",
+    "finalAuthority": "v1.1.8_final_decision_kernel",
+    "subtitle": "Self-reporting becomes observed state; long autonomy uses short safe loops."
   }
 }
