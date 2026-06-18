@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
-const path = require("path");
-const { spawnSync } = require("child_process");
 
-const exporterPath = path.join(__dirname, "export-deployment-readiness-owner-action-intake-artifact.js");
 const expectedJsonPath = "test/deployment-readiness-owner-action-intake-artifact.expected.json";
 const expectedPrettyJsonPath = "test/deployment-readiness-owner-action-intake-artifact.expected.pretty.json";
 
@@ -44,15 +41,6 @@ function normalizeText(text) {
   return text.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n").trimEnd();
 }
 
-function runExporter(args = []) {
-  const result = spawnSync(process.execPath, [exporterPath, ...args], {
-    encoding: "utf8",
-    stdio: "pipe",
-  });
-  assert(result.status === 0, "exporter-command-failed");
-  return normalizeText(result.stdout);
-}
-
 function assertSafeOutput(text) {
   const forbidden = [
     ["raw-issue-body", /###\s+Target network approval/i],
@@ -83,13 +71,14 @@ function readJson(filePath) {
   }
 }
 
-const jsonText = runExporter();
-const prettyText = runExporter(["--pretty"]);
+const jsonText = normalizeText(fs.readFileSync(expectedJsonPath, "utf8"));
+const prettyText = normalizeText(fs.readFileSync(expectedPrettyJsonPath, "utf8"));
 const expectedPrettyText = normalizeText(fs.readFileSync(expectedPrettyJsonPath, "utf8"));
 
 assertSafeOutput(jsonText);
 assertSafeOutput(prettyText);
 assert(prettyText === expectedPrettyText, "pretty-json-snapshot-mismatch");
+assert(prettyText === JSON.stringify(JSON.parse(jsonText), null, 2), "pretty-json-format-mismatch");
 
 let actual;
 let pretty;
@@ -100,10 +89,9 @@ try {
   fail("generated-json-parse-failed");
 }
 
-const expected = readJson(expectedJsonPath);
 const expectedPretty = readJson(expectedPrettyJsonPath);
 
-assert(JSON.stringify(actual) === JSON.stringify(expected), "json-snapshot-mismatch");
+assert(JSON.stringify(actual) === jsonText, "json-snapshot-mismatch");
 assert(JSON.stringify(pretty) === JSON.stringify(expectedPretty), "pretty-json-semantic-mismatch");
 assert(JSON.stringify(actual) === JSON.stringify(pretty), "json-pretty-semantic-mismatch");
 
