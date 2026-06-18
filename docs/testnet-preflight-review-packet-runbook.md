@@ -407,3 +407,9 @@ no secrets and no real owner values in this PR, and it is not deploy approval,
 not funded transaction approval, not governance transaction approval, not
 BscScan verification approval, not release approval, not visibility approval,
 and not readiness.
+
+Use [the testnet deployment candidate manifest](testnet-deployment-candidate-manifest.md)
+to review deterministic source and artifact fingerprints before any future
+testnet deployment instruction. The manifest is no-network and no-deploy; it
+does not include raw bytecode, real owner values, secrets, authorization, or
+readiness.

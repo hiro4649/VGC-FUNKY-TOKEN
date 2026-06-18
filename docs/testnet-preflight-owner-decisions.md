@@ -227,3 +227,8 @@ no secrets and no real owner values in this PR, and it is not deploy approval,
 not funded transaction approval, not governance transaction approval, not
 BscScan verification approval, not release approval, not visibility approval,
 and not readiness.
+
+The [testnet deployment candidate manifest](testnet-deployment-candidate-manifest.md)
+fingerprints the compiled testnet candidate for later review only. It contains
+no real owner values, no raw bytecode, no secrets, and no authorization or
+readiness claim.
