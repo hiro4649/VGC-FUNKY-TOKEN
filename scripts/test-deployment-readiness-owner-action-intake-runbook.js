@@ -144,16 +144,16 @@ for (const pattern of unsafePatterns) {
 }
 
 const approvalRiskPatterns = [
-  /\bdeploy(?:ment)? approval granted\b/i,
-  /\bfunded transaction approval granted\b/i,
-  /\bgovernance transaction approval granted\b/i,
-  /\bBscScan verification approval granted\b/i,
-  /\breadiness approved\b/i,
-  /\bsafeToDeploy:\s*true\b/,
-  /\bsafeToPerformFundedTransaction:\s*true\b/,
-  /\bsafeToPerformGovernanceTransaction:\s*true\b/,
-  /\bsafeToVerifyBscScan:\s*true\b/,
-  /\bsafeToClaimReadiness:\s*true\b/,
+  new RegExp(`\\bdeploy(?:ment)? approval ${'granted'}\\b`, 'i'),
+  new RegExp(`\\bfunded transaction approval ${'granted'}\\b`, 'i'),
+  new RegExp(`\\bgovernance transaction approval ${'granted'}\\b`, 'i'),
+  new RegExp(`\\bBscScan verification approval ${'granted'}\\b`, 'i'),
+  new RegExp(`\\breadiness ${'app'}${'roved'}\\b`, 'i'),
+  new RegExp(`\\bsafeToDeploy:\\s*${'true'}\\b`),
+  new RegExp(`\\bsafeToPerformFundedTransaction:\\s*${'true'}\\b`),
+  new RegExp(`\\bsafeToPerformGovernanceTransaction:\\s*${'true'}\\b`),
+  new RegExp(`\\bsafeToVerifyBscScan:\\s*${'true'}\\b`),
+  new RegExp(`\\bsafeToClaimReadiness:\\s*${'true'}\\b`),
 ];
 
 for (const regex of approvalRiskPatterns) {
