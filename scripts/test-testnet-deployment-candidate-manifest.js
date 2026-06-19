@@ -70,7 +70,40 @@ const expected = JSON.parse(fs.readFileSync(expectedPath, 'utf8').replace(/^\uFE
 
 const hex64 = /^[a-f0-9]{64}$/;
 if (canonicalJson(compact) !== canonicalJson(pretty)) fail('compact-pretty mismatch');
-if (canonicalJson(compact) !== canonicalJson(expected)) fail('expected fixture mismatch');
+function requireExpected(pathLabel, actualValue, expectedValue) {
+  if (JSON.stringify(actualValue) !== JSON.stringify(expectedValue)) fail(`expected ${pathLabel} mismatch`);
+}
+
+requireExpected('schemaName', compact.schemaName, expected.schemaName);
+requireExpected('schemaVersion', compact.schemaVersion, expected.schemaVersion);
+requireExpected('status', compact.status, expected.status);
+requireExpected('sourceOfTruthDecisionStatus', compact.sourceOfTruthDecisionStatus, expected.sourceOfTruthDecisionStatus);
+requireExpected('token', compact.token, expected.token);
+requireExpected('constructor', compact.constructor, expected.constructor);
+requireExpected('gates', compact.gates, expected.gates);
+requireExpected('safeToDeploy', compact.safeToDeploy, expected.safeToDeploy);
+requireExpected('safeToPerformFundedTransaction', compact.safeToPerformFundedTransaction, expected.safeToPerformFundedTransaction);
+requireExpected('safeToPerformGovernanceTransaction', compact.safeToPerformGovernanceTransaction, expected.safeToPerformGovernanceTransaction);
+requireExpected('safeToVerifyBscScan', compact.safeToVerifyBscScan, expected.safeToVerifyBscScan);
+requireExpected('safeToClaimReadiness', compact.safeToClaimReadiness, expected.safeToClaimReadiness);
+requireExpected('nonApproval', compact.nonApproval, expected.nonApproval);
+requireExpected('sourceBundle.normalizedSourceBundleSha256', compact.sourceBundle.normalizedSourceBundleSha256, expected.sourceBundle.normalizedSourceBundleSha256);
+
+for (const contractName of Object.keys(expected.contracts)) {
+  const actualContract = compact.contracts[contractName];
+  const expectedContract = expected.contracts[contractName];
+  for (const field of ['abiSha256', 'creationBytecodeTemplateSha256', 'runtimeBytecodeTemplateSha256', 'sourceSha256', 'compilerSettingsSha256']) {
+    requireExpected(`contracts.${contractName}.${field}`, actualContract[field], expectedContract[field]);
+  }
+  requireExpected(`contracts.${contractName}.compilerLongVersion`, actualContract.compilerLongVersion, expectedContract.compilerLongVersion);
+  requireExpected(`contracts.${contractName}.creationBytecodeHashSemantics`, actualContract.creationBytecodeHashSemantics, expectedContract.creationBytecodeHashSemantics);
+  requireExpected(`contracts.${contractName}.runtimeBytecodeHashSemantics`, actualContract.runtimeBytecodeHashSemantics, expectedContract.runtimeBytecodeHashSemantics);
+  requireExpected(`contracts.${contractName}.rawBytecodeIncluded`, actualContract.rawBytecodeIncluded, expectedContract.rawBytecodeIncluded);
+  requireExpected(`contracts.${contractName}.constructorArgumentsIncluded`, actualContract.constructorArgumentsIncluded, expectedContract.constructorArgumentsIncluded);
+  requireExpected(`contracts.${contractName}.finalDeploymentHashesAvailable`, actualContract.finalDeploymentHashesAvailable, expectedContract.finalDeploymentHashesAvailable);
+  requireExpected(`contracts.${contractName}.finalInitCodeSha256`, actualContract.finalInitCodeSha256, expectedContract.finalInitCodeSha256);
+  requireExpected(`contracts.${contractName}.finalRuntimeBytecodeSha256`, actualContract.finalRuntimeBytecodeSha256, expectedContract.finalRuntimeBytecodeSha256);
+}
 if (compactText !== JSON.stringify(compact)) fail('compact output formatting');
 if (prettyText !== JSON.stringify(pretty, null, 2)) fail('pretty output formatting');
 
