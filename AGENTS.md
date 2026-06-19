@@ -1,10 +1,10 @@
 # AGENTS.md
 
 <!-- CODEX_QUALITY_HARNESS_BEGIN -->
-CODEX_QUALITY_HARNESS_FILE v1.2.6
+CODEX_QUALITY_HARNESS_FILE v1.2.7
 
 For v1.2.6 Observed-State Bridge-Safe Loop Runtime, use
-`docs/process/CODEX_V126_SPEC.md` and
+`docs/process/CODEX_V127_SPEC.md` and
 `docs/process/CODEX_ACTIVE_POLICY_INDEX.json`. Profile ID:
 `VGC_TOKEN_NO_DEPLOY_NO_VALUE_TRANSFER_V1`.
 
