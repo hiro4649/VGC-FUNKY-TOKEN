@@ -64,6 +64,20 @@ function sha256Utf8(value) {
   return sha256Bytes(Buffer.from(value, 'utf8'));
 }
 
+function stripSolidityMetadataTrailer(bytes) {
+  if (!Buffer.isBuffer(bytes) || bytes.length < 4) return bytes;
+  const metadataLength = bytes.readUInt16BE(bytes.length - 2);
+  const trailerLength = metadataLength + 2;
+  if (trailerLength <= 2 || trailerLength >= bytes.length) return bytes;
+  const metadataStart = bytes.length - trailerLength;
+  const first = bytes[metadataStart];
+  if (first < 0xa0 || first > 0xbf) return bytes;
+  return bytes.subarray(0, metadataStart);
+}
+
+function sha256StableBytecodeTemplate(bytes) {
+  return sha256Bytes(stripSolidityMetadataTrailer(bytes));
+}
 function normalizeSource(value) {
   return value.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 }
@@ -239,14 +253,15 @@ function artifactInfo({ contractName, sourcePath, artifactPath, dbgPath, compone
     buildInfoPath,
     ...settings,
     abiSha256: sha256Utf8(canonicalJson(artifact.abi)),
-    creationBytecodeTemplateSha256: sha256Bytes(artifactCreation.bytes),
-    runtimeBytecodeTemplateSha256: sha256Bytes(artifactRuntime.bytes),
+    creationBytecodeTemplateSha256: sha256StableBytecodeTemplate(artifactCreation.bytes),
+    runtimeBytecodeTemplateSha256: sha256StableBytecodeTemplate(artifactRuntime.bytes),
     constructorArgumentsIncluded: false,
     finalDeploymentHashesAvailable: false,
     finalInitCodeSha256: null,
     finalRuntimeBytecodeSha256: null,
-    creationBytecodeHashSemantics: 'raw_template_bytes_sha256',
-    runtimeBytecodeHashSemantics: 'raw_template_bytes_sha256',
+    creationBytecodeHashSemantics: 'raw_template_bytes_without_solc_metadata_trailer_sha256',
+    compilerMetadataTrailerExcludedFromTemplateHash: true,
+    runtimeBytecodeHashSemantics: 'raw_template_bytes_without_solc_metadata_trailer_sha256',
     rawBytecodeIncluded: false,
     sourceSha256: sha256Utf8(source),
     linkReferencesEmpty: true,

@@ -13,8 +13,8 @@ Fingerprint semantics are fixed:
 
 - ABI fingerprint: recursively stable-sort object keys, preserve array order,
   encode canonical JSON as UTF-8, then SHA-256.
-- Creation bytecode template fingerprint: require the leading `0x`, validate even-length hexadecimal, decode to raw compiled creation bytecode template bytes, then SHA-256 raw bytes. Constructor arguments are not included.
-- Runtime bytecode template fingerprint: require the leading `0x`, validate even-length hexadecimal, decode to raw compiled runtime bytecode template bytes, then SHA-256 raw bytes. Final deployed runtime hashes remain unavailable until owner public values and immutable constructor values are fixed.
+- Creation bytecode template fingerprint: require the leading `0x`, validate even-length hexadecimal, decode to raw compiled creation bytecode template bytes, remove the Solidity metadata trailer for cross-environment determinism, then SHA-256 raw bytes. Constructor arguments are not included.
+- Runtime bytecode template fingerprint: require the leading `0x`, validate even-length hexadecimal, decode to raw compiled runtime bytecode template bytes, remove the Solidity metadata trailer for cross-environment determinism, then SHA-256 raw bytes. Final deployed runtime hashes remain unavailable until owner public values and immutable constructor values are fixed.
 - Source fingerprint: remove a UTF-8 BOM if present, normalize CRLF/CR to LF,
   encode as UTF-8, then SHA-256.
 - Source bundle fingerprint: sort repository-relative source paths, include each

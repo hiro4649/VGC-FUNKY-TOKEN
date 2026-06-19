@@ -123,8 +123,8 @@ for (const contract of Object.values(compact.contracts)) {
   if (contract.finalDeploymentHashesAvailable !== false) fail(`${contract.contractName}.finalDeploymentHashesAvailable`);
   if (contract.finalInitCodeSha256 !== null) fail(`${contract.contractName}.finalInitCodeSha256`);
   if (contract.finalRuntimeBytecodeSha256 !== null) fail(`${contract.contractName}.finalRuntimeBytecodeSha256`);
-  if (contract.creationBytecodeHashSemantics !== 'raw_template_bytes_sha256') fail(`${contract.contractName}.creation semantics`);
-  if (contract.runtimeBytecodeHashSemantics !== 'raw_template_bytes_sha256') fail(`${contract.contractName}.runtime semantics`);
+  if (contract.creationBytecodeHashSemantics !== 'raw_template_bytes_without_solc_metadata_trailer_sha256') fail(`${contract.contractName}.creation semantics`);
+  if (contract.runtimeBytecodeHashSemantics !== 'raw_template_bytes_without_solc_metadata_trailer_sha256') fail(`${contract.contractName}.runtime semantics`);
   if (contract.rawBytecodeIncluded !== false) fail(`${contract.contractName}.rawBytecodeIncluded`);
   if (!contract.compilerLongVersion) fail(`${contract.contractName}.compilerLongVersion`);
   if (contract.compilerSettingsHashSemantics !== 'canonical_json_sha256_excluding_outputSelection') fail(`${contract.contractName}.compiler settings semantics`);
