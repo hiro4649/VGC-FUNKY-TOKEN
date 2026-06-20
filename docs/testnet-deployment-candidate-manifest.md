@@ -1,42 +1,42 @@
-﻿# Testnet Deployment Candidate Manifest
+# Testnet Deployment Candidate Manifest
 
-The testnet deployment candidate manifest fingerprints the source files and
-compiled artifacts intended for a future BNB Smart Chain testnet deployment.
-It records hashes only, not raw bytecode, raw source contents, real owner
-addresses, wallet funding proof, RPC URLs, API keys, or environment values.
+The testnet deployment candidate manifest fingerprints the production source closure and compiled artifacts intended for a possible later BNB Smart Chain testnet deployment. It records hashes and safety statuses only, not raw bytecode, raw source contents, real owner addresses, wallet funding proof, RPC URLs, API keys, environment values, or deploy results.
 
-The manifest is deterministic and no-network. It derives each contract's compiler
-settings from the exact Hardhat build-info file referenced by that contract's
-`.dbg.json` artifact.
+The manifest is deterministic, no-deploy, and no-RPC. It resolves each Hardhat artifact's sibling `.dbg.json`, verifies the referenced build-info real path stays under `contracts/artifacts/build-info`, and binds the artifact bytecode to the exact build-info contract output before any fingerprint is recorded.
+
+Production source closure is derived from the Solidity AST import graph, not from the whole build-info source map. The root sources are `funky/funky.sol` and `funky/FunkyTierUpdater.sol`. The required production closure is exactly:
+
+- `contracts/funky/Context.sol`
+- `contracts/funky/draft-IERC6093.sol`
+- `contracts/funky/ERC20.sol`
+- `contracts/funky/funky.sol`
+- `contracts/funky/FunkyTierUpdater.sol`
+- `contracts/funky/IERC20.sol`
+- `contracts/funky/IERC20Metadata.sol`
+
+Mock contracts are excluded from the production closure. For every production source, the builder normalizes BOM and CRLF/CR to LF, then verifies the filesystem source content equals `buildInfo.input.sources[sourceName].content`. The source bundle hash is SHA-256 over canonical JSON source metadata objects containing path, normalized source SHA-256, and normalized UTF-8 byte length. Raw source text is not emitted.
 
 Fingerprint semantics are fixed:
 
-- ABI fingerprint: recursively stable-sort object keys, preserve array order,
-  encode canonical JSON as UTF-8, then SHA-256.
-- Creation bytecode template fingerprint: require the leading `0x`, validate even-length hexadecimal, decode to raw compiled creation bytecode template bytes, remove the Solidity metadata trailer for cross-environment determinism, then SHA-256 raw bytes. Constructor arguments are not included.
-- Runtime bytecode template fingerprint: require the leading `0x`, validate even-length hexadecimal, decode to raw compiled runtime bytecode template bytes, remove the Solidity metadata trailer for cross-environment determinism, then SHA-256 raw bytes. Final deployed runtime hashes remain unavailable until owner public values and immutable constructor values are fixed.
-- Source fingerprint: remove a UTF-8 BOM if present, normalize CRLF/CR to LF,
-  encode as UTF-8, then SHA-256.
-- Source bundle fingerprint: sort repository-relative source paths, include each
-  path and UTF-8 byte length as delimiters, normalize each source to LF, then
-  SHA-256 the UTF-8 bundle. Absolute paths are not included.
+- ABI fingerprint: recursively stable-sort object keys, preserve array order, encode canonical JSON as UTF-8, then SHA-256.
+- Full creation bytecode template fingerprint: require artifact `0x` hex, validate even-length hexadecimal, decode raw bytes, verify exact equality with build-info creation bytecode, then SHA-256 the full metadata-including raw bytes.
+- Full runtime bytecode template fingerprint: require artifact `0x` hex, validate even-length hexadecimal, decode raw bytes, verify exact equality with build-info runtime bytecode, then SHA-256 the full metadata-including raw bytes.
+- Executable template fingerprints: record metadata-stripped creation/runtime hashes only as supplemental fields, separate from the full template hashes.
+- Solidity metadata trailer fingerprints: require metadata extraction to succeed and record trailer SHA-256 plus byte length for creation and runtime bytecode.
+- Compiler input fingerprint: hash canonical JSON for the production compiler input subset: language, production closure source contents, and compiler settings excluding `outputSelection`.
+- Compiler settings fingerprint: hash canonical JSON settings excluding `outputSelection`; optimizer, runs, EVM version, metadata settings, libraries, remappings, viaIR, and debug settings remain visible as manifest metadata.
 
-`finalDeploymentHashesAvailable` remains `false`, `finalInitCodeSha256` and `finalRuntimeBytecodeSha256` remain `null`, and `rawBytecodeIncluded` remains `false` because the manifest records deterministic compile templates only. Compiler settings are fingerprinted as canonical JSON with `outputSelection` excluded, while `solcLongVersion` remains required.
+`finalDeploymentHashesAvailable` remains `false`, and `finalInitCodeSha256` / `finalRuntimeBytecodeSha256` remain `null`, because owner public constructor values and immutable constructor values are not fixed by this manifest. `rawBytecodeIncluded` remains `false`.
 
-The manifest remains blocked because owner decisions are still pending. The `ownerActionIntakeFinalGateStatus` field is derived from live component gate outputs, not expected fixtures, to avoid recursively running the full intake artifact chain inside this manifest builder. It is
-not deploy authorization, not funded transaction authorization, not governance
-transaction authorization, not BscScan verification authorization, not release
-authorization, not visibility-change authorization, and not readiness.
+The manifest validates token identity and initial supply through the Solidity AST, not regex text matching. It validates the constructor ABI order and `nonpayable` state mutability. It also records immutable reference metadata: `FunkyRave` must have no immutable references, while `FunkyTierUpdater` must prove the `funkyToken` immutable reference is present.
 
-The manifest exposes the fee model for owner policy review. The source allows a
-configured maximum raw fee value of `1000` with denominator `1000`, which is an
-effective maximum of `100%`. That maximum, sell/LP-add fee behavior, TierUpdater
-policy, trusted factory policy, pair policy, and fee exemption policy remain
-pending owner decisions. The documentation unit consistency status remains
-`manual_review_required` and this PR does not change contract source.
+The manifest remains blocked because owner decisions are still pending. The `ownerActionIntakeFinalGateStatus` field is read from live JSON output of `scripts/check-deployment-readiness-owner-action-intake-final-gate.js --json`; it is not hardcoded and not derived from expected fixtures. All upstream safe-to fields must be present and exactly `false`, and non-approval boundaries must remain true.
 
-Regenerate the manifest after any legitimate contract, compiler, artifact, or
-configuration change:
+This manifest is not deploy authorization, not funded transaction authorization, not governance transaction authorization, not BscScan verification authorization, not release authorization, not visibility-change authorization, and not readiness.
+
+The manifest exposes the fee model for owner policy review. The source allows a configured maximum raw fee value of `1000` with denominator `1000`, which is an effective maximum of `100%`. That maximum, sell/LP-add fee behavior, TierUpdater policy, trusted factory policy, pair policy, and fee exemption policy remain pending owner decisions. The documentation unit consistency status remains `manual_review_required` and this PR does not change contract source.
+
+Regenerate the manifest after any legitimate contract, compiler, artifact, or configuration change:
 
 ```powershell
 npm --prefix contracts run compile
@@ -44,7 +44,4 @@ node scripts/build-testnet-deployment-candidate-manifest.js --pretty
 node scripts/test-testnet-deployment-candidate-manifest.js
 ```
 
-Any fingerprint change requires review. BscScan verification source must match
-the canonical source and compiled candidate recorded by this manifest. A later
-explicit deploy instruction is still required before any deploy action can be
-considered.
+Any fingerprint change requires review. BscScan verification source must match the canonical source and compiled candidate recorded by this manifest. A later explicit deploy instruction is still required before any deploy action can be considered.
