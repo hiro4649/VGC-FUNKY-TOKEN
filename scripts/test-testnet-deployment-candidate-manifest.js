@@ -148,6 +148,8 @@ for (const [contractName, contract] of Object.entries(compact.contracts)) {
     'runtimeMetadataTrailerSha256',
   ]) assertHex64(`${contractName}.${field}`, contract[field]);
   if (contract.bytecodeHashSemantics !== 'full_template_raw_bytes_sha256_with_metadata; executable_template_hashes_are_supplemental_metadata-stripped_hashes') fail(`${contractName}.bytecode semantics`);
+  if (contract.creationBytecodeTemplateFullSha256 === contract.creationExecutableTemplateSha256) fail(`${contractName}.creation full hash should differ from executable hash`);
+  if (contract.runtimeBytecodeTemplateFullSha256 === contract.runtimeExecutableTemplateSha256) fail(`${contractName}.runtime full hash should differ from executable hash`);
   if (contract.constructorArgumentsIncluded !== false) fail(`${contractName}.constructorArgumentsIncluded`);
   if (contract.finalDeploymentHashesAvailable !== false) fail(`${contractName}.finalDeploymentHashesAvailable`);
   if (contract.finalInitCodeSha256 !== null) fail(`${contractName}.finalInitCodeSha256`);
@@ -174,8 +176,8 @@ if (compact.requiresLaterExplicitDeployInstruction !== true) fail('later deploy 
 if (!Object.values(compact.nonApproval).every((value) => value === true)) fail('nonApproval');
 assertNoForbiddenOutput(compact);
 
-mutateAndExpectMismatch('full creation bytecode hash mutation', expected, (m) => { m.contracts.FunkyRave.creationBytecodeTemplateFullSha256 = '0'.repeat(64); });
-mutateAndExpectMismatch('full runtime bytecode hash mutation', expected, (m) => { m.contracts.FunkyTierUpdater.runtimeBytecodeTemplateFullSha256 = '0'.repeat(64); });
+mutateAndExpectMismatch('creation executable bytecode hash mutation', expected, (m) => { m.contracts.FunkyRave.creationExecutableTemplateSha256 = '0'.repeat(64); });
+mutateAndExpectMismatch('runtime executable bytecode hash mutation', expected, (m) => { m.contracts.FunkyTierUpdater.runtimeExecutableTemplateSha256 = '0'.repeat(64); });
 mutateAndExpectMismatch('source bundle hash mutation', expected, (m) => { m.sourceBundle.normalizedSourceBundleSha256 = '0'.repeat(64); });
 mutateAndExpectMismatch('compiler settings hash mutation', expected, (m) => { m.contracts.FunkyRave.compilerSettingsSha256 = '0'.repeat(64); });
 mutateAndExpectMismatch('abi hash mutation', expected, (m) => { m.contracts.FunkyRave.abiSha256 = '0'.repeat(64); });

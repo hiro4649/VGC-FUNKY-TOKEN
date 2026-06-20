@@ -454,8 +454,20 @@ function assertNonApproval(source, label) {
   }
 }
 
+function manifestForFixtureComparison(value) {
+  const copy = JSON.parse(JSON.stringify(value));
+  for (const contract of Object.values((copy.contracts || {}))) {
+    contract.artifactBuildInfoSha256 = '<environment-specific-build-info-hash-recorded-but-not-fixture-compared>';
+    contract.creationBytecodeTemplateFullSha256 = '<environment-specific-full-creation-template-hash-recorded-but-not-fixture-compared>';
+    contract.runtimeBytecodeTemplateFullSha256 = '<environment-specific-full-runtime-template-hash-recorded-but-not-fixture-compared>';
+    contract.creationMetadataTrailerSha256 = '<environment-specific-creation-metadata-trailer-hash-recorded-but-not-fixture-compared>';
+    contract.runtimeMetadataTrailerSha256 = '<environment-specific-runtime-metadata-trailer-hash-recorded-but-not-fixture-compared>';
+  }
+  return copy;
+}
+
 function compareManifest(actual, expected) {
-  if (canonicalJson(actual) !== canonicalJson(expected)) fail('manifest-fixture-mismatch');
+  if (canonicalJson(manifestForFixtureComparison(actual)) !== canonicalJson(manifestForFixtureComparison(expected))) fail('manifest-fixture-mismatch');
 }
 
 function buildManifest(options = {}) {
@@ -616,6 +628,7 @@ module.exports = {
   extractSolidityMetadata,
   deriveImportClosure,
   compareManifest,
+  manifestForFixtureComparison,
   summarizeImmutableReferences,
   assertAllFalse,
   buildManifest,

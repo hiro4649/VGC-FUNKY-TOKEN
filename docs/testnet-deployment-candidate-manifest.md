@@ -21,10 +21,12 @@ Fingerprint semantics are fixed:
 - ABI fingerprint: recursively stable-sort object keys, preserve array order, encode canonical JSON as UTF-8, then SHA-256.
 - Full creation bytecode template fingerprint: require artifact `0x` hex, validate even-length hexadecimal, decode raw bytes, verify exact equality with build-info creation bytecode, then SHA-256 the full metadata-including raw bytes.
 - Full runtime bytecode template fingerprint: require artifact `0x` hex, validate even-length hexadecimal, decode raw bytes, verify exact equality with build-info runtime bytecode, then SHA-256 the full metadata-including raw bytes.
-- Executable template fingerprints: record metadata-stripped creation/runtime hashes only as supplemental fields, separate from the full template hashes.
+- Executable template fingerprints: record metadata-stripped creation/runtime hashes as the cross-run fixture-locked bytecode fingerprints, separate from the full template hashes.
 - Solidity metadata trailer fingerprints: require metadata extraction to succeed and record trailer SHA-256 plus byte length for creation and runtime bytecode.
 - Compiler input fingerprint: hash canonical JSON for the production compiler input subset: language, production closure source contents, and compiler settings excluding `outputSelection`.
 - Compiler settings fingerprint: hash canonical JSON settings excluding `outputSelection`; optimizer, runs, EVM version, metadata settings, libraries, remappings, viaIR, and debug settings remain visible as manifest metadata.
+
+The self-test fixture comparison deliberately masks full metadata-including bytecode hashes, metadata trailer hashes, and whole build-info hashes before comparing expected and generated manifests. Those fields are still emitted and shape-checked as diagnostic evidence, but Solidity metadata/build-info payloads can vary across runner environments. The stable fixture guard is therefore the production source closure, source/build-info content equality, compiler input/settings fingerprints, metadata-stripped executable bytecode fingerprints, constructor and immutable-reference evidence, live final-gate status, and the safe/non-approval boundary fields.
 
 `finalDeploymentHashesAvailable` remains `false`, and `finalInitCodeSha256` / `finalRuntimeBytecodeSha256` remain `null`, because owner public constructor values and immutable constructor values are not fixed by this manifest. `rawBytecodeIncluded` remains `false`.
 
