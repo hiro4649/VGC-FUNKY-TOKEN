@@ -1,33 +1,36 @@
 # AGENTS.md
 
 <!-- CODEX_QUALITY_HARNESS_BEGIN -->
-CODEX_QUALITY_HARNESS_FILE v1.2.7
+CODEX_QUALITY_HARNESS_FILE v1.2.8
 
-For v1.2.6 Observed-State Bridge-Safe Loop Runtime, use
-`docs/process/CODEX_V127_SPEC.md` and
+For v1.2.8 Deterministic Decision Projection and Token-Minimal Loop Closure,
+use `docs/process/CODEX_V128_SPEC.md` and
 `docs/process/CODEX_ACTIVE_POLICY_INDEX.json`. Profile ID:
 `VGC_TOKEN_NO_DEPLOY_NO_VALUE_TRANSFER_V1`.
 
 ## Prime Directive
 
 This repository is a token-only downstream project consuming Codex Harness
-v1.2.5 as a restricted managed target. Ship the smallest correct change that
+v1.2.8 as a restricted managed target. Ship the smallest correct change that
 increases product value without weakening truth, trust, security, or
 maintainability.
 
 ## Token-Only Harness Boundary
 
 VGC-FUNKY-TOKEN is onboarded only for harness metadata, readonly evidence,
-token validation, and safe governance of future review scopes. This rollout does
+token validation, and safe governance of future review scopes. The v1.2.8
+restricted rollout is metadata-only and does
 not authorize product implementation, contract edits, deployment, BscScan
 verification, owner-value changes, wallet access, RPC access, release activity,
 or readiness claims.
 
 Use `docs/process/CODEX_HARNESS_MANIFEST.json` for machine-readable harness
-metadata and `docs/process/CODEX_VGC_TOKEN_HARNESS_PROFILE_V1_1_8.md` for the
-v1.1.8 token-only readonly profile history. Use
-`docs/process/CODEX_VGC_TOKEN_HARNESS_PROFILE_V1_1_9.md` for the active
-token-only readonly profile history.
+metadata and `docs/process/CODEX_V128_SPEC.md` for the active restricted
+token-only target contract. Use `docs/process/CODEX_V127_SPEC.md` only for
+rollback or compatibility evidence. Use
+`docs/process/CODEX_VGC_TOKEN_HARNESS_PROFILE_V1_1_8.md` and
+`docs/process/CODEX_VGC_TOKEN_HARNESS_PROFILE_V1_1_9.md` for token-only
+readonly profile history.
 
 ## Authority
 
@@ -37,7 +40,10 @@ remain compatibility layers. v1.2.0-v1.2.3 routing, calibration, read-budget,
 and observed decision-closure compatibility remains preserved. v1.2.4
 specialist-governance semantics remain compatibility layers. v1.2.5 adds only
 internal goal shard, worktree fleet, evidence lane, typed monitor inbox, fanout
-guard, and yield semantics inside existing harness surfaces.
+guard, and yield semantics inside existing harness surfaces. v1.2.7 remains
+available as readonly rollback compatibility. v1.2.8 is active only for
+deterministic projection, bounded read surface, and token-minimal loop
+governance inside the restricted token-only profile.
 
 PR bodies are human-rendered summaries only and must not satisfy machine
 evidence. Machine evidence must be a safe artifact, manifest entry, or token
