@@ -73,9 +73,18 @@ function activeManifestPathsForMode(env = process.env) {
 
 function manifestThemeMatchesActiveVersion() {
   const manifests = activeManifestPathsForMode().map((file) => JSON.parse(fs.readFileSync(file, 'utf8')));
-  return manifests.every((manifest) => manifest.activeHarnessVersion === '1.2.7'
-    && manifest.activeSelfTestSuite === 'v127'
-    && manifest.theme === 'Receipt-Carried Continuation and Evidence Compression');
+  return manifests.every((manifest) => {
+    const directV127 = manifest.activeHarnessVersion === '1.2.7'
+      && manifest.activeSelfTestSuite === 'v127'
+      && manifest.theme === 'Receipt-Carried Continuation and Evidence Compression';
+    const v128WithV127Rollback = manifest.activeHarnessVersion === '1.2.8'
+      && manifest.activeSelfTestSuite === 'v128'
+      && manifest.versioning?.activeHarnessVersion === '1.2.7'
+      && manifest.versioning?.activeSelfTestSuite === 'v127'
+      && manifest.versioning?.rollbackAvailable === true
+      && manifest.legacySelfTests?.v127 === 'token_metadata_rollback_compatibility';
+    return directV127 || v128WithV127Rollback;
+  });
 }
 
 const cases = [
