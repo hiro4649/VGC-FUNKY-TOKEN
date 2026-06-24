@@ -1,7 +1,7 @@
 # AGENTS.md
 
 <!-- CODEX_QUALITY_HARNESS_BEGIN -->
-CODEX_QUALITY_HARNESS_FILE v1.2.8
+CODEX_QUALITY_HARNESS_FILE v1.2.9
 
 For v1.2.8 Deterministic Decision Projection and Token-Minimal Loop Closure,
 use `docs/process/CODEX_V128_SPEC.md` and
