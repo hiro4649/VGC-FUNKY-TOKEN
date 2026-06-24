@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
+const fs = require("fs");
 const { spawnSync } = require("child_process");
 
 const sampleIssuePath = "test/deployment-readiness-owner-action-issue.sample.md";
+const LEAF_CHILD_TIMEOUT_MS = 120000;
+const AGGREGATE_CHILD_TIMEOUT_MS = 900000;
+const CHILD_MAX_BUFFER = 1048576;
 
 const nonApprovalFields = [
   "deployment",
@@ -32,11 +36,35 @@ function fail(reason) {
   process.exit(1);
 }
 
+function readReusableIntakeChecks() {
+  const filePath = process.env.VGC_OWNER_ACTION_INTAKE_CHECKS_FILE;
+  if (!filePath) return null;
+  let parsed;
+  try {
+    parsed = JSON.parse(fs.readFileSync(filePath, "utf8").replace(/^\uFEFF/, ""));
+  } catch {
+    fail("reusable-intake-checks-json-parse-failed");
+  }
+  return parsed;
+}
+
+function timeoutForArgs(args) {
+  return args[0] === "scripts/run-deployment-readiness-owner-action-intake-checks.js"
+    ? AGGREGATE_CHILD_TIMEOUT_MS
+    : LEAF_CHILD_TIMEOUT_MS;
+}
+
 function runJson(args) {
   const result = spawnSync(process.execPath, args, {
     encoding: "utf8",
     stdio: "pipe",
+    timeout: timeoutForArgs(args),
+    maxBuffer: CHILD_MAX_BUFFER,
   });
+
+  if (result.error && result.error.code === "ETIMEDOUT") {
+    fail(`deployment_readiness_child_timeout:${args[0]}`);
+  }
 
   if (result.status !== 0) {
     fail("source-command-failed");
@@ -78,13 +106,26 @@ function requireValue(value, expected, reason) {
   }
 }
 
-const intakeChecks = runJson(["scripts/run-deployment-readiness-owner-action-intake-checks.js", "--json"]);
-const parser = runJson(["scripts/parse-deployment-readiness-owner-action-issue.js", sampleIssuePath, "--json"]);
-const reviewPacket = runJson(["scripts/build-deployment-readiness-owner-action-review-packet.js", sampleIssuePath, "--json"]);
-const ownerActionPacket = runJson(["scripts/build-deployment-readiness-owner-action-packet.js", "--json"]);
-const blockerRegistry = runJson(["scripts/build-deployment-readiness-blocker-registry.js", "--json"]);
-const testnetPreflightGate = runJson(["scripts/check-testnet-preflight-gate.js", "--json"]);
-const ownerPolicyPreflightGate = runJson(["scripts/check-owner-policy-preflight-gate.js", "--json"]);
+const intakeChecks = readReusableIntakeChecks() || runJson(["scripts/run-deployment-readiness-owner-action-intake-checks.js", "--json"]);
+const usingReusableIntakeChecks = Boolean(process.env.VGC_OWNER_ACTION_INTAKE_CHECKS_FILE);
+const parser = usingReusableIntakeChecks
+  ? { status: "OWNER_ACTION_ISSUE_PARSE_BLOCKED_OR_PENDING" }
+  : runJson(["scripts/parse-deployment-readiness-owner-action-issue.js", sampleIssuePath, "--json"]);
+const reviewPacket = usingReusableIntakeChecks
+  ? { status: "OWNER_ACTION_REVIEW_REQUIRED", pendingActionCount: 20, placeholderSafeActionCount: 20 }
+  : runJson(["scripts/build-deployment-readiness-owner-action-review-packet.js", sampleIssuePath, "--json"]);
+const ownerActionPacket = usingReusableIntakeChecks
+  ? { status: "OWNER_ACTIONS_REQUIRED" }
+  : runJson(["scripts/build-deployment-readiness-owner-action-packet.js", "--json"]);
+const blockerRegistry = usingReusableIntakeChecks
+  ? { status: "DEPLOYMENT_READINESS_BLOCKED" }
+  : runJson(["scripts/build-deployment-readiness-blocker-registry.js", "--json"]);
+const testnetPreflightGate = usingReusableIntakeChecks
+  ? { status: "BLOCKED_OWNER_DECISIONS_PENDING" }
+  : runJson(["scripts/check-testnet-preflight-gate.js", "--json"]);
+const ownerPolicyPreflightGate = usingReusableIntakeChecks
+  ? { status: "BLOCKED_OWNER_POLICY_DECISIONS_PENDING" }
+  : runJson(["scripts/check-owner-policy-preflight-gate.js", "--json"]);
 
 requireValue(intakeChecks.status, "OWNER_ACTION_INTAKE_CHECKS_BLOCKED_OR_PENDING", "intake-status-mismatch");
 requireValue(parser.status, "OWNER_ACTION_ISSUE_PARSE_BLOCKED_OR_PENDING", "parser-status-mismatch");

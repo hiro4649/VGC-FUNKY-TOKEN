@@ -6,6 +6,8 @@ const { spawnSync } = require("child_process");
 
 const commandPath = path.join(__dirname, "run-deployment-readiness-owner-action-intake-checks.js");
 const expectedJsonPath = "test/deployment-readiness-owner-action-intake-checks.expected.json";
+const AGGREGATE_CHILD_TIMEOUT_MS = 900000;
+const CHILD_MAX_BUFFER = 1048576;
 
 const requiredChecks = [
   "templateGuard",
@@ -64,7 +66,15 @@ function assert(condition, reason) {
 }
 
 function runCommand(args) {
-  return spawnSync(process.execPath, [commandPath, ...args], { encoding: "utf8" });
+  const result = spawnSync(process.execPath, [commandPath, ...args], {
+    encoding: "utf8",
+    timeout: AGGREGATE_CHILD_TIMEOUT_MS,
+    maxBuffer: CHILD_MAX_BUFFER,
+  });
+  if (result.error && result.error.code === "ETIMEDOUT") {
+    fail("deployment_readiness_child_timeout:intakeChecks");
+  }
+  return result;
 }
 
 function assertSafeOutput(text) {

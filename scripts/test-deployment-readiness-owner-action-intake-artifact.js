@@ -6,6 +6,8 @@ const { spawnSync } = require("child_process");
 
 const exporterPath = path.join(__dirname, "export-deployment-readiness-owner-action-intake-artifact.js");
 const expectedJsonPath = "test/deployment-readiness-owner-action-intake-artifact.expected.json";
+const AGGREGATE_CHILD_TIMEOUT_MS = 900000;
+const CHILD_MAX_BUFFER = 1048576;
 
 const safeToFields = [
   "safeToDeploy",
@@ -43,7 +45,12 @@ function runExporter(args = []) {
   const result = spawnSync(process.execPath, [exporterPath, ...args], {
     encoding: "utf8",
     stdio: "pipe",
+    timeout: AGGREGATE_CHILD_TIMEOUT_MS,
+    maxBuffer: CHILD_MAX_BUFFER,
   });
+  if (result.error && result.error.code === "ETIMEDOUT") {
+    fail("deployment_readiness_child_timeout:artifactExporter");
+  }
   assert(result.status === 0, "exporter-command-failed");
   return result.stdout;
 }
