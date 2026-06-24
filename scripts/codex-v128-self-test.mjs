@@ -22,10 +22,13 @@ const policy = readJson('docs/process/CODEX_ACTIVE_POLICY_INDEX.json');
 
 const cases = [
   ['v128_self_test_must_pass', () => true],
-  ['agents_marker_is_v128', () => agents.includes('CODEX_QUALITY_HARNESS_FILE v1.2.8')],
-  ['manifest_active_tuple_is_v128', () => manifest.activeHarnessVersion === '1.2.8'
-    && manifest.activeSelfTestSuite === 'v128'
-    && manifest.activeSelfTestStatusKey === 'v128SelfTestStatus'],
+  ['agents_marker_supports_v128_rollback', () => agents.includes('CODEX_QUALITY_HARNESS_FILE v1.2.9')
+    && agents.includes('v1.2.8 remains available as readonly')],
+  ['manifest_exposes_v128_rollback_tuple', () => manifest.activeHarnessVersion === '1.2.9'
+    && manifest.activeSelfTestSuite === 'v129'
+    && manifest.versioningRollback?.activeHarnessVersion === '1.2.8'
+    && manifest.versioningRollback?.activeSelfTestSuite === 'v128'
+    && manifest.versioningRollback?.activeSelfTestStatusKey === 'v128SelfTestStatus'],
   ['restricted_token_target_preserved', () => manifest.targetRepoMode === true
     && manifest.targetRepoType === 'token_only_managed'
     && manifest.readonlyHarnessProfile === true
@@ -37,7 +40,7 @@ const cases = [
   ['v127_rollback_tuple_available', () => manifest.versioning?.activeHarnessVersion === '1.2.7'
     && manifest.versioning?.activeSelfTestSuite === 'v127'
     && manifest.versioning?.rollbackAvailable === true
-    && manifest.legacySelfTests?.v127 === 'token_metadata_rollback_compatibility'],
+    && ['token_metadata_rollback_compatibility', 'blocking_compatibility'].includes(manifest.legacySelfTests?.v127)],
   ['forbidden_capabilities_remain_forbidden', () => manifest.deployForbidden === true
     && manifest.fundedTransactionForbidden === true
     && manifest.governanceTransactionForbidden === true
@@ -50,8 +53,9 @@ const cases = [
     && manifest.deterministicDecisionProjectionAndTokenMinimalLoopClosure?.routineSelectedSkillMax === 1
     && manifest.deterministicDecisionProjectionAndTokenMinimalLoopClosure?.routineReviewerFanout === 0
     && manifest.deterministicDecisionProjectionAndTokenMinimalLoopClosure?.routineOwnerInterruptMax === 0],
-  ['policy_index_points_to_v128_with_v127_deferred', () => policy.schemaVersion === '1.2.8'
-    && policy.requiredReads.includes('docs/process/CODEX_V128_SPEC.md')
+  ['policy_index_points_to_v129_with_v128_rollback_and_v127_deferred', () => policy.schemaVersion === '1.2.9'
+    && policy.requiredReads.includes('docs/process/CODEX_V129_SPEC.md')
+    && policy.deferredReads.includes('docs/process/CODEX_V128_SPEC.md')
     && policy.deferredReads.includes('docs/process/CODEX_V127_SPEC.md')
     && policy.selectedSkillsMax === 1],
   ['pr_body_is_not_machine_evidence', () => manifest.prBodyMachineEvidence === false

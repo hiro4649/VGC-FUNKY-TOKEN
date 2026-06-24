@@ -1,6 +1,6 @@
 {
-  "marker": "CODEX_QUALITY_HARNESS_FILE v1.2.8",
-  "schemaVersion": "1.2.8",
+  "marker": "CODEX_QUALITY_HARNESS_FILE v1.2.9",
+  "schemaVersion": "1.2.9",
   "indexVersion": "1",
   "indexPath": "docs/process/CODEX_ACTIVE_POLICY_INDEX.json",
   "purpose": "Bound md and skill reads by task profile while preserving active authority.",
@@ -15,9 +15,10 @@
       "requiredReads": [
         "AGENTS.md",
         "docs/process/CODEX_HARNESS_MANIFEST.json",
-        "docs/process/CODEX_V128_SPEC.md"
+        "docs/process/CODEX_V129_SPEC.md"
       ],
       "deferredReads": [
+        "docs/process/CODEX_V128_SPEC.md",
         "docs/process/CODEX_V127_SPEC.md",
         "README.md",
         "legacy_specs",
@@ -45,10 +46,11 @@
       "requiredReads": [
         "AGENTS.md",
         "docs/process/CODEX_HARNESS_MANIFEST.json",
-        "docs/process/CODEX_V128_SPEC.md",
+        "docs/process/CODEX_V129_SPEC.md",
         "owner_rollout_instruction"
       ],
       "deferredReads": [
+        "docs/process/CODEX_V128_SPEC.md",
         "docs/process/CODEX_V127_SPEC.md",
         "README.md",
         "legacy_specs",
@@ -96,9 +98,10 @@
   "requiredReads": [
     "AGENTS.md",
     "docs/process/CODEX_HARNESS_MANIFEST.json",
-    "docs/process/CODEX_V128_SPEC.md"
+    "docs/process/CODEX_V129_SPEC.md"
   ],
   "deferredReads": [
+    "docs/process/CODEX_V128_SPEC.md",
     "docs/process/CODEX_V127_SPEC.md",
     "README.md",
     "legacy_specs",
@@ -110,6 +113,7 @@
   "newTopLevelStatus": false,
   "newSkill": false,
   "safeSummaryOnly": true,
+  "routineColdArtifactReadMax": 0,
   "receiptCarriedContinuationAndEvidenceCompression": {
     "version": "1.2.7",
     "name": "Receipt-Carried Continuation and Evidence Compression",
@@ -184,5 +188,23 @@
       "secretAccessForbidden": true,
       "readinessClaimAllowed": false
     }
+  },
+  "goalContractedCapabilityRouter": {
+    "version": "1.2.9",
+    "sourceHarnessCommit": "07bba3cba7456375194fc25fe1d2108a893502d0",
+    "rolloutClass": "restricted_token",
+    "materialization": "metadata_only_readonly",
+    "sourceFullBundleCopied": false,
+    "modelIdPinnedInTarget": false,
+    "hostAdapterStoredInTarget": false,
+    "realHostExecution": "user_local_trusted_adapter",
+    "independentVerifierRequired": true,
+    "pluginDefault": "none",
+    "pluginUnavailablePolicy": "explicit_nonblocking",
+    "routineColdArtifactRead": 0,
+    "routineSelectedSkillMax": 1,
+    "routineReviewerFanout": 0,
+    "routineOwnerInterruptMax": 0,
+    "authorityCreated": false
   }
 }
