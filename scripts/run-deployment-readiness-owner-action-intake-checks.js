@@ -4,6 +4,9 @@ const { spawnSync } = require("child_process");
 
 const samplePath = "test/deployment-readiness-owner-action-issue.sample.md";
 const jsonMode = process.argv.includes("--json");
+const LEAF_CHILD_TIMEOUT_MS = 120000;
+const AGGREGATE_CHILD_TIMEOUT_MS = 900000;
+const CHILD_MAX_BUFFER = 1048576;
 
 const safeToFields = [
   "safeToDeploy",
@@ -73,8 +76,19 @@ function assertSafeOutput(text) {
   }
 }
 
-function runNode(args) {
-  const result = spawnSync(process.execPath, args, { encoding: "utf8" });
+function isAggregateCheck(key) {
+  return key.endsWith("SelfTest") || key.endsWith("Snapshot");
+}
+
+function runNode(key, args) {
+  const result = spawnSync(process.execPath, args, {
+    encoding: "utf8",
+    timeout: isAggregateCheck(key) ? AGGREGATE_CHILD_TIMEOUT_MS : LEAF_CHILD_TIMEOUT_MS,
+    maxBuffer: CHILD_MAX_BUFFER,
+  });
+  if (result.error && result.error.code === "ETIMEDOUT") {
+    fail(`deployment_readiness_child_timeout:${key}`);
+  }
   const combinedOutput = `${result.stdout || ""}${result.stderr || ""}`;
   assertSafeOutput(combinedOutput);
   if (result.status !== 0) fail(`subcheck-failed-${args[0]}`);
@@ -82,7 +96,7 @@ function runNode(args) {
 
 const checkResults = {};
 for (const [key, label, args, status] of checks) {
-  runNode(args);
+  runNode(key, args);
   checkResults[key] = { label, status };
 }
 

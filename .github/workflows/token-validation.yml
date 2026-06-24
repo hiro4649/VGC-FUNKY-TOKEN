@@ -10,6 +10,7 @@ jobs:
   token-validation:
     name: Token validation
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     permissions:
       contents: read
 
@@ -233,7 +234,7 @@ jobs:
         run: node scripts/run-deployment-readiness-owner-action-intake-checks.js
 
       - name: Run deployment readiness owner action intake checks JSON
-        run: node scripts/run-deployment-readiness-owner-action-intake-checks.js --json
+        run: node scripts/run-deployment-readiness-owner-action-intake-checks.js --json > "$RUNNER_TEMP/vgc-owner-action-intake-checks.safe.json"
 
       - name: Run deployment readiness owner action intake checks self-tests
         run: node scripts/test-deployment-readiness-owner-action-intake-checks.js
@@ -242,27 +243,43 @@ jobs:
         run: node scripts/test-deployment-readiness-owner-action-intake-checks-snapshot.js
 
       - name: Export deployment readiness owner action intake artifact
+        env:
+          VGC_OWNER_ACTION_INTAKE_CHECKS_FILE: ${{ runner.temp }}/vgc-owner-action-intake-checks.safe.json
         run: node scripts/export-deployment-readiness-owner-action-intake-artifact.js
 
       - name: Export pretty deployment readiness owner action intake artifact
+        env:
+          VGC_OWNER_ACTION_INTAKE_CHECKS_FILE: ${{ runner.temp }}/vgc-owner-action-intake-checks.safe.json
         run: node scripts/export-deployment-readiness-owner-action-intake-artifact.js --pretty
 
       - name: Run deployment readiness owner action intake artifact self-tests
+        env:
+          VGC_OWNER_ACTION_INTAKE_CHECKS_FILE: ${{ runner.temp }}/vgc-owner-action-intake-checks.safe.json
         run: node scripts/test-deployment-readiness-owner-action-intake-artifact.js
 
       - name: Run deployment readiness owner action intake artifact snapshot guard
+        env:
+          VGC_OWNER_ACTION_INTAKE_CHECKS_FILE: ${{ runner.temp }}/vgc-owner-action-intake-checks.safe.json
         run: node scripts/test-deployment-readiness-owner-action-intake-artifact-snapshot.js
 
       - name: Check deployment readiness owner action intake final gate
+        env:
+          VGC_OWNER_ACTION_INTAKE_CHECKS_FILE: ${{ runner.temp }}/vgc-owner-action-intake-checks.safe.json
         run: node scripts/check-deployment-readiness-owner-action-intake-final-gate.js
 
       - name: Check deployment readiness owner action intake final gate JSON
+        env:
+          VGC_OWNER_ACTION_INTAKE_CHECKS_FILE: ${{ runner.temp }}/vgc-owner-action-intake-checks.safe.json
         run: node scripts/check-deployment-readiness-owner-action-intake-final-gate.js --json
 
       - name: Run deployment readiness owner action intake final gate self-tests
+        env:
+          VGC_OWNER_ACTION_INTAKE_CHECKS_FILE: ${{ runner.temp }}/vgc-owner-action-intake-checks.safe.json
         run: node scripts/test-deployment-readiness-owner-action-intake-final-gate.js
 
       - name: Run deployment readiness owner action intake final gate snapshot guard
+        env:
+          VGC_OWNER_ACTION_INTAKE_CHECKS_FILE: ${{ runner.temp }}/vgc-owner-action-intake-checks.safe.json
         run: node scripts/test-deployment-readiness-owner-action-intake-final-gate-snapshot.js
 
       - name: Run deployment readiness owner action intake runbook guard
