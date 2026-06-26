@@ -100,6 +100,7 @@ Required before any testnet deploy:
 - deployment readiness owner action intake final gate pass with expected `OWNER_ACTION_INTAKE_FINAL_GATE_BLOCKED`
 - deployment readiness owner action intake final gate snapshot guard pass
 - deployment readiness owner action intake runbook guard pass
+- testnet deployment candidate manifest build and self-test pass
 - GitHub Actions validate-only deploy/configure preflight pass with dummy public addresses only
 - `FUNKY_VALIDATE_ONLY=true` deploy script validation
 - `FUNKY_VALIDATE_ONLY=true` configure script validation

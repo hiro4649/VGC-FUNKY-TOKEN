@@ -63,3 +63,8 @@ No runtime readiness.
 No staging readiness.
 No testnet readiness.
 No mainnet readiness.
+
+The testnet deployment candidate manifest records deterministic source and
+compiled artifact fingerprints for the canonical repository. Any BscScan
+verification source must match that canonical source and compiled candidate.
+The manifest does not authorize deploy, BscScan verification, or readiness.

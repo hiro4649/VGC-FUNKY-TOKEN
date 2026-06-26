@@ -177,3 +177,10 @@ Posting the issue is not testnet readiness.
 ## No mainnet readiness approval
 
 Posting the issue is not mainnet readiness.
+
+The [testnet deployment candidate manifest](testnet-deployment-candidate-manifest.md)
+may be used later to review deterministic source and artifact fingerprints. It
+does not include real owner values, raw bytecode, secrets, deploy authorization,
+funded transaction authorization, governance transaction authorization, BscScan
+verification authorization, release authorization, visibility-change
+authorization, or readiness.
