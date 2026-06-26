@@ -25,11 +25,15 @@ const policyRouter = policy.goalContractedCapabilityRouter ?? {};
 
 const cases = [
   ['v129_self_test_must_pass', () => true],
-  ['agents_marker_is_v129', () => agents.includes('CODEX_QUALITY_HARNESS_FILE v1.2.9')],
-  ['manifest_active_tuple_is_v129', () => manifest.activeHarnessVersion === '1.2.9'
-    && manifest.activeSelfTestSuite === 'v129'
-    && manifest.activeSelfTestStatusKey === 'v129SelfTestStatus'
-    && manifest.targetHarnessVersion === '1.2.9'
+  ['agents_marker_supports_v129_rollback', () => agents.includes('CODEX_QUALITY_HARNESS_FILE v1.3.0')
+    && agents.includes('v1.2.9 remains available as immediate rollback')],
+  ['manifest_exposes_v129_rollback_tuple', () => manifest.activeHarnessVersion === '1.3.0'
+    && manifest.activeSelfTestSuite === 'v130'
+    && manifest.v129Rollback?.activeHarnessVersion === '1.2.9'
+    && manifest.v129Rollback?.activeSelfTestSuite === 'v129'
+    && manifest.v129Rollback?.activeSelfTestStatusKey === 'v129SelfTestStatus'
+    && manifest.v129Rollback?.rollbackAvailable === true
+    && manifest.versionAuthority?.v129 === 'immediate_rollback'
     && manifest.targetRollout === 'completed'],
   ['source_authority_is_bound', () => router.sourceHarnessCommit === '07bba3cba7456375194fc25fe1d2108a893502d0'],
   ['restricted_rollout_materialization', () => router.rolloutClass === 'restricted_token'
@@ -48,9 +52,10 @@ const cases = [
     && manifest.versioningRollback?.activeSelfTestSuite === 'v128'
     && manifest.versioningRollback?.activeSelfTestStatusKey === 'v128SelfTestStatus'
     && manifest.versioningRollback?.rollbackAvailable === true
-    && manifest.legacySelfTests?.v128 === 'blocking_compatibility_rollback'],
-  ['v127_compatibility_available', () => manifest.legacySelfTests?.v127 === 'blocking_compatibility'],
-  ['policy_reads_v129_and_defers_legacy', () => policy.requiredReads.includes('docs/process/CODEX_V129_SPEC.md')
+    && manifest.legacySelfTests?.v128 === 'blocking_compatibility'],
+  ['v127_compatibility_available', () => manifest.legacySelfTests?.v127 === 'compatibility_readable'],
+  ['policy_reads_v130_and_defers_rollback_and_legacy', () => policy.requiredReads.includes('docs/process/CODEX_V130_SPEC.md')
+    && policy.deferredReads.includes('docs/process/CODEX_V129_SPEC.md')
     && policy.deferredReads.includes('docs/process/CODEX_V128_SPEC.md')
     && policy.deferredReads.includes('docs/process/CODEX_V127_SPEC.md')
     && policy.profiles?.target_rollout?.requiredReads.includes('owner_rollout_instruction')],
@@ -59,7 +64,8 @@ const cases = [
     && router.routineReviewerFanout === 0
     && router.routineOwnerInterruptMax === 0
     && policyRouter.routineColdArtifactRead === 0
-    && policyRouter.routineSelectedSkillMax === 1],
+    && policyRouter.routineSelectedSkillMax === 1
+    && manifest.v130CoreTargetProfile?.routineSelectedSkillMax === 0],
   ['restricted_token_safety_preserved', () => manifest.deployForbidden === true
     && manifest.fundedTransactionForbidden === true
     && manifest.governanceTransactionForbidden === true

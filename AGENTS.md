@@ -1,10 +1,10 @@
 # AGENTS.md
 
 <!-- CODEX_QUALITY_HARNESS_BEGIN -->
-CODEX_QUALITY_HARNESS_FILE v1.2.9
+CODEX_QUALITY_HARNESS_FILE v1.3.0
 
-For v1.2.9 Goal-Contracted Capability Routing and Independent Verification,
-use `docs/process/CODEX_V129_SPEC.md` and
+For HARNESS v1.3.0 Core Target Profile,
+use `docs/process/CODEX_V130_SPEC.md` and
 `docs/process/CODEX_ACTIVE_POLICY_INDEX.json`. Profile ID:
 `VGC_TOKEN_NO_DEPLOY_NO_VALUE_TRANSFER_V1`.
 
@@ -18,16 +18,17 @@ maintainability.
 ## Token-Only Harness Boundary
 
 VGC-FUNKY-TOKEN is onboarded only for harness metadata, readonly evidence,
-token validation, and safe governance of future review scopes. The v1.2.9
+token validation, and safe governance of future review scopes. The v1.3.0 Core
 restricted rollout is metadata-only and does
 not authorize product implementation, contract edits, deployment, BscScan
 verification, owner-value changes, wallet access, RPC access, release activity,
 or readiness claims.
 
 Use `docs/process/CODEX_HARNESS_MANIFEST.json` for machine-readable harness
-metadata and `docs/process/CODEX_V129_SPEC.md` for the active restricted
-token-only target contract. Use `docs/process/CODEX_V128_SPEC.md` for rollback
-evidence and `docs/process/CODEX_V127_SPEC.md` only for compatibility evidence. Use
+metadata and `docs/process/CODEX_V130_SPEC.md` for the active Core target
+contract. Use `docs/process/CODEX_V129_SPEC.md` for immediate rollback,
+`docs/process/CODEX_V128_SPEC.md` for compatibility evidence, and
+`docs/process/CODEX_V127_SPEC.md` only for readable compatibility evidence. Use
 `docs/process/CODEX_VGC_TOKEN_HARNESS_PROFILE_V1_1_8.md` and
 `docs/process/CODEX_VGC_TOKEN_HARNESS_PROFILE_V1_1_9.md` for token-only
 readonly profile history.
@@ -42,9 +43,12 @@ specialist-governance semantics remain compatibility layers. v1.2.5 adds only
 internal goal shard, worktree fleet, evidence lane, typed monitor inbox, fanout
 guard, and yield semantics inside existing harness surfaces. v1.2.7 remains
 available as readonly compatibility. v1.2.8 remains available as readonly
-rollback compatibility. v1.2.9 is active only for target-scoped goal contract,
-capability routing, and independent verifier metadata inside the restricted
-token-only profile.
+compatibility. v1.2.9 remains available as immediate rollback. v1.3.0 Core is
+active only for target-scoped governance metadata, Anti-Spin, PR terminal
+disposition, target development resume policy, and token-minimal routine
+context. Performance Track, Fable comparison, SDK benchmark, Skill runtime, DAG
+agent team, learned orchestration, Cyber specialist runtime, and v1.3.0 target
+runtime rollout are not installed.
 
 PR bodies are human-rendered summaries only and must not satisfy machine
 evidence. Machine evidence must be a safe artifact, manifest entry, or token

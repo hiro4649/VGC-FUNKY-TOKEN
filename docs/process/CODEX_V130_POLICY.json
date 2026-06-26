@@ -1,0 +1,30 @@
+{
+  "marker": "CODEX_QUALITY_HARNESS_FILE v1.3.0",
+  "schemaVersion": "1.3.0",
+  "policyState": "core_target_profile",
+  "activeHarnessVersion": "1.3.0",
+  "activeSelfTestSuite": "v130",
+  "previousVersion": "1.2.9",
+  "targetHarnessVersion": "1.3.0",
+  "targetRollout": "completed",
+  "performanceTrack": {
+    "state": "deferred",
+    "authoritative": false,
+    "FableComparatorState": "unavailable",
+    "superiorityClaimState": "not_proven",
+    "sdkTransportState": "research_candidate",
+    "sixtyTaskBenchmarkState": "not_required_for_core_activation",
+    "learnedPolicyState": "shadow_only"
+  },
+  "coreExcluded": {
+    "sdkBenchmarkRunner": true,
+    "sixtyTaskBenchmark": true,
+    "skillRuntimeActivation": true,
+    "dagAgentTeamRuntime": true,
+    "learnedPolicyActivation": true,
+    "cyberSpecialistRuntime": true,
+    "targetProductMutation": true
+  },
+  "authorityCreated": false,
+  "finalAuthority": "v1.1.8_final_decision_kernel"
+}

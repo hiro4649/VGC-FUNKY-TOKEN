@@ -1,6 +1,6 @@
 {
-  "marker": "CODEX_QUALITY_HARNESS_FILE v1.2.9",
-  "schemaVersion": "1.2.9",
+  "marker": "CODEX_QUALITY_HARNESS_FILE v1.3.0",
+  "schemaVersion": "1.3.0",
   "indexVersion": "1",
   "indexPath": "docs/process/CODEX_ACTIVE_POLICY_INDEX.json",
   "purpose": "Bound md and skill reads by task profile while preserving active authority.",
@@ -15,9 +15,10 @@
       "requiredReads": [
         "AGENTS.md",
         "docs/process/CODEX_HARNESS_MANIFEST.json",
-        "docs/process/CODEX_V129_SPEC.md"
+        "docs/process/CODEX_V130_SPEC.md"
       ],
       "deferredReads": [
+        "docs/process/CODEX_V129_SPEC.md",
         "docs/process/CODEX_V128_SPEC.md",
         "docs/process/CODEX_V127_SPEC.md",
         "README.md",
@@ -25,7 +26,7 @@
         "pr_history_docs"
       ],
       "mdFilesReadMax": 3,
-      "selectedSkillsMax": 1,
+      "selectedSkillsMax": 0,
       "thirdSkillAllowed": false
     },
     "metadata_light": {
@@ -46,10 +47,11 @@
       "requiredReads": [
         "AGENTS.md",
         "docs/process/CODEX_HARNESS_MANIFEST.json",
-        "docs/process/CODEX_V129_SPEC.md",
+        "docs/process/CODEX_V130_SPEC.md",
         "owner_rollout_instruction"
       ],
       "deferredReads": [
+        "docs/process/CODEX_V129_SPEC.md",
         "docs/process/CODEX_V128_SPEC.md",
         "docs/process/CODEX_V127_SPEC.md",
         "README.md",
@@ -57,7 +59,7 @@
         "pr_history_docs"
       ],
       "mdFilesReadMax": 4,
-      "selectedSkillsMax": 1,
+      "selectedSkillsMax": 0,
       "thirdSkillAllowed": false
     },
     "harness_source_body": {
@@ -98,16 +100,17 @@
   "requiredReads": [
     "AGENTS.md",
     "docs/process/CODEX_HARNESS_MANIFEST.json",
-    "docs/process/CODEX_V129_SPEC.md"
+    "docs/process/CODEX_V130_SPEC.md"
   ],
   "deferredReads": [
+    "docs/process/CODEX_V129_SPEC.md",
     "docs/process/CODEX_V128_SPEC.md",
     "docs/process/CODEX_V127_SPEC.md",
     "README.md",
     "legacy_specs",
     "pr_history_docs"
   ],
-  "selectedSkillsMax": 1,
+  "selectedSkillsMax": 0,
   "mdFilesReadMax": 3,
   "newP0Artifact": false,
   "newTopLevelStatus": false,
@@ -205,6 +208,17 @@
     "routineSelectedSkillMax": 1,
     "routineReviewerFanout": 0,
     "routineOwnerInterruptMax": 0,
+    "authorityCreated": false,
+    "compatibilityRole": "immediate_rollback"
+  },
+  "v130CoreTargetProfile": {
+    "version": "1.3.0",
+    "active": true,
+    "targetHarnessVersion": "1.3.0",
+    "targetRollout": "completed",
+    "performanceTrack": "deferred_non_authoritative",
+    "routineColdArtifactRead": 0,
+    "routineSelectedSkillMax": 0,
     "authorityCreated": false
   }
 }
