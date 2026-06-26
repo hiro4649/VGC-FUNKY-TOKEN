@@ -89,7 +89,16 @@ function manifestThemeMatchesActiveVersion() {
       && manifest.versioningRollback?.activeSelfTestSuite === 'v128'
       && manifest.versioningRollback?.rollbackAvailable === true
       && manifest.legacySelfTests?.v127 === 'blocking_compatibility';
-    return directV127 || v128WithV127Rollback || v129WithV127Compatibility;
+    const v130WithV127ReadableCompatibility = manifest.activeHarnessVersion === '1.3.0'
+      && manifest.activeSelfTestSuite === 'v130'
+      && manifest.v129Rollback?.activeHarnessVersion === '1.2.9'
+      && manifest.v129Rollback?.activeSelfTestSuite === 'v129'
+      && manifest.versioningRollback?.activeHarnessVersion === '1.2.8'
+      && manifest.versioningRollback?.activeSelfTestSuite === 'v128'
+      && manifest.versioning?.activeHarnessVersion === '1.2.7'
+      && manifest.versioning?.activeSelfTestSuite === 'v127'
+      && manifest.legacySelfTests?.v127 === 'compatibility_readable';
+    return directV127 || v128WithV127Rollback || v129WithV127Compatibility || v130WithV127ReadableCompatibility;
   });
 }
 
