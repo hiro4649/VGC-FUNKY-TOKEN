@@ -10,8 +10,9 @@ use `docs/process/CODEX_V130_SPEC.md` and
 
 ## Prime Directive
 
-This repository is a token-only downstream project consuming Codex Harness
-v1.2.9 as a restricted managed target. Ship the smallest correct change that
+This repository is a token-only downstream project governed by HARNESS v1.3.0
+Core as a restricted token-only managed target while preserving v1.2.9 as
+immediate rollback. Ship the smallest correct change that
 increases product value without weakening truth, trust, security, or
 maintainability.
 
